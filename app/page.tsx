@@ -374,6 +374,9 @@ function Section({
 }
 
 export default function Home() {
+  const siteUrl =
+    process.env.NEXT_PUBLIC_SITE_URL ?? 'https://awaisali-portfolio.vercel.app';
+
   const personJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Person',
@@ -381,6 +384,8 @@ export default function Home() {
     jobTitle: profile.role,
     description:
       'Senior Software Engineer with 8+ years of experience. Remote-first with extensive experience collaborating with distributed teams to build scalable web applications using React, TypeScript, and modern frontend architecture.',
+    url: `${siteUrl}/`,
+    image: `${siteUrl}/Awais-Ali.png`,
     email: `mailto:${profile.email}`,
     telephone: profile.phone,
     address: {
@@ -401,6 +406,29 @@ export default function Home() {
     ],
   };
 
+  const websiteJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    '@id': `${siteUrl}/#website`,
+    name: 'Awais Ali — Portfolio',
+    url: `${siteUrl}/`,
+    inLanguage: 'en',
+    author: {
+      '@type': 'Person',
+      name: profile.name,
+    },
+  };
+
+  const webPageJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: 'Awais Ali — Senior Software Engineer',
+    url: `${siteUrl}/`,
+    isPartOf: { '@id': `${siteUrl}/#website` },
+    about: { '@id': `${siteUrl}/#person` },
+    inLanguage: 'en',
+  };
+
   return (
     <div
       id='intro'
@@ -409,7 +437,13 @@ export default function Home() {
       <div className='pointer-events-none absolute inset-0 -z-10 opacity-70 [background:radial-gradient(1200px_circle_at_20%_0%,color-mix(in_oklab,var(--primary)_16%,transparent),transparent_55%),radial-gradient(1000px_circle_at_90%_20%,color-mix(in_oklab,var(--accent)_14%,transparent),transparent_52%)]' />
       <script
         type='application/ld+json'
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify([
+            { ...personJsonLd, '@id': `${siteUrl}/#person` },
+            websiteJsonLd,
+            webPageJsonLd,
+          ]),
+        }}
       />
       <a
         href='#content'
@@ -536,7 +570,7 @@ export default function Home() {
                     Let’s talk
                     <ArrowUpRight className='h-4 w-4' aria-hidden='true' />
                   </ButtonLink>
-                  <ButtonLink href='/CV-Awais-Ali.pdf' variant='ghost'>
+                  <ButtonLink href='/CV-Awais-Ali.pdf' variant='ghost' newTab>
                     <FileText className='h-4 w-4' aria-hidden='true' />
                     View Resume (PDF)
                   </ButtonLink>

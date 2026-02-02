@@ -15,7 +15,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
+    process.env.NEXT_PUBLIC_SITE_URL ??
+      "https://awaisali-portfolio.vercel.app",
   ),
   title: {
     default: "Awais Ali — Senior Software Engineer",
@@ -61,14 +62,21 @@ export const metadata: Metadata = {
     description:
       "Senior Software Engineer with 8+ years of experience. Remote-first, experienced with distributed teams building scalable web applications.",
     siteName: "Awais Ali Portfolio",
-    images: [{ url: "/Awais-Ali.png" }],
+    images: [
+      {
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "Awais Ali — Senior Software Engineer (Remote-first)",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Awais Ali — Senior Software Engineer",
     description:
       "Senior Software Engineer with 8+ years of experience. Remote-first, experienced with distributed teams building scalable web applications.",
-    images: ["/Awais-Ali.png"],
+    images: ["/twitter-image"],
   },
   robots: {
     index: true,

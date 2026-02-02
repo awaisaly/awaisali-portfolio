@@ -1,40 +1,114 @@
-# awaisali-portfolio
+# Awais Ali — Portfolio
 
-Personal portfolio of Awais Ali, built with [Next.js](https://nextjs.org).
+Senior Software Engineer (Remote-first) with 8+ years of experience building scalable, user-centric web applications with React, TypeScript, and modern frontend architecture.
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+- **Location**: Islamabad, Pakistan (Open to Remote Opportunities)
+- **Email**: `awaisaly93@gmail.com`
+- **Phone**: `+92 332 061 7887`
+- **LinkedIn**: `https://www.linkedin.com/in/awaisaly`
+- **GitHub**: `https://github.com/awaisaly`
+- **Resume (PDF)**: `public/CV-Awais-Ali.pdf` (available at `/CV-Awais-Ali.pdf`)
 
-## Getting Started
+---
 
-First, run the development server:
+## Professional summary
+
+Senior Software Engineer with strong expertise in React, TypeScript, and modern frontend architecture. Hands-on experience delivering high-traffic customer-facing platforms, POS systems, and admin dashboards. Proven ability to work independently and collaborate with distributed teams across time zones.
+
+---
+
+## Core skills
+
+- **Frontend**: React.js, TypeScript, Next.js, Redux, Hooks, Context API
+- **Backend (working knowledge)**: Node.js, Python Flask, ASP.NET
+- **Web**: HTML5, CSS3, JavaScript (ES6+), REST APIs
+- **Databases**: PostgreSQL, MongoDB, MySQL, SQL Server
+- **Tools & practices**: Git, Jira, Agile/Scrum, Firebase, JWT
+- **Other**: Electron (non-production familiarity), WebGL (basics), POS & Payment Integrations (Stripe, Adyen)
+
+---
+
+## Professional experience
+
+### Software Engineer — Next Order (Hybrid)
+
+**Feb 2022 – Present**
+
+- Developed and maintained large-scale customer-facing online ordering platforms using React.
+- Implemented complex menu structures, modifiers, vouchers, loyalty programs, and Stripe/Adyen payments.
+- Worked on restaurant POS systems supporting kiosks, split payments, dine-in layouts, and multi-device environments.
+- Built and enhanced admin panels for order management, reporting, shifts, and operational settings.
+- Collaborated with remote teams to deliver stable, scalable features for live production systems.
+
+### Senior Software Engineer — Emumba (Islamabad - Remote)
+
+**Jan 2020 – Feb 2022**
+
+- Led frontend development for a Zero Trust Network Access (ZTNA) application (Web + Electron).
+- Contributed to Polarr (20M+ users), focusing on UI components and performance.
+- Built enterprise tools including Aera Developer Workbench (ETL + analytics platform).
+- Mentored junior engineers and contributed to architectural decisions and coding standards.
+
+### Development Team Lead — Incline Artificial Intelligence
+
+**Jun 2018 – Jan 2020**
+
+- Led frontend development and coordinated with backend teams on enterprise systems.
+- Delivered surveillance, ERP, LMS, and drone-management platforms.
+- Ensured scalable UI architecture and consistent coding standards across projects.
+
+### Software Developer — Burqstream Technologies
+
+**Apr 2017 – May 2018**
+
+- Developed desktop and web applications including image-analysis tools for environmental monitoring.
+- Built reporting portals and dashboards using PHP and .NET technologies.
+
+### Early career roles (2015 – 2017)
+
+- SAP / IT Executive — Toyota Garden Motors
+- Full-Stack Web Developer — Pakistan Testing Service
+- SQA Engineer — Altair Technologies (Jadoo TV)
+
+---
+
+## Selected projects
+
+- **Restaurant Ordering & POS Systems**: Web ordering, payments, POS workflows, admin and reporting tools.
+- **Polarr Photo Editor**: High-scale photo editing platform using React, Redux, and WebGL.
+- **ZTNA Security Application**: Secure access platform built with React, TypeScript, and Electron.
+- **Enterprise Surveillance & ERP Systems**: React-based apps integrated with REST APIs.
+
+---
+
+## Volunteer experience
+
+### COVID‑19 Awareness Dashboard
+
+Built a global COVID‑19 dashboard visualizing case trends and statistics, combined with public health guidelines—focused on accessibility and clear data visualization.
+
+---
+
+## Education
+
+**Bachelor of Software Engineering** — Bahria University, Islamabad  
+2011 – 2015
+
+---
+
+## Run locally
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open `http://localhost:3000`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Tech stack
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Next.js (App Router)
+- React + TypeScript
+- Tailwind CSS v4

@@ -30,7 +30,7 @@ Senior Software Engineer with strong expertise in React, TypeScript, and modern 
 
 ## Professional experience
 
-### Software Engineer — Next Order (Hybrid)
+### Software Engineer — Next Order
 
 **Feb 2022 – Present**
 
@@ -40,7 +40,7 @@ Senior Software Engineer with strong expertise in React, TypeScript, and modern 
 - Built and enhanced admin panels for order management, reporting, shifts, and operational settings.
 - Collaborated with remote teams to deliver stable, scalable features for live production systems.
 
-### Senior Software Engineer — Emumba (Islamabad - Remote)
+### Senior Software Engineer — Emumba
 
 **Jan 2020 – Feb 2022**
 

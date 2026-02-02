@@ -96,7 +96,7 @@ const skills: Skill[] = [
 
 const experience = [
   {
-    title: 'Software Engineer — Next Order (Australia, Remote)',
+    title: 'Software Engineer — Next Order',
     period: 'Feb 2022 – Present',
     tone: 'emerald' as const,
     bullets: [
@@ -108,7 +108,7 @@ const experience = [
     ],
   },
   {
-    title: 'Senior Software Engineer — Emumba (Islamabad)',
+    title: 'Senior Software Engineer — Emumba',
     period: 'Jan 2020 – Feb 2022',
     tone: 'violet' as const,
     bullets: [
@@ -226,7 +226,10 @@ function LinkChip({ href, label }: { href: string; label: string }) {
       className='inline-flex max-w-full items-center gap-2 rounded-full border border-border bg-card-solid px-3 py-1.5 text-sm font-medium text-foreground shadow-sm backdrop-blur transition hover:bg-card focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/60'
     >
       <span className='truncate'>{label}</span>
-      <ArrowUpRight className='h-4 w-4 flex-none text-muted' aria-hidden='true' />
+      <ArrowUpRight
+        className='h-4 w-4 flex-none text-muted'
+        aria-hidden='true'
+      />
     </a>
   );
 }

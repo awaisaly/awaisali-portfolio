@@ -14,6 +14,7 @@ import {
   GitBranch,
   GraduationCap,
   Layers3,
+  Link2Off,
   Mail,
   MapPin,
   MonitorSmartphone,
@@ -150,6 +151,7 @@ const projects: Project[] = [
       'Operational tooling: shifts, reports, settings, order management',
     ],
     stack: ['React', 'TypeScript', 'Stripe', 'Adyen', 'POS integrations'],
+    links: [{ label: 'Next Order Website', href: 'https://nextorder.com/' }],
   },
   {
     title: 'Polarr Photo Editor (20M+ users)',
@@ -162,6 +164,7 @@ const projects: Project[] = [
       'Collaboration within a large production codebase',
     ],
     stack: ['React', 'Redux', 'WebGL (basics)'],
+    links: [{ label: 'Polarr Website', href: 'https://www.polarr.com/' }],
   },
   {
     title: 'ZTNA Security Application (Web + Electron)',
@@ -174,6 +177,12 @@ const projects: Project[] = [
       'Stable release cadence and production hardening',
     ],
     stack: ['React', 'TypeScript', 'Electron'],
+    links: [
+      {
+        label: 'ZTNA by Extreme Networks',
+        href: 'https://www.extremenetworks.com/resources/blogs/what-is-universal-ztna',
+      },
+    ],
   },
   {
     title: 'COVID-19 Awareness Dashboard (Volunteer)',
@@ -205,6 +214,29 @@ function ExternalLink({
     >
       {children}
     </a>
+  );
+}
+
+function LinkChip({ href, label }: { href: string; label: string }) {
+  return (
+    <a
+      href={href}
+      target='_blank'
+      rel='noopener noreferrer'
+      className='inline-flex max-w-full items-center gap-2 rounded-full border border-border bg-card-solid px-3 py-1.5 text-sm font-medium text-foreground shadow-sm backdrop-blur transition hover:bg-card focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/60'
+    >
+      <span className='truncate'>{label}</span>
+      <ArrowUpRight className='h-4 w-4 flex-none text-muted' aria-hidden='true' />
+    </a>
+  );
+}
+
+function LinkChipPlaceholder({ label }: { label: string }) {
+  return (
+    <span className='inline-flex max-w-full items-center gap-2 rounded-full border border-border bg-background px-3 py-1.5 text-sm text-muted'>
+      <Link2Off className='h-4 w-4 flex-none' aria-hidden='true' />
+      <span className='truncate'>{label}</span>
+    </span>
   );
 }
 
@@ -483,8 +515,12 @@ export default function Home() {
           </a>
 
           <nav className='hidden items-center gap-5 text-sm text-muted md:flex'>
-            {navItems.map(item => (
-              <a key={item.href} className='hover:text-foreground' href={item.href}>
+            {navItems.map((item) => (
+              <a
+                key={item.href}
+                className='hover:text-foreground'
+                href={item.href}
+              >
                 {item.label}
               </a>
             ))}
@@ -820,19 +856,15 @@ export default function Home() {
                     ))}
                   </div>
 
-                  {p.links?.length ? (
-                    <div className='mt-5 flex flex-wrap gap-3 text-sm'>
-                      {p.links.map((l) => (
-                        <ExternalLink key={l.href} href={l.href}>
-                          {l.label}
-                        </ExternalLink>
-                      ))}
-                    </div>
-                  ) : (
-                    <p className='mt-5 text-xs text-muted'>
-                      Links coming soon (add deployed URLs when available).
-                    </p>
-                  )}
+                  <div className='mt-5 flex flex-wrap gap-2'>
+                    {p.links?.length ? (
+                      p.links.map((l) => (
+                        <LinkChip key={l.href} href={l.href} label={l.label} />
+                      ))
+                    ) : (
+                      <LinkChipPlaceholder label='No public link yet' />
+                    )}
+                  </div>
                 </article>
               ))}
             </div>

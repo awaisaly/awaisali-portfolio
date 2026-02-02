@@ -96,7 +96,7 @@ const skills: Skill[] = [
 
 const experience = [
   {
-    title: 'Software Engineer — Next Order',
+    title: 'Senior Software Engineer — Next Order',
     period: 'Feb 2022 – Present',
     tone: 'emerald' as const,
     bullets: [

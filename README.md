@@ -30,7 +30,7 @@ Senior Software Engineer with strong expertise in React, TypeScript, and modern 
 
 ## Professional experience
 
-### Software Engineer — Next Order
+### Senior Software Engineer — Next Order
 
 **Feb 2022 – Present**
 

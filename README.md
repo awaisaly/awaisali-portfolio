@@ -64,7 +64,9 @@ Senior Software Engineer with strong expertise in React, TypeScript, and modern 
 - Developed desktop and web applications including image-analysis tools for environmental monitoring.
 - Built reporting portals and dashboards using PHP and .NET technologies.
 
-### Early career roles (2015 – 2017)
+### Software Developer & SQA Engineer - Early career roles
+
+**Aug 2015 – Apr 2017**
 
 - SAP / IT Executive — Toyota Garden Motors
 - Full-Stack Web Developer — Pakistan Testing Service

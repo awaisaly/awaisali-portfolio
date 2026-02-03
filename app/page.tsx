@@ -96,7 +96,8 @@ const skills: Skill[] = [
 
 const experience = [
   {
-    title: 'Senior Software Engineer — Next Order',
+    role: 'Senior Software Engineer',
+    company: 'Next Order',
     period: 'Feb 2022 – Present',
     tone: 'emerald' as const,
     bullets: [
@@ -108,7 +109,8 @@ const experience = [
     ],
   },
   {
-    title: 'Senior Software Engineer — Emumba',
+    role: 'Senior Software Engineer',
+    company: 'Emumba',
     period: 'Jan 2020 – Feb 2022',
     tone: 'violet' as const,
     bullets: [
@@ -119,7 +121,8 @@ const experience = [
     ],
   },
   {
-    title: 'Development Team Lead — Incline Artificial Intelligence',
+    role: 'Development Team Lead',
+    company: 'Incline Artificial Intelligence',
     period: 'Jun 2018 – Jan 2020',
     tone: 'amber' as const,
     bullets: [
@@ -129,12 +132,24 @@ const experience = [
     ],
   },
   {
-    title: 'Software Developer — Burqstream Technologies',
+    role: 'Software Developer',
+    company: 'Burqstream Technologies',
     period: 'Apr 2017 – May 2018',
     tone: 'sky' as const,
     bullets: [
       'Developed desktop and web applications including image-analysis tools for environmental monitoring.',
       'Built reporting portals and dashboards using PHP and .NET technologies.',
+    ],
+  },
+  {
+    role: 'Software Developer & SQA Engineer',
+    company: 'Early Career Roles',
+    period: 'Aug 2015 – Apr 2017',
+    tone: 'rose' as const,
+    bullets: [
+      'SAP / IT Executive — Toyota Garden Motors',
+      'Full-Stack Web Developer — Pakistan Testing Service',
+      'SQA Engineer — Altair Technologies (Jadoo TV)',
     ],
   },
 ];
@@ -285,12 +300,12 @@ function Tone({
     tone === 'emerald'
       ? 'from-emerald-500/20 via-emerald-500/5 to-transparent'
       : tone === 'sky'
-        ? 'from-sky-500/20 via-sky-500/5 to-transparent'
-        : tone === 'amber'
-          ? 'from-amber-500/20 via-amber-500/5 to-transparent'
-          : tone === 'rose'
-            ? 'from-rose-500/20 via-rose-500/5 to-transparent'
-            : 'from-violet-500/20 via-violet-500/5 to-transparent';
+      ? 'from-sky-500/20 via-sky-500/5 to-transparent'
+      : tone === 'amber'
+      ? 'from-amber-500/20 via-amber-500/5 to-transparent'
+      : tone === 'rose'
+      ? 'from-rose-500/20 via-rose-500/5 to-transparent'
+      : 'from-violet-500/20 via-violet-500/5 to-transparent';
 
   return (
     <span
@@ -320,12 +335,12 @@ function StatCard({
     tone === 'emerald'
       ? 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-300'
       : tone === 'sky'
-        ? 'bg-sky-500/10 text-sky-600 dark:text-sky-300'
-        : tone === 'amber'
-          ? 'bg-amber-500/10 text-amber-700 dark:text-amber-300'
-          : tone === 'rose'
-            ? 'bg-rose-500/10 text-rose-600 dark:text-rose-300'
-            : 'bg-violet-500/10 text-violet-600 dark:text-violet-300';
+      ? 'bg-sky-500/10 text-sky-600 dark:text-sky-300'
+      : tone === 'amber'
+      ? 'bg-amber-500/10 text-amber-700 dark:text-amber-300'
+      : tone === 'rose'
+      ? 'bg-rose-500/10 text-rose-600 dark:text-rose-300'
+      : 'bg-violet-500/10 text-violet-600 dark:text-violet-300';
 
   return (
     <div className='relative overflow-hidden rounded-2xl border border-border bg-card p-6 shadow-sm backdrop-blur transition hover:-translate-y-0.5 hover:shadow-md motion-safe:duration-300'>
@@ -395,14 +410,27 @@ function Section({
 }) {
   return (
     <section id={id} className='scroll-mt-24'>
-      <div className='mb-6'>
-        <h2 className='text-2xl font-semibold tracking-tight'>{title}</h2>
-        {subtitle ? (
-          <p className='mt-2 max-w-2xl text-sm leading-6 text-muted'>
-            {subtitle}
-          </p>
-        ) : null}
+      <div className='sticky top-16 z-30 -mx-4 mb-5 bg-linear-to-b from-background/80 to-background/40 px-4 py-2 backdrop-blur sm:-mx-6 sm:px-6'>
+        <div className='flex items-center gap-3'>
+          <span aria-hidden='true' className='h-px flex-1 bg-border/70' />
+          <div className='pointer-events-auto inline-flex max-w-full items-center gap-2 rounded-full border border-border bg-card/90 px-4 py-2 shadow-sm backdrop-blur'>
+            <span
+              aria-hidden='true'
+              className='h-2 w-2 flex-none rounded-full bg-primary/60'
+            />
+            <h2 className='truncate text-sm font-semibold tracking-tight sm:text-base'>
+              {title}
+            </h2>
+          </div>
+          <span aria-hidden='true' className='h-px flex-1 bg-border/70' />
+        </div>
       </div>
+
+      {subtitle ? (
+        <p className='mb-6 max-w-2xl text-sm leading-6 text-muted'>
+          {subtitle}
+        </p>
+      ) : null}
       {children}
     </section>
   );
@@ -793,19 +821,37 @@ export default function Home() {
             <div className='grid gap-4'>
               {experience.map((job) => (
                 <article
-                  key={job.title}
+                  key={[job.role, job.company, job.period]
+                    .filter(Boolean)
+                    .join(' | ')}
                   className='relative overflow-hidden rounded-2xl border border-border bg-card p-6 shadow-sm backdrop-blur transition hover:-translate-y-0.5 hover:shadow-md motion-safe:duration-300'
                 >
                   <Tone tone={job.tone} />
-                  <div className='flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between'>
-                    <h3 className='flex items-center gap-2 text-base font-semibold tracking-tight'>
-                      <Briefcase
-                        className='h-4 w-4 text-muted'
-                        aria-hidden='true'
-                      />
-                      {job.title}
-                    </h3>
-                    <p className='text-sm text-muted'>{job.period}</p>
+                  <div className='flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between'>
+                    <div className='flex min-w-0 items-start gap-3'>
+                      <span className='mt-0.5 inline-flex h-9 w-9 flex-none items-center justify-center rounded-xl border border-border bg-card-solid text-muted'>
+                        <Briefcase className='h-4 w-4' aria-hidden='true' />
+                      </span>
+                      <div className='min-w-0'>
+                        <h3 className='text-base font-semibold leading-snug tracking-tight wrap-break-word'>
+                          {job.role}
+                          {job.company ? (
+                            <span className='font-medium text-muted'>
+                              {' '}
+                              — {job.company}
+                            </span>
+                          ) : null}
+                        </h3>
+
+                        <p className='mt-1 text-xs text-muted sm:hidden'>
+                          {job.period}
+                        </p>
+                      </div>
+                    </div>
+
+                    <p className='hidden text-sm text-muted sm:block sm:pt-1'>
+                      {job.period}
+                    </p>
                   </div>
                   <ul className='mt-4 grid gap-2 text-sm leading-6 text-muted'>
                     {job.bullets.map((b) => (

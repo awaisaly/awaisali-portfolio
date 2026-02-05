@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const runtime = "edge";
+export const runtime = "nodejs";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -15,8 +15,9 @@ export default function OpenGraphImage() {
           flexDirection: "column",
           justifyContent: "space-between",
           padding: 72,
-          background:
-            "radial-gradient(900px circle at 15% 0%, rgba(124,58,237,0.35), transparent 60%), radial-gradient(900px circle at 95% 20%, rgba(34,197,94,0.25), transparent 60%), radial-gradient(900px circle at 60% 110%, rgba(14,165,233,0.22), transparent 60%), #0b0b0b",
+          backgroundColor: "#0b0b0b",
+          backgroundImage:
+            "radial-gradient(900px circle at 15% 0%, rgba(124,58,237,0.35), transparent 60%), radial-gradient(900px circle at 95% 20%, rgba(34,197,94,0.25), transparent 60%), radial-gradient(900px circle at 60% 110%, rgba(14,165,233,0.22), transparent 60%)",
           color: "white",
           fontFamily:
             "ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial",

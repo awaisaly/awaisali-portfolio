@@ -343,7 +343,7 @@ function StatCard({
       : 'bg-violet-500/10 text-violet-600 dark:text-violet-300';
 
   return (
-    <div className='relative overflow-hidden rounded-2xl border border-border bg-card p-6 shadow-sm backdrop-blur transition hover:-translate-y-0.5 hover:shadow-md motion-safe:duration-300'>
+    <div className='relative overflow-hidden rounded-2xl border border-border bg-card p-4 shadow-sm backdrop-blur transition hover:-translate-y-0.5 hover:shadow-md motion-safe:duration-300 sm:p-6'>
       <Tone tone={tone} />
       <div className='relative'>
         <div className='flex items-center justify-between gap-4'>
@@ -373,7 +373,7 @@ function StatCard({
 function SkillCard({ skill }: { skill: Skill }) {
   const Icon = skill.icon;
   return (
-    <div className='group relative overflow-hidden rounded-2xl border border-border bg-card p-5 shadow-sm backdrop-blur transition hover:-translate-y-0.5 hover:shadow-md motion-safe:duration-300'>
+    <div className='group relative overflow-hidden rounded-2xl border border-border bg-card p-4 shadow-sm backdrop-blur transition hover:-translate-y-0.5 hover:shadow-md motion-safe:duration-300 sm:p-5'>
       <div className='pointer-events-none absolute inset-0 opacity-0 transition group-hover:opacity-100 motion-safe:duration-300 [background:radial-gradient(600px_circle_at_20%_0%,color-mix(in_oklab,var(--primary)_18%,transparent),transparent_55%),radial-gradient(550px_circle_at_80%_60%,color-mix(in_oklab,var(--accent)_16%,transparent),transparent_60%)]' />
       <div className='relative flex items-start gap-3'>
         <div className='grid h-10 w-10 place-items-center rounded-2xl border border-border bg-card-solid'>
@@ -410,7 +410,7 @@ function Section({
 }) {
   return (
     <section id={id} className='scroll-mt-24'>
-      <div className='sticky top-16 z-30 -mx-4 mb-5 bg-linear-to-b from-background/80 to-background/40 px-4 py-2 backdrop-blur sm:-mx-6 sm:px-6'>
+      <div className='sticky top-16 z-30 -mx-3 mb-5 bg-linear-to-b from-background/80 to-background/40 px-3 py-2 backdrop-blur sm:-mx-6 sm:px-6'>
         <div className='flex items-center gap-3'>
           <span aria-hidden='true' className='h-px flex-1 bg-border/70' />
           <div className='pointer-events-auto inline-flex max-w-full items-center gap-2 rounded-full border border-border bg-card/90 px-4 py-2 shadow-sm backdrop-blur'>
@@ -516,7 +516,7 @@ export default function Home() {
       </a>
 
       <header className='fixed left-0 top-0 z-40 w-full border-b border-border bg-card/90 backdrop-blur-none md:sticky md:top-0 md:bg-card/70 md:backdrop-blur'>
-        <div className='mx-auto flex h-16 w-full max-w-6xl items-center justify-between gap-4 px-4 sm:px-6'>
+        <div className='mx-auto flex h-16 w-full max-w-6xl items-center justify-between gap-4 px-3 sm:px-6'>
           <a
             href='#intro'
             className='group flex min-w-0 items-center gap-3 rounded-2xl px-1.5 py-1 transition hover:bg-card-solid'
@@ -577,9 +577,9 @@ export default function Home() {
 
       <main
         id='content'
-        className='mx-auto w-full max-w-6xl px-4 py-12 sm:px-6 sm:py-16'
+        className='mx-auto w-full max-w-6xl px-3 py-10 sm:px-6 sm:py-16'
       >
-        <div className='relative overflow-hidden rounded-3xl border border-border bg-card p-8 shadow-sm backdrop-blur sm:p-12'>
+        <div className='relative overflow-hidden rounded-3xl border border-border bg-card p-6 shadow-sm backdrop-blur sm:p-12'>
           <div className='pointer-events-none absolute inset-0 opacity-70 bg-aurora' />
 
           <div className='relative'>
@@ -644,38 +644,38 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className='w-full max-w-md rounded-2xl border border-border bg-card-solid p-5 shadow-sm animate-enter-3'>
+              <div className='w-full max-w-md rounded-2xl border border-border bg-card-solid p-4 shadow-sm animate-enter-3 sm:p-5'>
                 <p className='text-xs font-semibold uppercase tracking-wide text-muted'>
                   Contact
                 </p>
                 <div className='mt-4 grid gap-2 text-sm'>
                   <a
-                    className='flex items-center justify-between gap-3 rounded-xl border border-border bg-background px-4 py-3 transition hover:bg-card-solid'
+                    className='flex min-w-0 flex-col items-start gap-1 rounded-xl border border-border bg-background px-3 py-2.5 transition hover:bg-card-solid sm:flex-row sm:items-center sm:justify-between sm:gap-3 sm:px-4 sm:py-3'
                     href={`mailto:${profile.email}`}
                   >
-                    <span className='flex items-center gap-2 text-muted'>
+                    <span className='flex items-center gap-2 text-muted shrink-0'>
                       <Mail className='h-4 w-4' aria-hidden='true' />
                       Email
                     </span>
-                    <span className='truncate font-medium'>
+                    <span className='min-w-0 max-w-full truncate font-medium sm:text-right'>
                       {profile.email}
                     </span>
                   </a>
                   <a
-                    className='flex items-center justify-between gap-3 rounded-xl border border-border bg-background px-4 py-3 transition hover:bg-card-solid'
+                    className='flex min-w-0 flex-col items-start gap-1 rounded-xl border border-border bg-background px-3 py-2.5 transition hover:bg-card-solid sm:flex-row sm:items-center sm:justify-between sm:gap-3 sm:px-4 sm:py-3'
                     href={`tel:${profile.phone.replace(/\s+/g, '')}`}
                   >
-                    <span className='flex items-center gap-2 text-muted'>
+                    <span className='flex items-center gap-2 text-muted shrink-0'>
                       <Phone className='h-4 w-4' aria-hidden='true' />
                       Phone
                     </span>
-                    <span className='truncate font-medium'>
+                    <span className='min-w-0 max-w-full truncate font-medium sm:text-right'>
                       {profile.phone}
                     </span>
                   </a>
-                  <div className='grid grid-cols-2 gap-2 pt-2'>
+                  <div className='grid grid-cols-1 gap-2 pt-2 sm:grid-cols-2'>
                     <a
-                      className='inline-flex items-center justify-center gap-2 rounded-xl border border-border bg-background px-4 py-3 text-sm font-medium transition hover:bg-card-solid'
+                      className='inline-flex w-full items-center justify-center gap-2 rounded-xl border border-border bg-background px-3 py-2.5 text-sm font-medium transition hover:bg-card-solid sm:px-4 sm:py-3'
                       href={profile.linkedin}
                       target='_blank'
                       rel='noopener noreferrer'
@@ -684,7 +684,7 @@ export default function Home() {
                       LinkedIn
                     </a>
                     <a
-                      className='inline-flex items-center justify-center gap-2 rounded-xl border border-border bg-background px-4 py-3 text-sm font-medium transition hover:bg-card-solid'
+                      className='inline-flex w-full items-center justify-center gap-2 rounded-xl border border-border bg-background px-3 py-2.5 text-sm font-medium transition hover:bg-card-solid sm:px-4 sm:py-3'
                       href={profile.github}
                       target='_blank'
                       rel='noopener noreferrer'
@@ -693,7 +693,7 @@ export default function Home() {
                       GitHub
                     </a>
                     <a
-                      className='col-span-2 inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-4 py-3 text-sm font-medium text-primary-foreground shadow-sm transition hover:opacity-95'
+                      className='col-span-1 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-3 py-2.5 text-sm font-medium text-primary-foreground shadow-sm transition hover:opacity-95 sm:col-span-2 sm:px-4 sm:py-3'
                       href='/CV-Awais-Ali.pdf'
                       target='_blank'
                       rel='noopener noreferrer'
@@ -714,7 +714,7 @@ export default function Home() {
             title='About'
             subtitle='A quick snapshot of how I work and what I optimize for.'
           >
-            <div className='grid gap-4 rounded-2xl border border-border bg-card p-6'>
+            <div className='grid gap-4 rounded-2xl border border-border bg-card p-4 sm:p-6'>
               <p className='text-sm leading-7 text-muted'>
                 I build frontends that stay maintainable under real product
                 pressure: clear component boundaries, predictable state, and
@@ -824,7 +824,7 @@ export default function Home() {
                   key={[job.role, job.company, job.period]
                     .filter(Boolean)
                     .join(' | ')}
-                  className='relative overflow-hidden rounded-2xl border border-border bg-card p-6 shadow-sm backdrop-blur transition hover:-translate-y-0.5 hover:shadow-md motion-safe:duration-300'
+                  className='relative overflow-hidden rounded-2xl border border-border bg-card p-4 shadow-sm backdrop-blur transition hover:-translate-y-0.5 hover:shadow-md motion-safe:duration-300 sm:p-6'
                 >
                   <Tone tone={job.tone} />
                   <div className='flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between'>
@@ -875,7 +875,7 @@ export default function Home() {
               {projects.map((p) => (
                 <article
                   key={p.title}
-                  className='group relative overflow-hidden rounded-2xl border border-border bg-card p-6 shadow-sm backdrop-blur transition hover:bg-card-solid hover:-translate-y-0.5 hover:shadow-md motion-safe:duration-300'
+                  className='group relative overflow-hidden rounded-2xl border border-border bg-card p-4 shadow-sm backdrop-blur transition hover:bg-card-solid hover:-translate-y-0.5 hover:shadow-md motion-safe:duration-300 sm:p-6'
                 >
                   <Tone tone={p.tone ?? 'violet'} />
                   <h3 className='text-base font-semibold tracking-tight'>
@@ -920,7 +920,7 @@ export default function Home() {
           </Section>
 
           <Section id='education' title='Education'>
-            <div className='rounded-2xl border border-border bg-card p-6 shadow-sm backdrop-blur'>
+            <div className='rounded-2xl border border-border bg-card p-4 shadow-sm backdrop-blur sm:p-6'>
               <h3 className='flex items-center gap-2 text-base font-semibold tracking-tight'>
                 <GraduationCap
                   className='h-4 w-4 text-muted'
@@ -934,7 +934,7 @@ export default function Home() {
             </div>
           </Section>
 
-          <section className='relative overflow-hidden rounded-3xl border border-border bg-card p-8 shadow-sm backdrop-blur sm:p-10'>
+          <section className='relative overflow-hidden rounded-3xl border border-border bg-card p-6 shadow-sm backdrop-blur sm:p-10'>
             <div className='pointer-events-none absolute inset-0 opacity-70 [background:radial-gradient(850px_circle_at_0%_0%,color-mix(in_oklab,var(--primary)_30%,transparent),transparent_55%),radial-gradient(850px_circle_at_100%_0%,color-mix(in_oklab,var(--accent)_25%,transparent),transparent_55%)]' />
             <div className='relative'>
               <h2 className='text-2xl font-semibold tracking-tight'>

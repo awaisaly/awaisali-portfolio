@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import { GitHubMark, LinkedInMark } from './components/BrandIcons';
-import { MobileNav } from './components/MobileNav';
 import { ThemeToggleClient } from './components/ThemeToggleClient';
 import {
   ArrowUpRight,
@@ -17,12 +16,14 @@ import {
   Link2Off,
   Mail,
   MapPin,
+  Menu,
   MonitorSmartphone,
   Network,
   Phone,
   ShieldCheck,
   Sparkles,
   Users,
+  X,
 } from 'lucide-react';
 
 const navItems = [
@@ -569,11 +570,67 @@ export default function Home() {
               <span className='hidden sm:inline'>Resume</span>
             </a>
             <ThemeToggleClient />
-            <MobileNav items={[...navItems]} resumeHref='/CV-Awais-Ali.pdf' />
+
+            {/* JS-free mobile nav (reduces shipped JS on mobile for better PageSpeed). */}
+            <a
+              href='#mobile-menu'
+              aria-label='Open menu'
+              className='inline-flex items-center justify-center rounded-full border border-border bg-card p-2 shadow-sm transition hover:bg-card-solid focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/60 md:hidden'
+            >
+              <Menu className='h-4 w-4' aria-hidden='true' />
+            </a>
           </div>
         </div>
       </header>
       <div className='h-16 md:hidden' aria-hidden='true' />
+
+      {/* :target-driven mobile menu overlay (no React state/effects needed). */}
+      <div
+        id='mobile-menu'
+        className='fixed inset-0 z-50 hidden md:hidden target:block'
+      >
+        <a
+          href='#'
+          aria-label='Close menu'
+          className='absolute inset-0 bg-black/40'
+        />
+        <div className='absolute left-1/2 top-3 w-[min(92vw,420px)] -translate-x-1/2 overflow-hidden rounded-3xl border border-border bg-card p-4 shadow-xl sm:backdrop-blur'>
+          <div className='flex items-center justify-between gap-3 px-1'>
+            <p className='text-sm font-semibold tracking-tight'>Menu</p>
+            <a
+              href='#'
+              aria-label='Close menu'
+              className='inline-flex items-center justify-center rounded-full border border-border bg-card-solid p-2 transition hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/60'
+            >
+              <X className='h-4 w-4' aria-hidden='true' />
+            </a>
+          </div>
+
+          <div className='mt-3 grid gap-1'>
+            {navItems.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                className='rounded-2xl border border-transparent px-3 py-3 text-sm font-medium text-foreground transition hover:border-border hover:bg-card-solid'
+              >
+                {item.label}
+              </a>
+            ))}
+          </div>
+
+          <div className='mt-3 border-t border-border pt-3'>
+            <a
+              href='/CV-Awais-Ali.pdf'
+              target='_blank'
+              rel='noopener noreferrer'
+              className='inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-primary px-4 py-3 text-sm font-medium text-primary-foreground shadow-sm transition hover:opacity-95'
+            >
+              <FileText className='h-4 w-4' aria-hidden='true' />
+              Resume (PDF)
+            </a>
+          </div>
+        </div>
+      </div>
 
       <main
         id='content'

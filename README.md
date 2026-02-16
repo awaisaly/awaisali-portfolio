@@ -98,5 +98,3 @@ Built a global COVID‑19 dashboard visualizing case trends and statistics, comb
 
 **Bachelor of Software Engineering** — Bahria University, Islamabad  
 2011 – 2015
-
----

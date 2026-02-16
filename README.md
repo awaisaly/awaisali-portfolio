@@ -2,22 +2,25 @@
 
 Senior Software Engineer (Remote-first) with 8+ years of experience building scalable, user-centric web applications with React, TypeScript, and modern frontend architecture.
 
-- **Location**: Islamabad, Pakistan (Open to Remote Opportunities)
-- **Email**: `awaisaly93@gmail.com`
-- **Phone**: `+92 332 061 7887`
-- **LinkedIn**: `https://www.linkedin.com/in/awaisaly`
-- **GitHub**: `https://github.com/awaisaly`
-- **Resume (PDF)**: `public/CV-Awais-Ali.pdf` (available at `/CV-Awais-Ali.pdf`)
+## 🔗 Links
+
+- 🌐 **Portfolio**: <a href="https://awaisali-portfolio.vercel.app" target="_blank" rel="noopener noreferrer">awaisali-portfolio.vercel.app</a>
+- 📍 **Location**: Islamabad, Pakistan (Open to Remote Opportunities)
+- ✉️ **Email**: <a href="mailto:awaisaly93@gmail.com" target="_blank" rel="noopener noreferrer">awaisaly93@gmail.com</a>
+- 📞 **Phone**: <a href="tel:+923320617887" target="_blank" rel="noopener noreferrer">+92 332 061 7887</a>
+- <img src="./public/icons/linkedin.svg" width="16" height="16" alt="LinkedIn" /> **LinkedIn**: <a href="https://www.linkedin.com/in/awaisaly" target="_blank" rel="noopener noreferrer">linkedin.com/in/awaisaly</a>
+- <img src="./public/icons/github.svg" width="16" height="16" alt="GitHub" /> **GitHub**: <a href="https://github.com/awaisaly" target="_blank" rel="noopener noreferrer">github.com/awaisaly</a>
+- 📄 **Resume (PDF)**: <a href="https://awaisali-portfolio.vercel.app/CV-Awais-Ali.pdf" target="_blank" rel="noopener noreferrer">View Resume (PDF)</a> (source: <code>public/CV-Awais-Ali.pdf</code>)
 
 ---
 
-## Professional summary
+## 🧑‍💻 Professional summary
 
 Senior Software Engineer with strong expertise in React, TypeScript, and modern frontend architecture. Hands-on experience delivering high-traffic customer-facing platforms, POS systems, and admin dashboards. Proven ability to work independently and collaborate with distributed teams across time zones.
 
 ---
 
-## Core skills
+## 🧰 Core skills
 
 - **Frontend**: React.js, TypeScript, Next.js, Redux, Hooks, Context API
 - **Backend (working knowledge)**: Node.js, Python Flask, ASP.NET
@@ -28,7 +31,7 @@ Senior Software Engineer with strong expertise in React, TypeScript, and modern 
 
 ---
 
-## Professional experience
+## 🏢 Professional experience
 
 ### Senior Software Engineer — Next Order
 
@@ -74,7 +77,7 @@ Senior Software Engineer with strong expertise in React, TypeScript, and modern 
 
 ---
 
-## Selected projects
+## 🚀 Selected projects
 
 - **Restaurant Ordering & POS Systems**: Web ordering, payments, POS workflows, admin and reporting tools.
 - **Polarr Photo Editor**: High-scale photo editing platform using React, Redux, and WebGL.
@@ -83,7 +86,7 @@ Senior Software Engineer with strong expertise in React, TypeScript, and modern 
 
 ---
 
-## Volunteer experience
+## 🤝 Volunteer experience
 
 ### COVID‑19 Awareness Dashboard
 
@@ -91,26 +94,9 @@ Built a global COVID‑19 dashboard visualizing case trends and statistics, comb
 
 ---
 
-## Education
+## 🎓 Education
 
 **Bachelor of Software Engineering** — Bahria University, Islamabad  
 2011 – 2015
 
 ---
-
-## Run locally
-
-```bash
-npm install
-npm run dev
-```
-
-Open `http://localhost:3000`.
-
----
-
-## Tech stack
-
-- Next.js (App Router)
-- React + TypeScript
-- Tailwind CSS v4

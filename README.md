@@ -4,13 +4,13 @@ Senior Software Engineer (Remote-first) with 8+ years of experience building sca
 
 ## 🔗 Links
 
-- 🌐 **Portfolio**: <a href="https://awaisali-portfolio.vercel.app" target="_blank" rel="noopener noreferrer">awaisali-portfolio.vercel.app</a>
+- 🌐 **Portfolio**: [awaisali-portfolio.vercel.app](https://awaisali-portfolio.vercel.app)
 - 📍 **Location**: Islamabad, Pakistan (Open to Remote Opportunities)
-- ✉️ **Email**: <a href="mailto:awaisaly93@gmail.com" target="_blank" rel="noopener noreferrer">awaisaly93@gmail.com</a>
-- 📞 **Phone**: <a href="tel:+923320617887" target="_blank" rel="noopener noreferrer">+92 332 061 7887</a>
-- <img src="./public/icons/linkedin.svg" width="16" height="16" alt="LinkedIn" /> **LinkedIn**: <a href="https://www.linkedin.com/in/awaisaly" target="_blank" rel="noopener noreferrer">linkedin.com/in/awaisaly</a>
-- <img src="./public/icons/github.svg" width="16" height="16" alt="GitHub" /> **GitHub**: <a href="https://github.com/awaisaly" target="_blank" rel="noopener noreferrer">github.com/awaisaly</a>
-- 📄 **Resume (PDF)**: <a href="https://awaisali-portfolio.vercel.app/CV-Awais-Ali.pdf" target="_blank" rel="noopener noreferrer">View Resume (PDF)</a> (source: <code>public/CV-Awais-Ali.pdf</code>)
+- ✉️ **Email**: [awaisaly93@gmail.com](mailto:awaisaly93@gmail.com)
+- 📞 **Phone**: [+92 332 061 7887](tel:+923320617887)
+- <img src="./public/icons/linkedin.svg" width="16" height="16" alt="LinkedIn" /> **LinkedIn**: [linkedin.com/in/awaisaly](https://www.linkedin.com/in/awaisaly)
+- <img src="./public/icons/github.svg" width="16" height="16" alt="GitHub" /> **GitHub**: [github.com/awaisaly](https://github.com/awaisaly)
+- 📄 **Resume (PDF)**: [View Resume (PDF)](https://awaisali-portfolio.vercel.app/CV-Awais-Ali.pdf) (source: <code>public/CV-Awais-Ali.pdf</code>)
 
 ---
 

@@ -20,14 +20,8 @@ export function ThemeToggle() {
       type='button'
       onClick={toggle}
       aria-label='Toggle theme'
-      className='inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-card px-0 text-sm text-foreground shadow-sm backdrop-blur transition hover:bg-card-solid focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/60 sm:w-24 sm:justify-between sm:px-3'
+      className='inline-flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-border bg-card px-0 text-sm text-foreground shadow-sm backdrop-blur transition hover:bg-card-solid focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/60'
     >
-      <span
-        key={active}
-        className='hidden w-10 text-left text-muted sm:inline-block animate-theme-pop'
-      >
-        {active === 'dark' ? 'Dark' : 'Light'}
-      </span>
       <span
         key={`icon-${active}`}
         className={[

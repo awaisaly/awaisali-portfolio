@@ -212,6 +212,144 @@ const projects: Project[] = [
     ],
     stack: ['React', 'Data visualization'],
   },
+  {
+    title: 'Mini Coding Agent (Open Source)',
+    description:
+      'A tiny Node.js CLI that implements the Agent Skills concept: discovers skills, routes prompts, and runs Claude via Anthropic’s API.',
+    tone: 'rose',
+    highlights: [
+      'Loads only relevant skills into context for each prompt',
+      'Supports community skills and auto-synced external skills via sparse checkout',
+      'CLI supports interactive mode and useful flags (model, max-steps, no-tools)',
+    ],
+    stack: ['Node.js', 'JavaScript', 'CLI', 'Agent Skills', 'Anthropic API'],
+    links: [
+      {
+        label: 'mini-coding-agent (GitHub Repo)',
+        href: 'https://github.com/awaisaly/mini-coding-agent',
+      },
+    ],
+  },
+  {
+    title: 'Data Workbench for Aera Technologies',
+    description:
+      'An ETL + analytics tool that extracts data from multiple databases and sources (SAP, Oracle, MSSQL, MySQL) for business analysis.',
+    tone: 'violet',
+    highlights: [
+      'Complex data-source configuration and mapping workflows',
+      'Reusable UI patterns with React + Redux for large forms and tables',
+      'Designed for enterprise-scale datasets and reporting needs',
+    ],
+    stack: ['React', 'Redux', 'ETL', 'Analytics', 'Enterprise UI'],
+    links: [
+      {
+        label: 'Aera Data Workbench',
+        href: 'https://www.aeratechnology.com/data-workbench/',
+      },
+    ],
+  },
+  {
+    title: 'I-Resource Management System',
+    description:
+      'Employee management platform with Leave Management plus HR and Finance modules for internal operations.',
+    tone: 'emerald',
+    highlights: [
+      'Role-based workflows for employees, HR, and finance stakeholders',
+      'Leave approvals, status tracking, and operational reporting',
+      'UI integrated with RESTful APIs for real-time data updates',
+    ],
+    stack: ['React', 'Redux', 'REST APIs (.NET)', 'PostgreSQL', 'HR/Finance'],
+  },
+  {
+    title: 'Surveillance System',
+    description:
+      'Security solution for attendance and monitoring using facial detection and recognition for indoor/outdoor environments.',
+    tone: 'sky',
+    highlights: [
+      'Operational dashboards for monitoring and event review',
+      'Responsive UI for live feeds and structured metadata',
+      'Integrated with Python Flask APIs and MongoDB (NoSQL)',
+    ],
+    stack: ['React', 'Redux', 'Python Flask', 'MongoDB', 'Security'],
+  },
+  {
+    title: 'Drone Configurator (Smart Self-Flying Drone)',
+    description:
+      'Web portal to configure and operate an autonomous drone: deliveries, rescue, surveillance, and remote-controlled movement.',
+    tone: 'amber',
+    highlights: [
+      'Mission/task configuration UI with validation and state flows',
+      'Real-time operational controls and telemetry-style views',
+      'Integrated with Python Flask APIs and MongoDB (NoSQL)',
+    ],
+    stack: ['React', 'Redux', 'Python Flask', 'MongoDB', 'Autonomy'],
+  },
+  {
+    title: 'ERP for Recruitment',
+    description:
+      'Recruitment lifecycle management system from registration through exams, trade allocation, and passing out.',
+    tone: 'rose',
+    highlights: [
+      'Multi-step candidate workflows with audit-friendly history',
+      'Admin tooling for allocations, schedules, and progress tracking',
+      'Integrated with Python Flask APIs and PostgreSQL',
+    ],
+    stack: ['React', 'Redux', 'Python Flask', 'PostgreSQL', 'ERP'],
+  },
+  {
+    title: 'IntelliSky Studio',
+    description:
+      'Desktop application to compute vegetation/health indices from sensor imagery (e.g., Parrot Sequoia, SlantRange) to assess greenery.',
+    tone: 'sky',
+    highlights: [
+      'Sensor image processing workflows with results visualization',
+      'Desktop UX focused on precision, speed, and repeatability',
+      'Built with C# (WPF) for rich desktop tooling',
+    ],
+    stack: ['C#', 'WPF', 'Desktop', 'Image indices', 'Sensors'],
+    links: [
+      {
+        label: 'IntelliSky Studio Demo Video (YouTube)',
+        href: 'https://www.youtube.com/watch?v=CZ2wxPG-uZI',
+      },
+    ],
+  },
+  {
+    title: 'VASI Web Portal',
+    description:
+      'Reporting portal for TV advertisement detection pipelines, enabling visualization and analysis of processed broadcast data.',
+    tone: 'emerald',
+    highlights: [
+      'Dashboard-style reporting with filters and exportable views',
+      'UI built on a Metronic-based design system',
+      'Integrated reporting on top of live-channel processing output',
+    ],
+    stack: ['PHP (CodeIgniter)', 'HTML', 'CSS', 'JavaScript', 'jQuery'],
+  },
+  {
+    title: 'Reports Tool (Internal)',
+    description:
+      'An internal utility to manage and view Crystal Reports across departments with role-based permissions.',
+    tone: 'amber',
+    highlights: [
+      'Admin panel for departments, reports, and user access control',
+      'Multiple permission levels (admin, manager, end-user)',
+      'Desktop-friendly UX for fast report retrieval',
+    ],
+    stack: ['C#', 'WPF', 'SQL', 'Crystal Reports', 'PowerPoint'],
+  },
+  {
+    title: 'Maintenance Reminder System (MRS)',
+    description:
+      'Customer follow-up system for maintenance reminders based on service history, integrated with SAP Business One.',
+    tone: 'violet',
+    highlights: [
+      'Reminder scheduling and customer history-driven workflows',
+      'Reporting views for service teams and management',
+      'Integrated with SAP DI API and internal databases',
+    ],
+    stack: ['C#', 'WPF', 'SQL', 'Crystal Reports', 'SAP DI API'],
+  },
 ];
 
 function ExternalLink({
@@ -301,12 +439,12 @@ function Tone({
     tone === 'emerald'
       ? 'from-emerald-500/20 via-emerald-500/5 to-transparent'
       : tone === 'sky'
-      ? 'from-sky-500/20 via-sky-500/5 to-transparent'
-      : tone === 'amber'
-      ? 'from-amber-500/20 via-amber-500/5 to-transparent'
-      : tone === 'rose'
-      ? 'from-rose-500/20 via-rose-500/5 to-transparent'
-      : 'from-violet-500/20 via-violet-500/5 to-transparent';
+        ? 'from-sky-500/20 via-sky-500/5 to-transparent'
+        : tone === 'amber'
+          ? 'from-amber-500/20 via-amber-500/5 to-transparent'
+          : tone === 'rose'
+            ? 'from-rose-500/20 via-rose-500/5 to-transparent'
+            : 'from-violet-500/20 via-violet-500/5 to-transparent';
 
   return (
     <span
@@ -336,12 +474,12 @@ function StatCard({
     tone === 'emerald'
       ? 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-300'
       : tone === 'sky'
-      ? 'bg-sky-500/10 text-sky-600 dark:text-sky-300'
-      : tone === 'amber'
-      ? 'bg-amber-500/10 text-amber-700 dark:text-amber-300'
-      : tone === 'rose'
-      ? 'bg-rose-500/10 text-rose-600 dark:text-rose-300'
-      : 'bg-violet-500/10 text-violet-600 dark:text-violet-300';
+        ? 'bg-sky-500/10 text-sky-600 dark:text-sky-300'
+        : tone === 'amber'
+          ? 'bg-amber-500/10 text-amber-700 dark:text-amber-300'
+          : tone === 'rose'
+            ? 'bg-rose-500/10 text-rose-600 dark:text-rose-300'
+            : 'bg-violet-500/10 text-violet-600 dark:text-violet-300';
 
   return (
     <div className='relative overflow-hidden rounded-2xl border border-border bg-card p-4 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md motion-safe:duration-300 sm:p-6 sm:backdrop-blur'>
@@ -932,44 +1070,53 @@ export default function Home() {
               {projects.map((p) => (
                 <article
                   key={p.title}
-                  className='group relative overflow-hidden rounded-2xl border border-border bg-card p-4 shadow-sm transition hover:bg-card-solid hover:-translate-y-0.5 hover:shadow-md motion-safe:duration-300 sm:p-6 sm:backdrop-blur'
+                  className='group relative flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card p-4 shadow-sm transition hover:bg-card-solid hover:-translate-y-0.5 hover:shadow-md motion-safe:duration-300 sm:p-6 sm:backdrop-blur'
                 >
                   <Tone tone={p.tone ?? 'violet'} />
-                  <h3 className='text-base font-semibold tracking-tight'>
-                    {p.title}
-                  </h3>
-                  <p className='mt-2 text-sm leading-6 text-muted'>
-                    {p.description}
-                  </p>
 
-                  <ul className='mt-4 grid gap-2 text-sm leading-6 text-muted'>
-                    {p.highlights.map((h) => (
-                      <li key={h} className='flex gap-2'>
-                        <span className='mt-2 h-1.5 w-1.5 flex-none rounded-full bg-foreground/70' />
-                        <span>{h}</span>
-                      </li>
-                    ))}
-                  </ul>
+                  <div>
+                    <h3 className='text-base font-semibold tracking-tight'>
+                      {p.title}
+                    </h3>
+                    <p className='mt-2 text-sm leading-6 text-muted'>
+                      {p.description}
+                    </p>
 
-                  <div className='mt-5 flex flex-wrap gap-2'>
-                    {p.stack.map((t) => (
-                      <span
-                        key={t}
-                        className='rounded-full border border-border bg-background px-3 py-1 text-xs text-muted'
-                      >
-                        {t}
-                      </span>
-                    ))}
+                    <ul className='mt-4 grid gap-2 text-sm leading-6 text-muted'>
+                      {p.highlights.map((h) => (
+                        <li key={h} className='flex gap-2'>
+                          <span className='mt-2 h-1.5 w-1.5 flex-none rounded-full bg-foreground/70' />
+                          <span>{h}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
 
-                  <div className='mt-5 flex flex-wrap gap-2'>
-                    {p.links?.length ? (
-                      p.links.map((l) => (
-                        <LinkChip key={l.href} href={l.href} label={l.label} />
-                      ))
-                    ) : (
-                      <LinkChipPlaceholder label='No public link yet' />
-                    )}
+                  <div className='mt-auto pt-6'>
+                    <div className='flex flex-wrap gap-2'>
+                      {p.stack.map((t) => (
+                        <span
+                          key={t}
+                          className='rounded-full border border-border bg-background px-3 py-1 text-xs text-muted'
+                        >
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+
+                    <div className='mt-4 flex flex-wrap gap-2'>
+                      {p.links?.length ? (
+                        p.links.map((l) => (
+                          <LinkChip
+                            key={l.href}
+                            href={l.href}
+                            label={l.label}
+                          />
+                        ))
+                      ) : (
+                        <LinkChipPlaceholder label='No public link yet' />
+                      )}
+                    </div>
                   </div>
                 </article>
               ))}

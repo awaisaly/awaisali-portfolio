@@ -214,7 +214,7 @@ const projects: Project[] = [
     stack: ['React', 'Data visualization'],
   },
   {
-    title: 'Mini Coding Agent (Open Source)',
+    title: 'Coding Agent (Open Source)',
     description:
       'A tiny Node.js CLI that implements the Agent Skills concept: discovers skills, routes prompts, and runs Claude via Anthropic’s API.',
     tone: 'rose',
@@ -226,8 +226,8 @@ const projects: Project[] = [
     stack: ['Node.js', 'JavaScript', 'CLI', 'Agent Skills', 'Anthropic API'],
     links: [
       {
-        label: 'mini-coding-agent',
-        href: 'https://github.com/awaisaly/mini-coding-agent',
+        label: 'coding-agent',
+        href: 'https://github.com/awaisaly/coding-agent',
       },
     ],
   },
@@ -628,7 +628,11 @@ export default function Home() {
     alumniOf: {
       '@type': 'CollegeOrUniversity',
       name: 'Bahria University',
-      address: { '@type': 'PostalAddress', addressLocality: 'Islamabad', addressCountry: 'PK' },
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Islamabad',
+        addressCountry: 'PK',
+      },
     },
     knowsLanguage: ['English', 'Urdu'],
     sameAs: [profile.linkedin, profile.github],
@@ -684,18 +688,21 @@ export default function Home() {
     isPartOf: { '@id': `${siteUrl}/#website` },
     about: { '@id': `${siteUrl}/#person` },
     inLanguage: 'en',
-    primaryImageOfPage: { '@type': 'ImageObject', url: `${siteUrl}/Awais-Ali.png` },
+    primaryImageOfPage: {
+      '@type': 'ImageObject',
+      url: `${siteUrl}/Awais-Ali.png`,
+    },
   };
 
   const openSourceJsonLd = [
     {
       '@context': 'https://schema.org',
       '@type': 'SoftwareSourceCode',
-      '@id': 'https://github.com/awaisaly/mini-coding-agent',
-      name: 'mini-coding-agent',
+      '@id': 'https://github.com/awaisaly/coding-agent',
+      name: 'coding-agent',
       description:
         'A tiny Node.js CLI implementing the Agent Skills concept: discovers skills, routes prompts, and runs Claude via Anthropic’s API.',
-      codeRepository: 'https://github.com/awaisaly/mini-coding-agent',
+      codeRepository: 'https://github.com/awaisaly/coding-agent',
       programmingLanguage: 'JavaScript',
       runtimePlatform: 'Node.js',
       author: { '@id': `${siteUrl}/#person` },

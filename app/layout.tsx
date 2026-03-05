@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import { Providers } from './providers';
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     template: '%s — Awais Ali',
   },
   description:
-    'Awais Ali is a Senior Software Engineer with 8+ years of experience building scalable web applications. Remote-first with extensive experience working with distributed teams across time zones.',
+    'Awais Ali is a Senior Software Engineer with 8+ years of experience building scalable web applications. Remote-first with extensive experience working with distributed teams across time zones, with working backend experience in Node.js.',
   applicationName: 'Awais Ali Portfolio',
   authors: [{ name: 'Awais Ali' }],
   creator: 'Awais Ali',
@@ -33,16 +33,38 @@ export const metadata: Metadata = {
     'Senior Frontend Engineer',
     'Remote Software Engineer',
     'Remote Frontend Engineer',
+    'Senior React Developer',
+    'React Developer',
+    'Next.js Developer',
+    'TypeScript Developer',
+    'Frontend Architect',
+    'Frontend Engineer',
+    'JavaScript Developer',
+    'Remote React Developer',
+    'Remote Next.js Developer',
+    'Remote TypeScript Developer',
+    'Full Stack Developer',
+    'Remote Full Stack Developer',
+    'Backend Developer',
+    'Node.js Developer',
+    'Nodejs',
     'Remote work',
     'Distributed teams',
     'React',
     'TypeScript',
     'Next.js',
     'Redux',
+    'Node.js',
     'Electron',
     'POS',
     'Stripe',
+    'Adyen',
+    'Payment integrations',
+    'POS systems',
+    'Web applications',
+    'Portfolio',
     'Islamabad',
+    'Pakistan',
     'Remote',
   ],
   alternates: {
@@ -86,6 +108,13 @@ export const metadata: Metadata = {
       'max-video-preview': -1,
     },
   },
+};
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
+    { media: '(prefers-color-scheme: dark)', color: '#0b0b0b' },
+  ],
 };
 
 export default function RootLayout({

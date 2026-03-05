@@ -32,6 +32,7 @@ const navItems = [
   { href: '#skills', label: 'Skills' },
   { href: '#experience', label: 'Experience' },
   { href: '#projects', label: 'Projects' },
+  { href: '#open-source', label: 'Open Source' },
   { href: '#education', label: 'Education' },
 ] as const;
 
@@ -225,7 +226,7 @@ const projects: Project[] = [
     stack: ['Node.js', 'JavaScript', 'CLI', 'Agent Skills', 'Anthropic API'],
     links: [
       {
-        label: 'mini-coding-agent (GitHub Repo)',
+        label: 'mini-coding-agent',
         href: 'https://github.com/awaisaly/mini-coding-agent',
       },
     ],
@@ -349,6 +350,32 @@ const projects: Project[] = [
       'Integrated with SAP DI API and internal databases',
     ],
     stack: ['C#', 'WPF', 'SQL', 'Crystal Reports', 'SAP DI API'],
+  },
+];
+
+const openSourceContributions: Project[] = [
+  {
+    title: 'lumidot — x×y dot-grid support',
+    description:
+      'Dot-grid loading animations for React. The library originally focused on a fixed 3×3 grid; I shipped a feature to make it fully configurable as an x×y dot grid (rows/cols).',
+    tone: 'sky',
+    highlights: [
+      'Upgraded patterns to work for any rows/cols (kept 3×3 as the default)',
+      'Introduced a single generic resolver: getPatternFrames(pattern, rows, cols, direction)',
+      'Replaced PATTERNS with PATTERN_NAMES and removed unused fixed-grid frame types',
+      'Updated the playground with rows/cols controls and tightened dot spacing (no margin/padding)',
+    ],
+    stack: ['TypeScript', 'React', 'Animations', 'Open Source'],
+    links: [
+      {
+        label: 'lumidot',
+        href: 'https://github.com/awaisaly/lumidot',
+      },
+      {
+        label: 'lumidot (npm package)',
+        href: 'https://www.npmjs.com/package/lumidot',
+      },
+    ],
   },
 ];
 
@@ -582,10 +609,13 @@ export default function Home() {
   const personJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Person',
+    '@id': `${siteUrl}/#person`,
     name: profile.name,
+    givenName: 'Awais',
+    familyName: 'Ali',
     jobTitle: profile.role,
     description:
-      'Senior Software Engineer with 8+ years of experience. Remote-first with extensive experience collaborating with distributed teams to build scalable web applications using React, TypeScript, and modern frontend architecture.',
+      'Senior Software Engineer with 8+ years of experience. Remote-first with extensive experience collaborating with distributed teams to build scalable web applications using React, TypeScript, and modern frontend architecture. Full-stack capable with working backend experience in Node.js.',
     url: `${siteUrl}/`,
     image: `${siteUrl}/Awais-Ali.png`,
     email: `mailto:${profile.email}`,
@@ -595,6 +625,12 @@ export default function Home() {
       addressLocality: 'Islamabad',
       addressCountry: 'PK',
     },
+    alumniOf: {
+      '@type': 'CollegeOrUniversity',
+      name: 'Bahria University',
+      address: { '@type': 'PostalAddress', addressLocality: 'Islamabad', addressCountry: 'PK' },
+    },
+    knowsLanguage: ['English', 'Urdu'],
     sameAs: [profile.linkedin, profile.github],
     knowsAbout: [
       'Remote work',
@@ -603,8 +639,26 @@ export default function Home() {
       'TypeScript',
       'Next.js',
       'Frontend architecture',
+      'Node.js',
+      'Backend development',
+      'Full-stack development',
       'POS systems',
       'Payment integrations',
+    ],
+    hasOccupation: [
+      {
+        '@type': 'Occupation',
+        name: 'Senior Software Engineer',
+        occupationLocation: {
+          '@type': 'City',
+          name: 'Islamabad',
+          address: { '@type': 'PostalAddress', addressCountry: 'PK' },
+        },
+      },
+      { '@type': 'Occupation', name: 'Senior Frontend Engineer' },
+      { '@type': 'Occupation', name: 'Senior React Developer' },
+      { '@type': 'Occupation', name: 'Node.js Developer' },
+      { '@type': 'Occupation', name: 'Full Stack Developer' },
     ],
   };
 
@@ -617,19 +671,47 @@ export default function Home() {
     inLanguage: 'en',
     author: {
       '@type': 'Person',
-      name: profile.name,
+      '@id': `${siteUrl}/#person`,
     },
   };
 
   const webPageJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
+    '@id': `${siteUrl}/#webpage`,
     name: 'Awais Ali — Senior Software Engineer',
     url: `${siteUrl}/`,
     isPartOf: { '@id': `${siteUrl}/#website` },
     about: { '@id': `${siteUrl}/#person` },
     inLanguage: 'en',
+    primaryImageOfPage: { '@type': 'ImageObject', url: `${siteUrl}/Awais-Ali.png` },
   };
+
+  const openSourceJsonLd = [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'SoftwareSourceCode',
+      '@id': 'https://github.com/awaisaly/mini-coding-agent',
+      name: 'mini-coding-agent',
+      description:
+        'A tiny Node.js CLI implementing the Agent Skills concept: discovers skills, routes prompts, and runs Claude via Anthropic’s API.',
+      codeRepository: 'https://github.com/awaisaly/mini-coding-agent',
+      programmingLanguage: 'JavaScript',
+      runtimePlatform: 'Node.js',
+      author: { '@id': `${siteUrl}/#person` },
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'SoftwareSourceCode',
+      '@id': 'https://github.com/awaisaly/lumidot',
+      name: 'lumidot (contribution)',
+      description:
+        'Contribution: upgraded dot-grid loading animations from fixed 3×3 to configurable x×y (rows/cols).',
+      codeRepository: 'https://github.com/awaisaly/lumidot',
+      programmingLanguage: 'TypeScript',
+      author: { '@id': `${siteUrl}/#person` },
+    },
+  ];
 
   return (
     <div
@@ -641,9 +723,10 @@ export default function Home() {
         type='application/ld+json'
         dangerouslySetInnerHTML={{
           __html: JSON.stringify([
-            { ...personJsonLd, '@id': `${siteUrl}/#person` },
+            personJsonLd,
             websiteJsonLd,
             webPageJsonLd,
+            ...openSourceJsonLd,
           ]),
         }}
       />
@@ -824,7 +907,8 @@ export default function Home() {
                   scalable, user-centric web applications. Strong expertise in
                   React, TypeScript, and modern frontend architecture, with
                   hands-on experience delivering high-traffic customer-facing
-                  platforms, POS systems, and admin dashboards.
+                  platforms, POS systems, and admin dashboards — plus working
+                  backend experience with Node.js when needed.
                 </p>
                 <div className='mt-7 flex flex-col gap-3 sm:flex-row animate-enter-5'>
                   <ButtonLink href={`mailto:${profile.email}`}>
@@ -1068,6 +1152,68 @@ export default function Home() {
           >
             <div className='grid gap-4 md:grid-cols-2'>
               {projects.map((p) => (
+                <article
+                  key={p.title}
+                  className='group relative flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card p-4 shadow-sm transition hover:bg-card-solid hover:-translate-y-0.5 hover:shadow-md motion-safe:duration-300 sm:p-6 sm:backdrop-blur'
+                >
+                  <Tone tone={p.tone ?? 'violet'} />
+
+                  <div>
+                    <h3 className='text-base font-semibold tracking-tight'>
+                      {p.title}
+                    </h3>
+                    <p className='mt-2 text-sm leading-6 text-muted'>
+                      {p.description}
+                    </p>
+
+                    <ul className='mt-4 grid gap-2 text-sm leading-6 text-muted'>
+                      {p.highlights.map((h) => (
+                        <li key={h} className='flex gap-2'>
+                          <span className='mt-2 h-1.5 w-1.5 flex-none rounded-full bg-foreground/70' />
+                          <span>{h}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className='mt-auto pt-6'>
+                    <div className='flex flex-wrap gap-2'>
+                      {p.stack.map((t) => (
+                        <span
+                          key={t}
+                          className='rounded-full border border-border bg-background px-3 py-1 text-xs text-muted'
+                        >
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+
+                    <div className='mt-4 flex flex-wrap gap-2'>
+                      {p.links?.length ? (
+                        p.links.map((l) => (
+                          <LinkChip
+                            key={l.href}
+                            href={l.href}
+                            label={l.label}
+                          />
+                        ))
+                      ) : (
+                        <LinkChipPlaceholder label='No public link yet' />
+                      )}
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </Section>
+
+          <Section
+            id='open-source'
+            title='Open source contributions'
+            subtitle='Public contributions and improvements shipped to open source projects.'
+          >
+            <div className='grid gap-4 md:grid-cols-2'>
+              {openSourceContributions.map((p) => (
                 <article
                   key={p.title}
                   className='group relative flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card p-4 shadow-sm transition hover:bg-card-solid hover:-translate-y-0.5 hover:shadow-md motion-safe:duration-300 sm:p-6 sm:backdrop-blur'

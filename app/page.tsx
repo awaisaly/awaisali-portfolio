@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { GitHubMark, LinkedInMark } from './components/BrandIcons';
+import { GitHubMark, LinkedInMark, NpmMark } from './components/BrandIcons';
 import { ThemeToggleClient } from './components/ThemeToggleClient';
 import {
   ArrowUpRight,
@@ -13,6 +13,7 @@ import {
   GitBranch,
   GraduationCap,
   Layers3,
+  Link as LinkIcon,
   Link2Off,
   Mail,
   MapPin,
@@ -36,7 +37,8 @@ const navItems = [
   { href: '#education', label: 'Education' },
 ] as const;
 
-type Link = { label: string; href: string };
+type LinkIconName = 'link' | 'github' | 'npm';
+type Link = { label: string; href: string; icon?: LinkIconName };
 
 type Project = {
   title: string;
@@ -168,7 +170,13 @@ const projects: Project[] = [
       'Operational tooling: shifts, reports, settings, order management',
     ],
     stack: ['React', 'TypeScript', 'Stripe', 'Adyen', 'POS integrations'],
-    links: [{ label: 'Next Order Website', href: 'https://nextorder.com/' }],
+    links: [
+      {
+        label: 'Next Order Website',
+        href: 'https://nextorder.com/',
+        icon: 'link',
+      },
+    ],
   },
   {
     title: 'Polarr Photo Editor (20M+ users)',
@@ -181,7 +189,13 @@ const projects: Project[] = [
       'Collaboration within a large production codebase',
     ],
     stack: ['React', 'Redux', 'WebGL (basics)'],
-    links: [{ label: 'Polarr Website', href: 'https://www.polarr.com/' }],
+    links: [
+      {
+        label: 'Polarr Website',
+        href: 'https://www.polarr.com/',
+        icon: 'link',
+      },
+    ],
   },
   {
     title: 'ZTNA Security Application (Web + Electron)',
@@ -198,6 +212,7 @@ const projects: Project[] = [
       {
         label: 'ZTNA by Extreme Networks',
         href: 'https://www.extremenetworks.com/resources/blogs/what-is-universal-ztna',
+        icon: 'link',
       },
     ],
   },
@@ -228,6 +243,7 @@ const projects: Project[] = [
       {
         label: 'Aera Data Workbench',
         href: 'https://www.aeratechnology.com/data-workbench/',
+        icon: 'link',
       },
     ],
   },
@@ -351,6 +367,7 @@ const openSourceContributions: Project[] = [
       {
         label: 'mini-coding-agent',
         href: 'https://github.com/awaisaly/mini-coding-agent',
+        icon: 'github',
       },
     ],
   },
@@ -371,10 +388,12 @@ const openSourceContributions: Project[] = [
       {
         label: 'lumidot',
         href: 'https://github.com/awaisaly/lumidot',
+        icon: 'github',
       },
       {
         label: 'lumidot (npm package)',
         href: 'https://www.npmjs.com/package/lumidot',
+        icon: 'npm',
       },
     ],
   },
@@ -399,7 +418,19 @@ function ExternalLink({
   );
 }
 
-function LinkChip({ href, label }: { href: string; label: string }) {
+function LinkChip({
+  href,
+  label,
+  icon = 'link',
+}: {
+  href: string;
+  label: string;
+  icon?: LinkIconName;
+}) {
+  const Icon =
+    icon === 'github' ? GitHubMark : icon === 'npm' ? NpmMark : LinkIcon;
+  const iconSizeClass = icon === 'npm' ? 'h-3.5 w-3.5' : 'h-4 w-4';
+
   return (
     <a
       href={href}
@@ -407,6 +438,10 @@ function LinkChip({ href, label }: { href: string; label: string }) {
       rel='noopener noreferrer'
       className='inline-flex max-w-full items-center gap-2 rounded-full border border-border bg-card-solid px-3 py-1.5 text-sm font-medium text-foreground shadow-sm transition hover:bg-card focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/60 sm:backdrop-blur'
     >
+      <Icon
+        className={`${iconSizeClass} flex-none text-muted`}
+        aria-hidden='true'
+      />
       <span className='truncate'>{label}</span>
       <ArrowUpRight
         className='h-4 w-4 flex-none text-muted'
@@ -1203,6 +1238,7 @@ export default function Home() {
                             key={l.href}
                             href={l.href}
                             label={l.label}
+                            icon={l.icon}
                           />
                         ))
                       ) : (
@@ -1265,6 +1301,7 @@ export default function Home() {
                             key={l.href}
                             href={l.href}
                             label={l.label}
+                            icon={l.icon}
                           />
                         ))
                       ) : (

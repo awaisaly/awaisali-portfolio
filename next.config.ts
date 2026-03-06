@@ -1,9 +1,9 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
   experimental: {
     // Reduce bundle size by rewriting imports for large libraries.
-    optimizePackageImports: ["lucide-react"],
+    optimizePackageImports: ['lucide-react'],
   },
 };
 

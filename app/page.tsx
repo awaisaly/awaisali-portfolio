@@ -355,11 +355,12 @@ const openSourceContributions: Project[] = [
     ],
   },
   {
-    title: 'lumidot — x×y dot-grid support',
+    title: 'lumidot — Dot-grid loading animations for React',
     description:
-      'Dot-grid loading animations for React. The library originally focused on a fixed 3×3 grid; I shipped a feature to make it fully configurable as an x×y dot grid (rows/cols).',
+      'Dot-grid loading animations for React. Tiny, flexible, beautiful. 36 patterns & 20 colors.',
     tone: 'sky',
     highlights: [
+      'The library originally focused on a fixed 3×3 grid; I shipped a feature to make it fully configurable as an x×y dot grid (rows/cols).',
       'Upgraded patterns to work for any rows/cols (kept 3×3 as the default)',
       'Introduced a single generic resolver: getPatternFrames(pattern, rows, cols, direction)',
       'Replaced PATTERNS with PATTERN_NAMES and removed unused fixed-grid frame types',

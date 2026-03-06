@@ -214,24 +214,6 @@ const projects: Project[] = [
     stack: ['React', 'Data visualization'],
   },
   {
-    title: 'Mini Coding Agent (Open Source)',
-    description:
-      'A tiny Node.js CLI that implements the Agent Skills concept: discovers skills, routes prompts, and runs Claude via Anthropic’s API.',
-    tone: 'rose',
-    highlights: [
-      'Loads only relevant skills into context for each prompt',
-      'Supports community skills and auto-synced external skills via sparse checkout',
-      'CLI supports interactive mode and useful flags (model, max-steps, no-tools)',
-    ],
-    stack: ['Node.js', 'JavaScript', 'CLI', 'Agent Skills', 'Anthropic API'],
-    links: [
-      {
-        label: 'mini-coding-agent',
-        href: 'https://github.com/awaisaly/mini-coding-agent',
-      },
-    ],
-  },
-  {
     title: 'Data Workbench for Aera Technologies',
     description:
       'An ETL + analytics tool that extracts data from multiple databases and sources (SAP, Oracle, MSSQL, MySQL) for business analysis.',
@@ -355,6 +337,24 @@ const projects: Project[] = [
 
 const openSourceContributions: Project[] = [
   {
+    title: 'Mini Coding Agent (Open Source)',
+    description:
+      'A tiny Node.js CLI that implements the Agent Skills concept: discovers skills, routes prompts, and runs Claude via Anthropic’s API.',
+    tone: 'rose',
+    highlights: [
+      'Discovers local skills and loads only relevant ones into context for each prompt',
+      'Supports community skills and auto-synced external skills via sparse git checkouts',
+      'Includes interactive mode and practical CLI flags (model, max-steps, verbose)',
+    ],
+    stack: ['Node.js', 'JavaScript', 'CLI', 'Agent Skills', 'Anthropic API'],
+    links: [
+      {
+        label: 'mini-coding-agent',
+        href: 'https://github.com/awaisaly/mini-coding-agent',
+      },
+    ],
+  },
+  {
     title: 'lumidot — x×y dot-grid support',
     description:
       'Dot-grid loading animations for React. The library originally focused on a fixed 3×3 grid; I shipped a feature to make it fully configurable as an x×y dot grid (rows/cols).',
@@ -365,7 +365,7 @@ const openSourceContributions: Project[] = [
       'Replaced PATTERNS with PATTERN_NAMES and removed unused fixed-grid frame types',
       'Updated the playground with rows/cols controls and tightened dot spacing (no margin/padding)',
     ],
-    stack: ['TypeScript', 'React', 'Animations', 'Open Source'],
+    stack: ['TypeScript', 'React', 'Animations', 'Open Source', 'npm package'],
     links: [
       {
         label: 'lumidot',

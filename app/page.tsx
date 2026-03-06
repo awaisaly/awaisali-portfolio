@@ -1154,7 +1154,7 @@ export default function Home() {
 
           <Section
             id='projects'
-            title='Selected projects'
+            title='Projects'
             subtitle='A curated selection. Some projects are private; I can share details on request.'
           >
             <div className='grid gap-4 md:grid-cols-2'>

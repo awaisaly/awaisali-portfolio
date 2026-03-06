@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     template: '%s — Awais Ali',
   },
   description:
-    'Awais Ali is a Senior Software Engineer with 8+ years of experience building scalable web applications. Remote-first with extensive experience working with distributed teams across time zones, with working backend experience in Node.js.',
+    'Awais Ali is a Senior Software Engineer with 8+ years of experience building scalable web applications. Remote-first with extensive experience working with distributed teams across time zones, with experience working in a full stack role.',
   applicationName: 'Awais Ali Portfolio',
   authors: [{ name: 'Awais Ali' }],
   creator: 'Awais Ali',

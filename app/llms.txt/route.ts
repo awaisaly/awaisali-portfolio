@@ -19,7 +19,7 @@ export function GET() {
     '## Summary',
     'Senior Software Engineer with 8+ years of experience building scalable web applications.',
     'Remote-first with extensive experience collaborating with distributed teams across time zones.',
-    'Full-stack capable with working backend experience in Node.js.',
+    'Experienced working in a full stack role, including Node.js backend work.',
     '',
     '## Core skills',
     '- React, TypeScript, Next.js, Redux, Node.js',

@@ -649,7 +649,7 @@ export default function Home() {
     familyName: 'Ali',
     jobTitle: profile.role,
     description:
-      'Senior Software Engineer with 8+ years of experience. Remote-first with extensive experience collaborating with distributed teams to build scalable web applications using React, TypeScript, and modern frontend architecture. Full-stack capable with working backend experience in Node.js.',
+      'Senior Software Engineer with 8+ years of experience. Remote-first with extensive experience collaborating with distributed teams to build scalable web applications using React, TypeScript, and modern frontend architecture, with experience working in a full stack role.',
     url: `${siteUrl}/`,
     image: `${siteUrl}/Awais-Ali.png`,
     email: `mailto:${profile.email}`,
@@ -948,8 +948,8 @@ export default function Home() {
                   scalable, user-centric web applications. Strong expertise in
                   React, TypeScript, and modern frontend architecture, with
                   hands-on experience delivering high-traffic customer-facing
-                  platforms, POS systems, and admin dashboards — plus working
-                  backend experience with Node.js when needed.
+                  platforms, POS systems, and admin dashboards, with experience
+                  working in a full stack role.
                 </p>
                 <div className='mt-7 flex flex-col gap-3 sm:flex-row animate-enter-5'>
                   <ButtonLink href={`mailto:${profile.email}`}>

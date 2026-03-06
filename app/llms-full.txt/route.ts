@@ -21,7 +21,7 @@ export function GET() {
     '',
     '## Expertise',
     '- Frontend: React, TypeScript, Next.js, Redux, Hooks, Context API',
-    '- Backend (working knowledge): Node.js',
+    '- Full stack role experience, including Node.js backend work',
     '- Architecture: maintainable component systems, predictable state, clean patterns at scale',
     '- Performance & UX: smooth interactions, profiling, iterative refinement',
     '- Payments/POS: Stripe, Adyen; complex ordering flows and split payments',

@@ -50,7 +50,7 @@ export function GET() {
     '- Maintenance Reminder System — service reminders; SAP DI API integration; WinForms',
     '',
     '## Open source',
-    '- Mini Coding Agent (Node.js CLI implementing Agent Skills): https://github.com/awaisaly/coding-agent',
+    '- Mini Coding Agent (Node.js CLI implementing Agent Skills): https://github.com/awaisaly/mini-coding-agent',
     '- lumidot contribution: upgraded from fixed 3×3 to configurable x×y dot-grid animations',
     '  Repo: https://github.com/awaisaly/lumidot',
     '',

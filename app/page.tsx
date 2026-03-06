@@ -214,7 +214,7 @@ const projects: Project[] = [
     stack: ['React', 'Data visualization'],
   },
   {
-    title: 'Coding Agent (Open Source)',
+    title: 'Mini Coding Agent (Open Source)',
     description:
       'A tiny Node.js CLI that implements the Agent Skills concept: discovers skills, routes prompts, and runs Claude via Anthropic’s API.',
     tone: 'rose',
@@ -226,8 +226,8 @@ const projects: Project[] = [
     stack: ['Node.js', 'JavaScript', 'CLI', 'Agent Skills', 'Anthropic API'],
     links: [
       {
-        label: 'coding-agent',
-        href: 'https://github.com/awaisaly/coding-agent',
+        label: 'mini-coding-agent',
+        href: 'https://github.com/awaisaly/mini-coding-agent',
       },
     ],
   },
@@ -698,11 +698,11 @@ export default function Home() {
     {
       '@context': 'https://schema.org',
       '@type': 'SoftwareSourceCode',
-      '@id': 'https://github.com/awaisaly/coding-agent',
-      name: 'coding-agent',
+      '@id': 'https://github.com/awaisaly/mini-coding-agent',
+      name: 'mini-coding-agent',
       description:
         'A tiny Node.js CLI implementing the Agent Skills concept: discovers skills, routes prompts, and runs Claude via Anthropic’s API.',
-      codeRepository: 'https://github.com/awaisaly/coding-agent',
+      codeRepository: 'https://github.com/awaisaly/mini-coding-agent',
       programmingLanguage: 'JavaScript',
       runtimePlatform: 'Node.js',
       author: { '@id': `${siteUrl}/#person` },

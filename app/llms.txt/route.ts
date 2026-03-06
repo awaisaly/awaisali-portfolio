@@ -34,7 +34,7 @@ export function GET() {
     `- Data Workbench (Aera Technology): ${'https://www.aeratechnology.com/data-workbench/'}`,
     '',
     '## Open source',
-    '- Mini Coding Agent — https://github.com/awaisaly/coding-agent',
+    '- Mini Coding Agent — https://github.com/awaisaly/mini-coding-agent',
     '- lumidot contribution (x×y dot-grid support) — https://github.com/awaisaly/lumidot',
     '',
     '## Preferred roles',

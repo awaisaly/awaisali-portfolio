@@ -378,10 +378,8 @@ const openSourceContributions: Project[] = [
     tone: 'sky',
     highlights: [
       'The library originally focused on a fixed 3×3 grid; I shipped a feature to make it fully configurable as an x×y dot grid (rows/cols).',
-      'Upgraded patterns to work for any rows/cols (kept 3×3 as the default)',
       'Introduced a single generic resolver: getPatternFrames(pattern, rows, cols, direction)',
-      'Replaced PATTERNS with PATTERN_NAMES and removed unused fixed-grid frame types',
-      'Updated the playground with rows/cols controls and tightened dot spacing (no margin/padding)',
+      'Updated the playground with rows/cols controls',
     ],
     stack: ['TypeScript', 'React', 'Animations', 'Open Source', 'npm package'],
     links: [

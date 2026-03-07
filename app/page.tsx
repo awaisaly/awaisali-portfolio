@@ -353,7 +353,38 @@ const projects: Project[] = [
 
 const openSourceContributions: Project[] = [
   {
-    title: 'Mini Coding Agent (Open Source)',
+    title: 'Explain My Error — AI debugging CLI',
+    description:
+      'A CLI that turns confusing programming errors into clear fixes directly in the terminal, with practical remediation steps and explanations.',
+    tone: 'emerald',
+    highlights: [
+      'Provides plain-English explanations, likely causes, ranked fix plans, and ELI5 output',
+      'Supports interactive mode, inline explanations, JSON mode, and piped input',
+      'Quick install: npm i -g explain-my-error',
+      'Context-aware debugging via stack/code/framework/runtime flags and an Agent Skill integration',
+    ],
+    stack: [
+      'Node.js',
+      'TypeScript',
+      'CLI',
+      'AI tooling',
+      'Developer Experience',
+    ],
+    links: [
+      {
+        label: 'explain-my-error',
+        href: 'https://github.com/awaisaly/explain-my-error',
+        icon: 'github',
+      },
+      {
+        label: 'explain-my-error (npm package)',
+        href: 'https://www.npmjs.com/package/explain-my-error',
+        icon: 'npm',
+      },
+    ],
+  },
+  {
+    title: 'Mini Coding Agent',
     description:
       'A tiny Node.js CLI that implements the Agent Skills concept: discovers skills, routes prompts, and runs Claude via Anthropic’s API.',
     tone: 'rose',

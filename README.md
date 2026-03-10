@@ -4,13 +4,13 @@ Senior Software Engineer (Remote-first) with 8+ years of experience building sca
 
 ## 🔗 Links
 
-- 🌐 **Portfolio**: [awaisali-portfolio.vercel.app](https://awaisali-portfolio.vercel.app)
+- 🌐 **Portfolio**: [awaisali.net](https://awaisali.net)
 - 📍 **Location**: Islamabad, Pakistan (Open to Remote Opportunities)
 - ✉️ **Email**: [awaisaly93@gmail.com](mailto:awaisaly93@gmail.com)
 - 📞 **Phone**: [+92 332 061 7887](tel:+923320617887)
 - <img src="./public/icons/linkedin.svg" width="16" height="16" alt="LinkedIn" /> **LinkedIn**: [linkedin.com/in/awaisaly](https://www.linkedin.com/in/awaisaly)
 - <img src="./public/icons/github.svg" width="16" height="16" alt="GitHub" /> **GitHub**: [github.com/awaisaly](https://github.com/awaisaly)
-- 📄 **Resume (PDF)**: [View Resume (PDF)](https://awaisali-portfolio.vercel.app/CV-Awais-Ali.pdf) (source: <code>public/CV-Awais-Ali.pdf</code>)
+- 📄 **Resume (PDF)**: [View Resume (PDF)](https://awaisali.net/CV-Awais-Ali.pdf) (source: <code>public/CV-Awais-Ali.pdf</code>)
 
 ---
 

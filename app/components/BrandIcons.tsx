@@ -33,3 +33,16 @@ export function NpmMark({ className }: { className?: string }) {
     />
   );
 }
+
+export function KnowvioMark({ className }: { className?: string }) {
+  return (
+    <Image
+      src='/icons/knowvio.svg'
+      alt=''
+      width={16}
+      height={16}
+      aria-hidden
+      className={className}
+    />
+  );
+}

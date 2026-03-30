@@ -1,5 +1,10 @@
 import Image from 'next/image';
-import { GitHubMark, LinkedInMark, NpmMark } from './components/BrandIcons';
+import {
+  GitHubMark,
+  KnowvioMark,
+  LinkedInMark,
+  NpmMark,
+} from './components/BrandIcons';
 import { ThemeToggleClient } from './components/ThemeToggleClient';
 import {
   ArrowUpRight,
@@ -37,7 +42,7 @@ const navItems = [
   { href: '#education', label: 'Education' },
 ] as const;
 
-type LinkIconName = 'link' | 'github' | 'npm';
+type LinkIconName = 'link' | 'github' | 'npm' | 'knowvio';
 type Link = { label: string; href: string; icon?: LinkIconName };
 
 type Project = {
@@ -159,6 +164,30 @@ const experience = [
 ];
 
 const projects: Project[] = [
+  {
+    title: 'Knowvio — Premium Knowledge Workspace',
+    description:
+      'Built and launched Knowvio as CEO & Founder: a cinematic, context-first workspace to ask, cite, and recall knowledge with confidence.',
+    tone: 'violet',
+    highlights: [
+      'Role: CEO & Founder of Knowvio',
+      'Connects URLs, PDFs, images, videos, and text into a visual knowledge graph',
+      'Enables citation-backed chat, semantic recall, and reusable decision outputs',
+    ],
+    stack: [
+      'Product strategy',
+      'AI knowledge workflows',
+      'Context graph',
+      'Research tooling',
+    ],
+    links: [
+      {
+        label: 'Knowvio',
+        href: 'https://knowvio.awaisali.net/',
+        icon: 'knowvio',
+      },
+    ],
+  },
   {
     title: 'Restaurant Ordering & POS Systems',
     description:
@@ -457,7 +486,13 @@ function LinkChip({
   icon?: LinkIconName;
 }) {
   const Icon =
-    icon === 'github' ? GitHubMark : icon === 'npm' ? NpmMark : LinkIcon;
+    icon === 'github'
+      ? GitHubMark
+      : icon === 'npm'
+        ? NpmMark
+        : icon === 'knowvio'
+          ? KnowvioMark
+          : LinkIcon;
   const iconSizeClass = icon === 'npm' ? 'h-3.5 w-3.5' : 'h-4 w-4';
 
   return (

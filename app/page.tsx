@@ -511,15 +511,15 @@ function LinkChip({
       href={href}
       target='_blank'
       rel='noopener noreferrer'
-      className='inline-flex max-w-full items-center gap-2 rounded-full border border-border bg-card-solid px-3 py-1.5 text-sm font-medium text-foreground shadow-sm transition hover:bg-card focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/60 sm:backdrop-blur'
+      className='link-chip group inline-flex max-w-full items-center gap-2 rounded-full border border-border bg-card-solid px-3 py-1.5 text-sm font-medium text-foreground shadow-sm transition hover:-translate-y-0.5 hover:bg-card focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/60 motion-safe:duration-200 sm:backdrop-blur'
     >
       <Icon
-        className={`${iconSizeClass} flex-none text-muted`}
+        className={`link-chip-icon ${iconSizeClass} flex-none text-muted`}
         aria-hidden='true'
       />
       <span className='truncate'>{label}</span>
       <ArrowUpRight
-        className='h-4 w-4 flex-none text-muted'
+        className='link-chip-arrow h-4 w-4 flex-none text-muted'
         aria-hidden='true'
       />
     </a>
@@ -575,22 +575,19 @@ function Tone({
 }) {
   const cls =
     tone === 'emerald'
-      ? 'from-emerald-500/20 via-emerald-500/5 to-transparent'
+      ? 'bg-emerald-500/65'
       : tone === 'sky'
-        ? 'from-sky-500/20 via-sky-500/5 to-transparent'
+        ? 'bg-sky-500/65'
         : tone === 'amber'
-          ? 'from-amber-500/20 via-amber-500/5 to-transparent'
+          ? 'bg-amber-500/65'
           : tone === 'rose'
-            ? 'from-rose-500/20 via-rose-500/5 to-transparent'
-            : 'from-violet-500/20 via-violet-500/5 to-transparent';
+            ? 'bg-rose-500/65'
+            : 'bg-violet-500/65';
 
   return (
     <span
       aria-hidden='true'
-      className={[
-        'pointer-events-none absolute inset-x-0 top-0 h-24 rounded-2xl bg-linear-to-b',
-        cls,
-      ].join(' ')}
+      className={['pointer-events-none absolute inset-x-6 top-0 h-1 rounded-b-full', cls].join(' ')}
     />
   );
 }
@@ -620,7 +617,7 @@ function StatCard({
             : 'bg-violet-500/10 text-violet-600 dark:text-violet-300';
 
   return (
-    <div className='relative overflow-hidden rounded-2xl border border-border bg-card p-4 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md motion-safe:duration-300 sm:p-6 sm:backdrop-blur'>
+    <div className='group signature-surface relative overflow-hidden rounded-2xl border border-border bg-card p-4 shadow-sm transition hover:-translate-y-1 hover:shadow-md motion-safe:duration-200 sm:p-6 sm:backdrop-blur'>
       <Tone tone={tone} />
       <div className='relative'>
         <div className='flex items-center justify-between gap-4'>
@@ -634,7 +631,7 @@ function StatCard({
           </div>
           <div
             className={[
-              'grid h-11 w-11 place-items-center rounded-2xl border border-border',
+              'grid h-11 w-11 place-items-center rounded-2xl border border-border transition motion-safe:duration-200 group-hover:scale-110 group-hover:-rotate-3',
               ring,
             ].join(' ')}
           >
@@ -650,12 +647,12 @@ function StatCard({
 function SkillCard({ skill }: { skill: Skill }) {
   const Icon = skill.icon;
   return (
-    <div className='group relative overflow-hidden rounded-2xl border border-border bg-card p-4 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md motion-safe:duration-300 sm:p-5 sm:backdrop-blur'>
-      <div className='pointer-events-none absolute inset-0 opacity-0 transition group-hover:opacity-100 motion-safe:duration-300 [background:radial-gradient(600px_circle_at_20%_0%,color-mix(in_oklab,var(--primary)_18%,transparent),transparent_55%),radial-gradient(550px_circle_at_80%_60%,color-mix(in_oklab,var(--accent)_16%,transparent),transparent_60%)]' />
+    <div className='group signature-surface relative overflow-hidden rounded-2xl border border-border bg-card p-4 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md motion-safe:duration-200 sm:p-5 sm:backdrop-blur'>
+      <div className='pointer-events-none absolute inset-0 rounded-2xl border border-primary/25 opacity-0 transition group-hover:opacity-100 motion-safe:duration-200' />
       <div className='relative flex items-start gap-3'>
         <div className='grid h-10 w-10 place-items-center rounded-2xl border border-border bg-card-solid'>
           <Icon
-            className='h-5 w-5 text-muted transition group-hover:text-foreground motion-safe:duration-300'
+            className='h-5 w-5 text-muted transition group-hover:text-foreground motion-safe:duration-200'
             aria-hidden='true'
           />
         </div>
@@ -687,13 +684,13 @@ function Section({
 }) {
   return (
     <section id={id} className='scroll-mt-24'>
-      <div className='sticky top-16 z-30 -mx-3 mb-5 bg-linear-to-b from-background/80 to-background/40 px-3 py-2 sm:-mx-6 sm:px-6 sm:backdrop-blur'>
+      <div className='sticky top-16 z-30 -mx-3 mb-5 border-b border-border/60 bg-background/85 px-3 py-2 sm:-mx-6 sm:px-6 sm:backdrop-blur'>
         <div className='flex items-center gap-3'>
           <span aria-hidden='true' className='h-px flex-1 bg-border/70' />
           <div className='pointer-events-auto inline-flex max-w-full items-center gap-2 rounded-full border border-border bg-card/90 px-4 py-2 shadow-sm sm:backdrop-blur'>
             <span
               aria-hidden='true'
-              className='h-2 w-2 flex-none rounded-full bg-primary/60'
+              className='section-dot h-2 w-2 flex-none rounded-full bg-primary/60'
             />
             <h2 className='truncate text-sm font-semibold tracking-tight sm:text-base'>
               {title}
@@ -836,7 +833,6 @@ export default function Home() {
       id='intro'
       className='relative min-h-screen bg-background text-foreground'
     >
-      <div className='pointer-events-none absolute inset-0 -z-10 opacity-70 [background:radial-gradient(1200px_circle_at_20%_0%,color-mix(in_oklab,var(--primary)_16%,transparent),transparent_55%),radial-gradient(1000px_circle_at_90%_20%,color-mix(in_oklab,var(--accent)_14%,transparent),transparent_52%)]' />
       <script
         type='application/ld+json'
         dangerouslySetInnerHTML={{
@@ -863,7 +859,6 @@ export default function Home() {
             aria-label='Go to intro section'
           >
             <span className='relative h-9 w-9 flex-none overflow-hidden rounded-2xl border border-border bg-card-solid shadow-sm'>
-              <div className='pointer-events-none absolute inset-0 opacity-70 [background:radial-gradient(40px_circle_at_20%_0%,color-mix(in_oklab,var(--primary)_28%,transparent),transparent_60%),radial-gradient(45px_circle_at_90%_90%,color-mix(in_oklab,var(--accent)_22%,transparent),transparent_60%)]' />
               <Image
                 src='/Awais-Ali.png'
                 alt='Awais Ali'
@@ -889,7 +884,7 @@ export default function Home() {
             {navItems.map((item) => (
               <a
                 key={item.href}
-                className='hover:text-foreground'
+                className='relative transition-colors motion-safe:duration-200 hover:text-foreground after:absolute after:-bottom-1 after:left-0 after:h-px after:w-0 after:bg-foreground after:transition-all after:duration-200 hover:after:w-full'
                 href={item.href}
               >
                 {item.label}
@@ -975,8 +970,8 @@ export default function Home() {
         id='content'
         className='mx-auto w-full max-w-6xl px-3 py-10 sm:px-6 sm:py-16'
       >
-        <div className='relative overflow-hidden rounded-3xl border border-border bg-card p-6 shadow-sm sm:p-12 sm:backdrop-blur'>
-          <div className='pointer-events-none absolute inset-0 opacity-70 bg-aurora' />
+        <div className='signature-surface relative overflow-hidden rounded-3xl border border-border bg-card p-6 shadow-sm sm:p-12 sm:backdrop-blur'>
+          <div className='pointer-events-none absolute inset-x-8 top-0 h-px bg-border/80' />
 
           <div className='relative'>
             <div className='flex flex-col gap-8 md:flex-row md:items-end md:justify-between'>
@@ -985,25 +980,24 @@ export default function Home() {
                   className='flex max-w-full flex-wrap items-center gap-2 text-xs text-muted animate-enter-1'
                   aria-label='Availability and location'
                 >
-                  <span className='inline-flex items-center gap-2 rounded-full border border-border bg-card-solid px-3 py-1.5'>
+                  <span className='interactive-pill inline-flex items-center gap-2 rounded-full border border-border bg-card-solid px-3 py-1.5'>
                     <Sparkles className='h-3.5 w-3.5' aria-hidden='true' />
                     <span className='font-medium text-foreground'>
                       Remote-first
                     </span>
                   </span>
-                  <span className='inline-flex items-center gap-2 rounded-full border border-border bg-card-solid px-3 py-1.5'>
+                  <span className='interactive-pill inline-flex items-center gap-2 rounded-full border border-border bg-card-solid px-3 py-1.5'>
                     <span className='font-medium text-foreground'>
                       Open to remote opportunities
                     </span>
                   </span>
-                  <span className='inline-flex items-center gap-2 rounded-full border border-border bg-card-solid px-3 py-1.5'>
+                  <span className='interactive-pill inline-flex items-center gap-2 rounded-full border border-border bg-card-solid px-3 py-1.5'>
                     <MapPin className='h-3.5 w-3.5' aria-hidden='true' />
                     <span className='truncate'>{profile.location}</span>
                   </span>
                 </div>
                 <div className='mt-5 flex items-center gap-4 animate-enter-2'>
                   <div className='relative h-14 w-14 overflow-hidden rounded-2xl border border-border bg-card-solid shadow-sm'>
-                    <div className='pointer-events-none absolute inset-0 opacity-70 [background:radial-gradient(80px_circle_at_20%_0%,color-mix(in_oklab,var(--primary)_35%,transparent),transparent_60%),radial-gradient(90px_circle_at_90%_90%,color-mix(in_oklab,var(--accent)_30%,transparent),transparent_60%)]' />
                     <Image
                       src='/Awais-Ali.png'
                       alt='Awais Ali'
@@ -1014,7 +1008,7 @@ export default function Home() {
                     />
                   </div>
                   <h1 className='text-4xl font-semibold tracking-tight sm:text-5xl'>
-                    <span className='gradient-text'>{profile.name}</span>
+                    <span>{profile.name}</span>
                   </h1>
                 </div>
                 <p className='mt-3 text-lg text-muted animate-enter-3'>
@@ -1138,7 +1132,7 @@ export default function Home() {
             title='Why me'
             subtitle='Proof points that show how I deliver in remote, high-impact roles.'
           >
-            <div className='grid gap-4 md:grid-cols-2'>
+            <div className='stats-grid grid gap-4 md:grid-cols-2'>
               <StatCard
                 tone='violet'
                 icon={Users}
@@ -1204,8 +1198,14 @@ export default function Home() {
             subtitle='Tools, frameworks, and practices I use in production.'
           >
             <div className='grid gap-3 sm:grid-cols-2 lg:grid-cols-3'>
-              {skills.map((s) => (
-                <SkillCard key={s.label} skill={s} />
+              {skills.map((s, idx) => (
+                <div
+                  key={s.label}
+                  className='animate-enter'
+                  style={{ animationDelay: `${Math.min(idx, 8) * 55}ms` }}
+                >
+                  <SkillCard skill={s} />
+                </div>
               ))}
             </div>
           </Section>
@@ -1215,13 +1215,14 @@ export default function Home() {
             title='Professional experience'
             subtitle='Recent roles, responsibilities, and outcomes.'
           >
-            <div className='grid gap-4'>
-              {experience.map((job) => (
+            <div className='experience-grid grid gap-4'>
+              {experience.map((job, idx) => (
                 <article
                   key={[job.role, job.company, job.period]
                     .filter(Boolean)
                     .join(' | ')}
-                  className='relative overflow-hidden rounded-2xl border border-border bg-card p-4 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md motion-safe:duration-300 sm:p-6 sm:backdrop-blur'
+                  className='animate-enter signature-surface relative overflow-hidden rounded-2xl border border-border bg-card p-4 shadow-sm transition hover:-translate-y-1 hover:shadow-md motion-safe:duration-200 sm:p-6 sm:backdrop-blur'
+                  style={{ animationDelay: `${Math.min(idx, 8) * 55}ms` }}
                 >
                   <Tone tone={job.tone} />
                   <div className='flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between'>
@@ -1268,11 +1269,12 @@ export default function Home() {
             title='Projects'
             subtitle='A curated selection. Some projects are private; I can share details on request.'
           >
-            <div className='grid gap-4 md:grid-cols-2'>
-              {projects.map((p) => (
+            <div className='project-grid grid gap-4 md:grid-cols-2'>
+              {projects.map((p, idx) => (
                 <article
                   key={p.title}
-                  className='group relative flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card p-4 shadow-sm transition hover:bg-card-solid hover:-translate-y-0.5 hover:shadow-md motion-safe:duration-300 sm:p-6 sm:backdrop-blur'
+                  className='group animate-enter signature-surface relative flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card p-4 shadow-sm transition hover:bg-card-solid hover:-translate-y-1 hover:shadow-md motion-safe:duration-200 sm:p-6 sm:backdrop-blur'
+                  style={{ animationDelay: `${Math.min(idx, 10) * 55}ms` }}
                 >
                   <Tone tone={p.tone ?? 'violet'} />
 
@@ -1331,11 +1333,12 @@ export default function Home() {
             title='Open source contributions'
             subtitle='Public contributions and improvements shipped to open source projects.'
           >
-            <div className='grid gap-4 md:grid-cols-2'>
-              {openSourceContributions.map((p) => (
+            <div className='open-source-grid grid gap-4 md:grid-cols-2'>
+              {openSourceContributions.map((p, idx) => (
                 <article
                   key={p.title}
-                  className='group relative flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card p-4 shadow-sm transition hover:bg-card-solid hover:-translate-y-0.5 hover:shadow-md motion-safe:duration-300 sm:p-6 sm:backdrop-blur'
+                  className='group animate-enter signature-surface relative flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card p-4 shadow-sm transition hover:bg-card-solid hover:-translate-y-1 hover:shadow-md motion-safe:duration-200 sm:p-6 sm:backdrop-blur'
+                  style={{ animationDelay: `${Math.min(idx, 8) * 55}ms` }}
                 >
                   <Tone tone={p.tone ?? 'violet'} />
 
@@ -1404,8 +1407,8 @@ export default function Home() {
             </div>
           </Section>
 
-          <section className='relative overflow-hidden rounded-3xl border border-border bg-card p-6 shadow-sm sm:p-10 sm:backdrop-blur'>
-            <div className='pointer-events-none absolute inset-0 opacity-70 [background:radial-gradient(850px_circle_at_0%_0%,color-mix(in_oklab,var(--primary)_30%,transparent),transparent_55%),radial-gradient(850px_circle_at_100%_0%,color-mix(in_oklab,var(--accent)_25%,transparent),transparent_55%)]' />
+          <section className='signature-surface relative overflow-hidden rounded-3xl border border-border bg-card p-6 shadow-sm sm:p-10 sm:backdrop-blur'>
+            <div className='pointer-events-none absolute inset-x-10 top-0 h-px bg-border/80' />
             <div className='relative'>
               <h2 className='text-2xl font-semibold tracking-tight'>
                 Let’s build something great.

@@ -105,6 +105,17 @@ const skills: Skill[] = [
 
 const experience = [
   {
+    role: 'CEO & Founder',
+    company: 'Knowvio',
+    period: 'Mar 2026 – Present',
+    tone: 'violet' as const,
+    bullets: [
+      'Built and launched a premium knowledge workspace focused on grounded, citation-backed AI outputs.',
+      'Designed context-first workflows that connect URLs, PDFs, images, videos, and text on a single visual board.',
+      'Shaped product direction, UX narrative, and execution for fast iteration during beta.',
+    ],
+  },
+  {
     role: 'Senior Software Engineer',
     company: 'Next Order',
     period: 'Feb 2022 – Present',

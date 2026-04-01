@@ -105,7 +105,7 @@ const skills: Skill[] = [
 
 const experience = [
   {
-    role: 'CEO & Founder',
+    role: 'Creator',
     company: 'Knowvio',
     period: 'Mar 2026 – Present',
     tone: 'violet' as const,
@@ -178,10 +178,10 @@ const projects: Project[] = [
   {
     title: 'Knowvio — Premium Knowledge Workspace',
     description:
-      'Built and launched Knowvio as CEO & Founder: a cinematic, context-first workspace to ask, cite, and recall knowledge with confidence.',
+      'Built and launched Knowvio: a cinematic, context-first workspace to ask, cite, and recall knowledge with confidence.',
     tone: 'violet',
     highlights: [
-      'Role: CEO & Founder of Knowvio',
+      'Role: Creator of Knowvio',
       'Connects URLs, PDFs, images, videos, and text into a visual knowledge graph',
       'Enables citation-backed chat, semantic recall, and reusable decision outputs',
     ],
@@ -587,7 +587,10 @@ function Tone({
   return (
     <span
       aria-hidden='true'
-      className={['pointer-events-none absolute inset-x-6 top-0 h-1 rounded-b-full', cls].join(' ')}
+      className={[
+        'pointer-events-none absolute inset-x-6 top-0 h-1 rounded-b-full',
+        cls,
+      ].join(' ')}
     />
   );
 }

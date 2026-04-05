@@ -760,6 +760,7 @@ export default function Home() {
       'Payment integrations',
     ],
     hasOccupation: [
+      { '@type': 'Occupation', name: 'Creator' },
       {
         '@type': 'Occupation',
         name: 'Senior Software Engineer',
@@ -808,6 +809,18 @@ export default function Home() {
     {
       '@context': 'https://schema.org',
       '@type': 'SoftwareSourceCode',
+      '@id': 'https://github.com/awaisaly/explain-my-error',
+      name: 'explain-my-error',
+      description:
+        'A CLI that explains programming errors in plain English and provides ranked remediation steps.',
+      codeRepository: 'https://github.com/awaisaly/explain-my-error',
+      programmingLanguage: 'TypeScript',
+      runtimePlatform: 'Node.js',
+      author: { '@id': `${siteUrl}/#person` },
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'SoftwareSourceCode',
       '@id': 'https://github.com/awaisaly/mini-coding-agent',
       name: 'mini-coding-agent',
       description:
@@ -830,6 +843,18 @@ export default function Home() {
     },
   ];
 
+  const knowvioJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: 'Knowvio',
+    applicationCategory: 'BusinessApplication',
+    operatingSystem: 'Web',
+    url: 'https://knowvio.awaisali.net/',
+    creator: { '@id': `${siteUrl}/#person` },
+    description:
+      'Premium knowledge workspace for connecting sources, generating citation-backed answers, and improving semantic recall.',
+  };
+
   return (
     <div
       id='intro'
@@ -842,6 +867,7 @@ export default function Home() {
             personJsonLd,
             websiteJsonLd,
             webPageJsonLd,
+            knowvioJsonLd,
             ...openSourceJsonLd,
           ]),
         }}

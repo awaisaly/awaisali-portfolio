@@ -1011,6 +1011,9 @@ export default function Home() {
                       alt='Awais Ali'
                       width={112}
                       height={112}
+                      fetchPriority='high'
+                      loading='eager'
+                      sizes='112px'
                       className='relative h-full w-full object-cover'
                       priority
                     />

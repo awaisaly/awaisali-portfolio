@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
   subsets: ['latin'],
 });
 
-const socialImageVersion = '202604050506';
+const socialImageVersion = '20260405051524';
 
 export const metadata: Metadata = {
   metadataBase: new URL(

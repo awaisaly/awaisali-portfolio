@@ -27,7 +27,6 @@ import {
   Network,
   Phone,
   ShieldCheck,
-  Sparkles,
   Users,
   X,
 } from 'lucide-react';
@@ -979,27 +978,7 @@ export default function Home() {
           <div className='relative'>
             <div className='flex flex-col gap-8 md:flex-row md:items-end md:justify-between'>
               <div className='max-w-2xl'>
-                <div
-                  className='flex max-w-full flex-wrap items-center gap-2 text-xs text-muted animate-enter-1'
-                  aria-label='Availability and location'
-                >
-                  <span className='interactive-pill inline-flex items-center gap-2 rounded-full border border-border bg-card-solid px-3 py-1.5'>
-                    <Sparkles className='h-3.5 w-3.5' aria-hidden='true' />
-                    <span className='font-medium text-foreground'>
-                      Remote-first
-                    </span>
-                  </span>
-                  <span className='interactive-pill inline-flex items-center gap-2 rounded-full border border-border bg-card-solid px-3 py-1.5'>
-                    <span className='font-medium text-foreground'>
-                      Open to remote opportunities
-                    </span>
-                  </span>
-                  <span className='interactive-pill inline-flex items-center gap-2 rounded-full border border-border bg-card-solid px-3 py-1.5'>
-                    <MapPin className='h-3.5 w-3.5' aria-hidden='true' />
-                    <span className='truncate'>{profile.location}</span>
-                  </span>
-                </div>
-                <div className='mt-5 flex items-center gap-4 animate-enter-2'>
+                <div className='mt-1 flex items-center gap-4 animate-enter-2'>
                   <div className='relative h-14 w-14 overflow-hidden rounded-2xl border border-border bg-card-solid shadow-sm'>
                     <Image
                       src='/Awais-Ali.png'
@@ -1017,7 +996,15 @@ export default function Home() {
                 <p className='mt-3 text-lg text-muted animate-enter-3'>
                   {profile.role}
                 </p>
-                <p className='mt-6 max-w-xl text-sm leading-7 text-muted animate-enter-4'>
+                <div className='mt-3 animate-enter-4'>
+                  <span className='interactive-pill inline-flex items-center gap-2 rounded-full border border-border bg-card-solid px-3 py-1.5 text-sm text-muted'>
+                    <MapPin className='h-4 w-4' aria-hidden='true' />
+                    <span className='truncate font-medium text-foreground'>
+                      {profile.location}
+                    </span>
+                  </span>
+                </div>
+                <p className='mt-6 max-w-xl text-sm leading-7 text-muted animate-enter-5'>
                   Senior Software Engineer with 8+ years of experience building
                   scalable, user-centric web applications. Strong expertise in
                   React, TypeScript, and modern frontend architecture, with

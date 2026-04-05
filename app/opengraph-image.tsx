@@ -65,22 +65,20 @@ export default function OpenGraphImage() {
             marginTop: 8,
           }}
         >
-          {['Remote-first', 'React', 'TypeScript', 'Next.js', 'Node.js'].map(
-            (t) => (
-              <div
-                key={t}
-                style={{
-                  fontSize: 18,
-                  padding: '10px 14px',
-                  borderRadius: 999,
-                  border: '1px solid rgba(255,255,255,0.16)',
-                  background: 'rgba(255,255,255,0.08)',
-                }}
-              >
-                {t}
-              </div>
-            )
-          )}
+          {['React', 'TypeScript', 'Next.js', 'Node.js'].map((t) => (
+            <div
+              key={t}
+              style={{
+                fontSize: 18,
+                padding: '10px 14px',
+                borderRadius: 999,
+                border: '1px solid rgba(255,255,255,0.16)',
+                background: 'rgba(255,255,255,0.08)',
+              }}
+            >
+              {t}
+            </div>
+          ))}
         </div>
       </div>
 

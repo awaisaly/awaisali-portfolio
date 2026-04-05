@@ -4,7 +4,7 @@ export const revalidate = 86400;
 
 export function GET() {
   const siteUrl =
-    process.env.NEXT_PUBLIC_SITE_URL ?? 'https://awaisali-portfolio.vercel.app';
+    process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.awaisali.net';
 
   const text = [
     '# Awais Ali — Senior Software Engineer (Remote-first)',

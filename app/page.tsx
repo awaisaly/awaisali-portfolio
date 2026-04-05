@@ -715,7 +715,7 @@ function Section({
 
 export default function Home() {
   const siteUrl =
-    process.env.NEXT_PUBLIC_SITE_URL ?? 'https://awaisali-portfolio.vercel.app';
+    process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.awaisali.net';
 
   const personJsonLd = {
     '@context': 'https://schema.org',

@@ -16,13 +16,22 @@ export default function TwitterImage() {
           justifyContent: "center",
           padding: 72,
           backgroundColor: "#0b0b0b",
-          backgroundImage:
-            "radial-gradient(900px circle at 10% 0%, rgba(124,58,237,0.35), transparent 60%), radial-gradient(900px circle at 100% 40%, rgba(14,165,233,0.22), transparent 60%)",
           color: "white",
           fontFamily:
             "ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial",
         }}
       >
+        <div
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 70,
+            right: 70,
+            height: 2,
+            borderRadius: 999,
+            background: "rgba(255,255,255,0.22)",
+          }}
+        />
         <div
           style={{
             width: "100%",

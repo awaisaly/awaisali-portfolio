@@ -13,9 +13,11 @@ const geistMono = Geist_Mono({
   subsets: ['latin'],
 });
 
+const socialImageVersion = '202604050506';
+
 export const metadata: Metadata = {
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL ?? 'https://awaisali-portfolio.vercel.app'
+    process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.awaisali.net'
   ),
   title: {
     default: 'Awais Ali — Senior Software Engineer',
@@ -83,7 +85,7 @@ export const metadata: Metadata = {
     siteName: 'Awais Ali Portfolio',
     images: [
       {
-        url: '/opengraph-image',
+        url: `/opengraph-image?v=${socialImageVersion}`,
         width: 1200,
         height: 630,
         alt: 'Awais Ali — Senior Software Engineer (Remote-first)',
@@ -95,7 +97,7 @@ export const metadata: Metadata = {
     title: 'Awais Ali — Senior Software Engineer',
     description:
       'Senior Software Engineer with 8+ years of experience. Remote-first, experienced with distributed teams building scalable web applications.',
-    images: ['/twitter-image'],
+    images: [`/twitter-image?v=${socialImageVersion}`],
   },
   robots: {
     index: true,

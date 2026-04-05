@@ -5,6 +5,9 @@ export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
 export default function OpenGraphImage() {
+  const siteUrl =
+    process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.awaisali.net';
+
   return new ImageResponse(
     <div
       style={{
@@ -32,13 +35,16 @@ export default function OpenGraphImage() {
         }}
       />
       <div style={{ display: 'flex', gap: 16, alignItems: 'center' }}>
-        <div
+        <img
+          src={`${siteUrl}/Awais-Ali.png`}
+          alt='Awais Ali'
           style={{
             width: 56,
             height: 56,
             borderRadius: 18,
-            background: 'rgba(255,255,255,0.07)',
             border: '1px solid rgba(255,255,255,0.14)',
+            objectFit: 'cover',
+            backgroundColor: 'rgba(255,255,255,0.07)',
           }}
         />
         <div style={{ fontSize: 20, opacity: 0.9 }}>awaisali.net</div>
@@ -59,20 +65,22 @@ export default function OpenGraphImage() {
             marginTop: 8,
           }}
         >
-          {['Remote-first', 'React', 'TypeScript', 'Next.js'].map((t) => (
-            <div
-              key={t}
-              style={{
-                fontSize: 18,
-                padding: '10px 14px',
-                borderRadius: 999,
-                border: '1px solid rgba(255,255,255,0.16)',
-                background: 'rgba(255,255,255,0.08)',
-              }}
-            >
-              {t}
-            </div>
-          ))}
+          {['Remote-first', 'React', 'TypeScript', 'Next.js', 'Node.js'].map(
+            (t) => (
+              <div
+                key={t}
+                style={{
+                  fontSize: 18,
+                  padding: '10px 14px',
+                  borderRadius: 999,
+                  border: '1px solid rgba(255,255,255,0.16)',
+                  background: 'rgba(255,255,255,0.08)',
+                }}
+              >
+                {t}
+              </div>
+            )
+          )}
         </div>
       </div>
 

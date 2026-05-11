@@ -88,6 +88,11 @@ const skills: Skill[] = [
     icon: Network,
     note: 'Citation-backed answers, semantic recall, prompt flows',
   },
+  {
+    label: 'RAG pipelines',
+    icon: Database,
+    note: 'Source ingestion, grounding, citations, retrieval',
+  },
   { label: 'REST APIs', icon: Network },
   { label: 'PostgreSQL', icon: Database },
   { label: 'MongoDB', icon: Database },

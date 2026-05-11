@@ -73,10 +73,27 @@ const skills: Skill[] = [
   { label: 'React', icon: Layers3 },
   { label: 'TypeScript', icon: Code2 },
   { label: 'Next.js', icon: MonitorSmartphone },
+  {
+    label: 'Node.js',
+    icon: Code2,
+    note: 'Backend APIs, CLIs, developer tools',
+  },
+  {
+    label: 'GenAI products',
+    icon: Network,
+    note: 'Grounded AI, context workflows, agent tooling',
+  },
+  {
+    label: 'LLM app patterns',
+    icon: Network,
+    note: 'Citation-backed answers, semantic recall, prompt flows',
+  },
+  { label: 'REST APIs', icon: Network },
+  { label: 'PostgreSQL', icon: Database },
+  { label: 'MongoDB', icon: Database },
   { label: 'Redux', icon: Layers3 },
   { label: 'Hooks', icon: Gauge },
   { label: 'Context API', icon: Network },
-  { label: 'REST APIs', icon: Network },
   {
     label: 'Electron',
     icon: MonitorSmartphone,
@@ -93,11 +110,8 @@ const skills: Skill[] = [
     note: 'Stripe, Adyen, POS & payment flows',
   },
   { label: 'Git', icon: GitBranch, note: 'Branching, PR reviews, workflows' },
-  { label: 'PostgreSQL', icon: Database },
-  { label: 'MongoDB', icon: Database },
   { label: 'MySQL / SQL Server', icon: Database },
   { label: 'Firebase', icon: ShieldCheck },
-  { label: 'Node.js', icon: Code2, note: 'Working knowledge' },
   { label: 'Python Flask', icon: Code2, note: 'Working knowledge' },
   { label: 'ASP.NET', icon: Code2, note: 'Working knowledge' },
 ];
@@ -109,9 +123,9 @@ const experience = [
     period: 'Mar 2026 – Present',
     tone: 'violet' as const,
     bullets: [
-      'Built and launched a premium knowledge workspace focused on grounded, citation-backed AI outputs.',
-      'Designed context-first workflows that connect URLs, PDFs, images, videos, and text on a single visual board.',
-      'Shaped product direction, UX narrative, and execution for fast iteration during beta.',
+      'Built and launched a GenAI knowledge workspace focused on grounded, citation-backed outputs.',
+      'Designed full-stack, context-first workflows that connect URLs, PDFs, images, videos, and text on a single visual board.',
+      'Shaped product direction, AI UX, and execution for fast iteration during beta.',
     ],
   },
   {
@@ -120,10 +134,10 @@ const experience = [
     period: 'Feb 2022 – Present',
     tone: 'emerald' as const,
     bullets: [
-      'Built and maintained large-scale customer-facing online ordering platforms using React.',
-      'Implemented complex menu structures, modifiers, vouchers, loyalty programs, and Stripe/Adyen payments.',
+      'Built and maintained large-scale customer-facing online ordering platforms and operations tooling.',
+      'Implemented complex menu structures, modifiers, vouchers, loyalty programs, and Stripe/Adyen payment flows.',
       'Worked on restaurant POS systems: kiosks, split payments, dine-in layouts, and multi-device workflows.',
-      'Enhanced admin panels for order management, reporting, shifts, and operational settings.',
+      'Enhanced admin panels for order management, reporting, shifts, and operational settings across API-driven workflows.',
       'Collaborated asynchronously with cross-functional remote teams on production systems.',
     ],
   },
@@ -133,9 +147,9 @@ const experience = [
     period: 'Jan 2020 – Feb 2022',
     tone: 'violet' as const,
     bullets: [
-      'Led frontend development for a Zero Trust Network Access (ZTNA) application (Web + Electron).',
+      'Led product development for a Zero Trust Network Access (ZTNA) application (Web + Electron).',
       'Contributed to Polarr (20M+ users) focusing on UI components and performance.',
-      'Built enterprise tools including an ETL + analytics platform (Aera Developer Workbench).',
+      'Built enterprise tools including an ETL + analytics platform with complex data-source and reporting workflows.',
       'Mentored engineers and contributed to architecture decisions and coding standards.',
     ],
   },
@@ -145,9 +159,9 @@ const experience = [
     period: 'Jun 2018 – Jan 2020',
     tone: 'amber' as const,
     bullets: [
-      'Led frontend development and coordinated with backend teams on enterprise systems.',
-      'Delivered surveillance, ERP, LMS, and drone-management platforms.',
-      'Established scalable UI architecture and consistent coding standards across projects.',
+      'Led full-stack delivery with React, Python Flask APIs, MongoDB, and PostgreSQL across enterprise systems.',
+      'Delivered surveillance, ERP, LMS, and drone-management platforms with data-heavy operational workflows.',
+      'Established scalable architecture and consistent coding standards across projects.',
     ],
   },
   {
@@ -177,18 +191,20 @@ const projects: Project[] = [
   {
     title: 'Knowvio — Premium Knowledge Workspace',
     description:
-      'Built and launched Knowvio: a cinematic, context-first workspace to ask, cite, and recall knowledge with confidence.',
+      'Built and launched Knowvio: a GenAI workspace that helps users ask, cite, and recall knowledge with confidence.',
     tone: 'violet',
     highlights: [
       'Role: Creator of Knowvio',
       'Connects URLs, PDFs, images, videos, and text into a visual knowledge graph',
       'Enables citation-backed chat, semantic recall, and reusable decision outputs',
+      'Combines product strategy, AI UX, and full-stack execution',
     ],
     stack: [
-      'Product strategy',
+      'GenAI product',
+      'Full-stack execution',
       'AI knowledge workflows',
+      'Grounded answers',
       'Context graph',
-      'Research tooling',
     ],
     links: [
       {
@@ -201,14 +217,21 @@ const projects: Project[] = [
   {
     title: 'Restaurant Ordering & POS Systems',
     description:
-      'High-traffic online ordering, payments, POS flows, and admin reporting for restaurant operations.',
+      'High-traffic full-stack ordering, payments, POS flows, and admin reporting for restaurant operations.',
     tone: 'emerald',
     highlights: [
       'Complex menu + modifier architecture, vouchers, loyalty programs',
       'Stripe/Adyen payments, split payments, kiosk workflows',
-      'Operational tooling: shifts, reports, settings, order management',
+      'API-driven operational tooling: shifts, reports, settings, order management',
     ],
-    stack: ['React', 'TypeScript', 'Stripe', 'Adyen', 'POS integrations'],
+    stack: [
+      'React',
+      'TypeScript',
+      'REST APIs',
+      'Stripe',
+      'Adyen',
+      'POS integrations',
+    ],
     links: [
       {
         label: 'Next Order Website',
@@ -270,7 +293,7 @@ const projects: Project[] = [
   {
     title: 'Data Workbench for Aera Technologies',
     description:
-      'An ETL + analytics tool that extracts data from multiple databases and sources (SAP, Oracle, MSSQL, MySQL) for business analysis.',
+      'An ETL + analytics tool that extracts, maps, and analyzes data from multiple sources (SAP, Oracle, MSSQL, MySQL) for business teams.',
     tone: 'violet',
     highlights: [
       'Complex data-source configuration and mapping workflows',
@@ -725,7 +748,7 @@ export default function Home() {
     familyName: 'Ali',
     jobTitle: profile.role,
     description:
-      'Senior Software Engineer with 8+ years of experience. Remote-first with extensive experience collaborating with distributed teams to build scalable web applications using React, TypeScript, and modern frontend architecture, with experience working in a full stack role.',
+      'Senior Software Engineer with 10+ years of experience building scalable web applications, API-driven platforms, payments/POS systems, and AI-powered developer and knowledge tools.',
     url: `${siteUrl}/`,
     image: `${siteUrl}/Awais-Ali.png`,
     email: `mailto:${profile.email}`,
@@ -752,10 +775,15 @@ export default function Home() {
       'React',
       'TypeScript',
       'Next.js',
-      'Frontend architecture',
+      'Full-stack architecture',
       'Node.js',
       'Backend development',
       'Full-stack development',
+      'Generative AI',
+      'LLM applications',
+      'AI developer tools',
+      'Semantic search',
+      'Citation-backed AI',
       'POS systems',
       'Payment integrations',
     ],
@@ -774,6 +802,7 @@ export default function Home() {
       { '@type': 'Occupation', name: 'Senior React Developer' },
       { '@type': 'Occupation', name: 'Node.js Developer' },
       { '@type': 'Occupation', name: 'Full Stack Developer' },
+      { '@type': 'Occupation', name: 'GenAI Developer' },
     ],
   };
 
@@ -794,7 +823,7 @@ export default function Home() {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
     '@id': `${siteUrl}/#webpage`,
-    name: 'Awais Ali — Senior Software Engineer',
+    name: 'Awais Ali — Senior Full Stack & GenAI Developer',
     url: `${siteUrl}/`,
     isPartOf: { '@id': `${siteUrl}/#website` },
     about: { '@id': `${siteUrl}/#person` },
@@ -812,7 +841,7 @@ export default function Home() {
       '@id': 'https://github.com/awaisaly/explain-my-error',
       name: 'explain-my-error',
       description:
-        'A CLI that explains programming errors in plain English and provides ranked remediation steps.',
+        'An AI debugging CLI that explains programming errors in plain English and provides ranked remediation steps.',
       codeRepository: 'https://github.com/awaisaly/explain-my-error',
       programmingLanguage: 'TypeScript',
       runtimePlatform: 'Node.js',
@@ -824,7 +853,7 @@ export default function Home() {
       '@id': 'https://github.com/awaisaly/mini-coding-agent',
       name: 'mini-coding-agent',
       description:
-        'A tiny Node.js CLI implementing the Agent Skills concept: discovers skills, routes prompts, and runs Claude via Anthropic’s API.',
+        'A tiny AI coding-agent CLI implementing the Agent Skills concept: discovers skills, routes prompts, and runs Claude via Anthropic’s API.',
       codeRepository: 'https://github.com/awaisaly/mini-coding-agent',
       programmingLanguage: 'JavaScript',
       runtimePlatform: 'Node.js',
@@ -852,7 +881,7 @@ export default function Home() {
     url: 'https://knowvio.awaisali.net/',
     creator: { '@id': `${siteUrl}/#person` },
     description:
-      'Premium knowledge workspace for connecting sources, generating citation-backed answers, and improving semantic recall.',
+      'GenAI knowledge workspace for connecting sources, generating citation-backed answers, and improving semantic recall.',
   };
 
   return (
@@ -1034,12 +1063,11 @@ export default function Home() {
                   </span>
                 </div>
                 <p className='mt-6 max-w-xl text-sm leading-7 text-muted animate-enter-5'>
-                  Senior Software Engineer with 8+ years of experience building
-                  scalable, user-centric web applications. Strong expertise in
-                  React, TypeScript, and modern frontend architecture, with
-                  hands-on experience delivering high-traffic customer-facing
-                  platforms, POS systems, and admin dashboards, with experience
-                  working in a full stack role.
+                  Senior Software Engineer with 10+ years of experience building
+                  scalable web apps, API-driven platforms, payment/POS systems,
+                  and AI-powered developer tools. I bring strong
+                  React/TypeScript depth, practical backend experience, and a
+                  product mindset for shipping useful AI workflows.
                 </p>
                 <div className='mt-7 flex flex-col gap-3 sm:flex-row animate-enter-5'>
                   <ButtonLink href={`mailto:${profile.email}`}>
@@ -1126,21 +1154,22 @@ export default function Home() {
           >
             <div className='grid gap-4 rounded-2xl border border-border bg-card p-4 sm:p-6'>
               <p className='text-sm leading-7 text-muted'>
-                I build frontends that stay maintainable under real product
-                pressure: clear component boundaries, predictable state, and
-                performance that holds up as features grow. I’m comfortable
-                owning features end-to-end in remote setups and collaborating
-                with product, design, and backend teams across time zones.
+                I build full-stack products that stay maintainable under real
+                product pressure: clear interfaces, predictable state, reliable
+                APIs, and performance that holds up as features grow. Recently,
+                my focus has expanded into GenAI products, grounded knowledge
+                workflows, and developer tools that turn AI into practical user
+                value.
               </p>
               <div className='flex flex-wrap gap-2'>
                 <span className='rounded-full border border-border bg-card-solid px-3 py-1 text-xs text-muted'>
-                  React + TypeScript expert
+                  Full-stack product engineering
                 </span>
                 <span className='rounded-full border border-border bg-card-solid px-3 py-1 text-xs text-muted'>
-                  Architecture & scalability
+                  GenAI apps & agent tooling
                 </span>
                 <span className='rounded-full border border-border bg-card-solid px-3 py-1 text-xs text-muted'>
-                  Remote-first collaboration
+                  React, Node.js, APIs & data
                 </span>
               </div>
             </div>
@@ -1149,43 +1178,43 @@ export default function Home() {
           <Section
             id='why'
             title='Why me'
-            subtitle='Proof points that show how I deliver in remote, high-impact roles.'
+            subtitle='Proof points that show how I deliver across product, backend, frontend, data, and AI workflows.'
           >
             <div className='stats-grid grid gap-4 md:grid-cols-2'>
               <StatCard
                 tone='violet'
                 icon={Users}
                 title='Experience'
-                value='8+ years'
-                description='Building scalable, user-centric products and internal platforms for startups and enterprise.'
+                value='10+ years'
+                description='Building scalable customer products, internal platforms, and data-heavy business workflows.'
               />
               <StatCard
                 tone='emerald'
                 icon={Building2}
-                title='Remote-first'
-                value='4+ years'
-                description='Extensive experience shipping reliably with distributed teams across time zones (async-friendly).'
+                title='Full-stack ownership'
+                value='End-to-end'
+                description='Comfortable owning features across UI, APIs, data flows, integrations, and production feedback.'
               />
               <StatCard
                 tone='sky'
                 icon={GraduationCap}
-                title='Mentorship'
-                value='Team growth'
-                description='Mentored junior engineers, reviewed PRs, and helped shape coding standards and architecture decisions.'
+                title='GenAI direction'
+                value='AI products'
+                description='Built AI knowledge and developer tools around grounded outputs, semantic recall, and useful workflows.'
               />
               <StatCard
                 tone='violet'
                 icon={Layers3}
                 title='Architecture'
-                value='Scalable UI'
-                description='Strong focus on maintainable component systems, predictable state, and clean patterns that scale.'
+                value='Scalable systems'
+                description='Strong focus on clean boundaries, maintainable components, predictable state, and practical API contracts.'
               />
               <StatCard
                 tone='amber'
                 icon={ShieldCheck}
                 title='Security & stability'
                 value='Production ready'
-                description='ZTNA, auth flows, and real-world hardening for stable, maintainable UI systems.'
+                description='ZTNA, auth flows, secure product UX, and real-world hardening for stable systems.'
               />
               <StatCard
                 tone='emerald'
@@ -1199,14 +1228,14 @@ export default function Home() {
                 icon={Gauge}
                 title='Performance mindset'
                 value='Fast UX'
-                description='Smooth interactions via architecture decisions, profiling, and iterative refinement.'
+                description='Smooth interactions and reliable product behavior through profiling, architecture, and iterative refinement.'
               />
               <StatCard
                 tone='amber'
                 icon={MonitorSmartphone}
                 title='Multi-platform'
                 value='Web + Desktop'
-                description='Built shared UI foundations across web apps and an Electron desktop client (non-production).'
+                description='Built web apps, admin systems, CLIs, desktop tooling, and API-backed operational platforms.'
               />
             </div>
           </Section>
@@ -1286,7 +1315,7 @@ export default function Home() {
           <Section
             id='projects'
             title='Projects'
-            subtitle='A curated selection. Some projects are private; I can share details on request.'
+            subtitle='A curated selection across full-stack products, AI tooling, enterprise systems, and high-traffic platforms.'
           >
             <div className='project-grid grid gap-4 md:grid-cols-2'>
               {projects.map((p, idx) => (
@@ -1433,9 +1462,9 @@ export default function Home() {
                 Let’s build something great.
               </h2>
               <p className='mt-3 max-w-2xl text-sm leading-7 text-muted'>
-                If you’re hiring for a Senior Software Engineer who can own
-                complex UI systems, ship reliably in remote teams, and keep
-                quality high as the product scales, I’d love to talk.
+                If you’re hiring for a full-stack developer who can own product
+                features end-to-end, build practical GenAI workflows, and ship
+                reliably in remote teams, I’d love to talk.
               </p>
               <div className='mt-6 flex flex-col gap-3 sm:flex-row'>
                 <ButtonLink href={`mailto:${profile.email}`}>

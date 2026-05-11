@@ -1,6 +1,6 @@
 # Awais Ali — Portfolio
 
-Senior Software Engineer (Remote-first) with 8+ years of experience building scalable, user-centric web applications with React, TypeScript, and modern frontend architecture.
+Senior Software Engineer (Remote-first) with 10+ years of experience building scalable, user-centric web applications with React, TypeScript, and modern frontend architecture.
 
 ## 🔗 Links
 

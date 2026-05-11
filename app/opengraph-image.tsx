@@ -55,7 +55,7 @@ export default function OpenGraphImage() {
           Awais Ali
         </div>
         <div style={{ fontSize: 34, opacity: 0.92 }}>
-          Senior Software Engineer
+          Senior Full Stack & GenAI Developer
         </div>
         <div
           style={{
@@ -65,7 +65,14 @@ export default function OpenGraphImage() {
             marginTop: 8,
           }}
         >
-          {['React', 'TypeScript', 'Next.js', 'Node.js'].map((t) => (
+          {[
+            'React',
+            'TypeScript',
+            'Node.js',
+            'Next.js',
+            'GenAI',
+            'POS/Payments',
+          ].map((t) => (
             <div
               key={t}
               style={{

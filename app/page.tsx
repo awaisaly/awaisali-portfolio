@@ -193,7 +193,7 @@ const experience: Experience[] = [
   {
     role: 'Development Team Lead',
     company: 'Incline Artificial Intelligence',
-    companyHref: 'https://incline-ai.com/',
+    companyHref: 'https://www.linkedin.com/company/incline-artificial-intelligence',
     period: 'Jun 2018 – Jan 2020',
     tone: 'amber' as const,
     bullets: [

@@ -69,6 +69,15 @@ type Skill = {
   note?: string;
 };
 
+type Experience = {
+  role: string;
+  company: string;
+  companyHref?: string;
+  period: string;
+  tone: 'violet' | 'emerald' | 'sky' | 'amber' | 'rose';
+  bullets: string[];
+};
+
 const skills: Skill[] = [
   { label: 'React', icon: Layers3 },
   { label: 'TypeScript', icon: Code2 },
@@ -121,7 +130,19 @@ const skills: Skill[] = [
   { label: 'ASP.NET', icon: Code2, note: 'Working knowledge' },
 ];
 
-const experience = [
+const experience: Experience[] = [
+  {
+    role: 'Software Engineer',
+    company: 'HATO',
+    companyHref: 'https://www.hato.lighting/',
+    period: 'Jul 2026 – Present',
+    tone: 'sky',
+    bullets: [
+      'Developing and maintaining HLM Pro, an Electron-based application for intelligent lighting management across controlled-environment facilities including poultry sheds, dairy farms, and fish farms.',
+      'Building a web-based management dashboard that enables customers to remotely monitor, configure, and control their HLM Pro installations in real time.',
+      'Designing and developing internal GIS-powered dashboards for customer and lead management, with map-based visualization for sales and support teams to track installations and manage opportunities.',
+    ],
+  },
   {
     role: 'Creator',
     company: 'Knowvio',
@@ -136,7 +157,7 @@ const experience = [
   {
     role: 'Senior Software Engineer',
     company: 'Next Order',
-    period: 'Feb 2022 – Present',
+    period: 'Feb 2022 – Jan 2026',
     tone: 'emerald' as const,
     bullets: [
       'Built and maintained large-scale customer-facing online ordering platforms and operations tooling.',
@@ -1289,7 +1310,19 @@ export default function Home() {
                           {job.company ? (
                             <span className='font-medium text-muted'>
                               {' '}
-                              — {job.company}
+                              —{' '}
+                              {job.companyHref ? (
+                                <a
+                                  href={job.companyHref}
+                                  target='_blank'
+                                  rel='noopener noreferrer'
+                                  className='underline decoration-border underline-offset-4 transition hover:text-foreground hover:decoration-foreground'
+                                >
+                                  {job.company}
+                                </a>
+                              ) : (
+                                job.company
+                              )}
                             </span>
                           ) : null}
                         </h3>

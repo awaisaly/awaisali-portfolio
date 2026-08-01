@@ -69,13 +69,21 @@ type Skill = {
   note?: string;
 };
 
+type ExperienceBullet =
+  | string
+  | {
+      role: string;
+      company: string;
+      companyHref: string;
+    };
+
 type Experience = {
   role: string;
   company: string;
   companyHref?: string;
   period: string;
   tone: 'violet' | 'emerald' | 'sky' | 'amber' | 'rose';
-  bullets: string[];
+  bullets: ExperienceBullet[];
 };
 
 const skills: Skill[] = [
@@ -146,6 +154,7 @@ const experience: Experience[] = [
   {
     role: 'Creator',
     company: 'Knowvio',
+    companyHref: 'https://knowvio.awaisali.net/',
     period: 'Mar 2026 – Present',
     tone: 'violet' as const,
     bullets: [
@@ -157,6 +166,7 @@ const experience: Experience[] = [
   {
     role: 'Senior Software Engineer',
     company: 'Next Order',
+    companyHref: 'https://nextorder.com/',
     period: 'Feb 2022 – Jan 2026',
     tone: 'emerald' as const,
     bullets: [
@@ -170,6 +180,7 @@ const experience: Experience[] = [
   {
     role: 'Senior Software Engineer',
     company: 'Emumba',
+    companyHref: 'https://emumba.com/',
     period: 'Jan 2020 – Feb 2022',
     tone: 'violet' as const,
     bullets: [
@@ -182,6 +193,7 @@ const experience: Experience[] = [
   {
     role: 'Development Team Lead',
     company: 'Incline Artificial Intelligence',
+    companyHref: 'https://incline-ai.com/',
     period: 'Jun 2018 – Jan 2020',
     tone: 'amber' as const,
     bullets: [
@@ -193,6 +205,7 @@ const experience: Experience[] = [
   {
     role: 'Software Developer',
     company: 'Burqstream Technologies',
+    companyHref: 'https://www.linkedin.com/company/burqstream-technologies/',
     period: 'Apr 2017 – May 2018',
     tone: 'sky' as const,
     bullets: [
@@ -206,9 +219,21 @@ const experience: Experience[] = [
     period: 'Aug 2015 – Apr 2017',
     tone: 'rose' as const,
     bullets: [
-      'SAP / IT Executive — Toyota Garden Motors',
-      'Full-Stack Web Developer — Pakistan Testing Service',
-      'SQA Engineer — Altair Technologies (Jadoo TV)',
+      {
+        role: 'SAP / IT Executive',
+        company: 'Toyota Garden Motors',
+        companyHref: 'https://toyotagarden.com/',
+      },
+      {
+        role: 'Full-Stack Web Developer',
+        company: 'Pakistan Testing Service',
+        companyHref: 'https://www.pts.org.pk/',
+      },
+      {
+        role: 'SQA Engineer',
+        company: 'Altair Technologies (Jadoo TV)',
+        companyHref: 'https://www.linkedin.com/company/jadootv-inc/',
+      },
     ],
   },
 ];
@@ -1338,12 +1363,32 @@ export default function Home() {
                     </p>
                   </div>
                   <ul className='mt-4 grid gap-2 text-sm leading-6 text-muted'>
-                    {job.bullets.map((b) => (
-                      <li key={b} className='flex gap-2'>
-                        <span className='mt-2 h-1.5 w-1.5 flex-none rounded-full bg-foreground/70' />
-                        <span>{b}</span>
-                      </li>
-                    ))}
+                    {job.bullets.map((b) => {
+                      const key =
+                        typeof b === 'string' ? b : `${b.role}-${b.company}`;
+                      return (
+                        <li key={key} className='flex gap-2'>
+                          <span className='mt-2 h-1.5 w-1.5 flex-none rounded-full bg-foreground/70' />
+                          <span>
+                            {typeof b === 'string' ? (
+                              b
+                            ) : (
+                              <>
+                                {b.role} —{' '}
+                                <a
+                                  href={b.companyHref}
+                                  target='_blank'
+                                  rel='noopener noreferrer'
+                                  className='font-medium text-foreground underline decoration-border underline-offset-4 transition hover:decoration-foreground'
+                                >
+                                  {b.company}
+                                </a>
+                              </>
+                            )}
+                          </span>
+                        </li>
+                      );
+                    })}
                   </ul>
                 </article>
               ))}

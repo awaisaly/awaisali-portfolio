@@ -1,12 +1,14 @@
+import { readFile } from 'node:fs/promises';
+import { join } from 'node:path';
 import { ImageResponse } from 'next/og';
 
 export const runtime = 'nodejs';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
-export default function OpenGraphImage() {
-  const siteUrl =
-    process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.awaisali.net';
+export default async function OpenGraphImage() {
+  const portrait = await readFile(join(process.cwd(), 'public/awais.png'));
+  const portraitSrc = `data:image/png;base64,${portrait.toString('base64')}`;
 
   return new ImageResponse(
     <div
@@ -36,8 +38,10 @@ export default function OpenGraphImage() {
       />
       <div style={{ display: 'flex', gap: 16, alignItems: 'center' }}>
         <img
-          src={`${siteUrl}/awais.png`}
+          src={portraitSrc}
           alt='Awais Ali'
+          width={56}
+          height={56}
           style={{
             width: 56,
             height: 56,

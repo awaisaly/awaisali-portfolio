@@ -1,794 +1,415 @@
 import Image from 'next/image';
+import Link from 'next/link';
+import type { CSSProperties } from 'react';
 import {
-  GitHubMark,
-  KnowvioMark,
-  LinkedInMark,
-  NpmMark,
-} from './components/BrandIcons';
-import { ThemeToggleClient } from './components/ThemeToggleClient';
-import {
+  Activity,
   ArrowUpRight,
-  Briefcase,
-  Building2,
-  Code2,
-  CreditCard,
-  Database,
+  Bot,
+  CalendarDays,
+  ClipboardList,
+  Drone,
   FileText,
-  Gauge,
-  GitBranch,
-  GraduationCap,
-  Layers3,
-  Link as LinkIcon,
-  Link2Off,
+  Grid3x3,
   Mail,
-  MapPin,
-  Menu,
-  MonitorSmartphone,
-  Network,
-  Phone,
-  ShieldCheck,
-  Users,
-  X,
+  ScanFace,
+  Terminal,
+  Tv,
+  Wrench,
 } from 'lucide-react';
-
-const navItems = [
-  { href: '#about', label: 'About' },
-  { href: '#why', label: 'Why me' },
-  { href: '#skills', label: 'Skills' },
-  { href: '#experience', label: 'Experience' },
-  { href: '#projects', label: 'Projects' },
-  { href: '#open-source', label: 'Open Source' },
-  { href: '#education', label: 'Education' },
-] as const;
-
-type LinkIconName = 'link' | 'github' | 'npm' | 'knowvio';
-type Link = { label: string; href: string; icon?: LinkIconName };
-
-type Project = {
-  title: string;
-  description: string;
-  highlights: string[];
-  stack: string[];
-  links?: Link[];
-  tone?: 'violet' | 'emerald' | 'sky' | 'amber' | 'rose';
-};
-
-const profile = {
-  name: 'Awais Ali',
-  role: 'Senior Software Engineer',
-  location: 'Islamabad, Pakistan',
-  email: 'awaisaly93@gmail.com',
-  phone: '+92 332 061 7887',
-  linkedin: 'https://www.linkedin.com/in/awaisaly',
-  github: 'https://github.com/awaisaly',
-};
-
-type Skill = {
-  label: string;
-  icon: React.ComponentType<{ className?: string }>;
-  note?: string;
-};
-
-type ExperienceBullet =
-  | string
-  | {
-      role: string;
-      company: string;
-      companyHref: string;
-    };
-
-type Experience = {
-  role: string;
-  company: string;
-  companyHref?: string;
-  period: string;
-  tone: 'violet' | 'emerald' | 'sky' | 'amber' | 'rose';
-  bullets: ExperienceBullet[];
-};
-
-const skills: Skill[] = [
-  { label: 'React', icon: Layers3 },
-  { label: 'TypeScript', icon: Code2 },
-  { label: 'Next.js', icon: MonitorSmartphone },
-  {
-    label: 'Node.js',
-    icon: Code2,
-    note: 'Backend APIs, CLIs, developer tools',
-  },
-  {
-    label: 'GenAI products',
-    icon: Network,
-    note: 'Grounded AI, context workflows, agent tooling',
-  },
-  {
-    label: 'LLM app patterns',
-    icon: Network,
-    note: 'Citation-backed answers, semantic recall, prompt flows',
-  },
-  {
-    label: 'RAG pipelines',
-    icon: Database,
-    note: 'Source ingestion, grounding, citations, retrieval',
-  },
-  { label: 'REST APIs', icon: Network },
-  { label: 'PostgreSQL', icon: Database },
-  { label: 'MongoDB', icon: Database },
-  { label: 'Redux', icon: Layers3 },
-  { label: 'Hooks', icon: Gauge },
-  { label: 'Context API', icon: Network },
-  {
-    label: 'Electron',
-    icon: MonitorSmartphone,
-    note: 'Familiarity (non-production)',
-  },
-  {
-    label: 'JWT & Auth',
-    icon: ShieldCheck,
-    note: 'JWT, sessions, secure flows',
-  },
-  {
-    label: 'Payments',
-    icon: CreditCard,
-    note: 'Stripe, Adyen, POS & payment flows',
-  },
-  { label: 'Git', icon: GitBranch, note: 'Branching, PR reviews, workflows' },
-  { label: 'MySQL / SQL Server', icon: Database },
-  { label: 'Firebase', icon: ShieldCheck },
-  { label: 'Python Flask', icon: Code2, note: 'Working knowledge' },
-  { label: 'ASP.NET', icon: Code2, note: 'Working knowledge' },
-];
-
-const experience: Experience[] = [
-  {
-    role: 'Software Engineer',
-    company: 'HATO',
-    companyHref: 'https://www.hato.lighting/',
-    period: 'Jul 2026 – Present',
-    tone: 'sky',
-    bullets: [
-      'Developing and maintaining HLM Pro, an Electron-based application for intelligent lighting management across controlled-environment facilities including poultry sheds, dairy farms, and fish farms.',
-      'Building a web-based management dashboard that enables customers to remotely monitor, configure, and control their HLM Pro installations in real time.',
-      'Designing and developing internal GIS-powered dashboards for customer and lead management, with map-based visualization for sales and support teams to track installations and manage opportunities.',
-    ],
-  },
-  {
-    role: 'Creator',
-    company: 'Knowvio',
-    companyHref: 'https://knowvio.awaisali.net/',
-    period: 'Mar 2026 – Present',
-    tone: 'violet' as const,
-    bullets: [
-      'Built and launched a GenAI knowledge workspace focused on grounded, citation-backed outputs.',
-      'Designed full-stack, context-first workflows that connect URLs, PDFs, images, videos, and text on a single visual board.',
-      'Shaped product direction, AI UX, and execution for fast iteration during beta.',
-    ],
-  },
-  {
-    role: 'Senior Software Engineer',
-    company: 'Next Order',
-    companyHref: 'https://nextorder.com/',
-    period: 'Feb 2022 – Jan 2026',
-    tone: 'emerald' as const,
-    bullets: [
-      'Built and maintained large-scale customer-facing online ordering platforms and operations tooling.',
-      'Implemented complex menu structures, modifiers, vouchers, loyalty programs, and Stripe/Adyen payment flows.',
-      'Worked on restaurant POS systems: kiosks, split payments, dine-in layouts, and multi-device workflows.',
-      'Enhanced admin panels for order management, reporting, shifts, and operational settings across API-driven workflows.',
-      'Collaborated asynchronously with cross-functional remote teams on production systems.',
-    ],
-  },
-  {
-    role: 'Senior Software Engineer',
-    company: 'Emumba',
-    companyHref: 'https://emumba.com/',
-    period: 'Jan 2020 – Feb 2022',
-    tone: 'violet' as const,
-    bullets: [
-      'Led product development for a Zero Trust Network Access (ZTNA) application (Web + Electron).',
-      'Contributed to Polarr (20M+ users) focusing on UI components and performance.',
-      'Built enterprise tools including an ETL + analytics platform with complex data-source and reporting workflows.',
-      'Mentored engineers and contributed to architecture decisions and coding standards.',
-    ],
-  },
-  {
-    role: 'Development Team Lead',
-    company: 'Incline Artificial Intelligence',
-    companyHref: 'https://www.linkedin.com/company/incline-artificial-intelligence',
-    period: 'Jun 2018 – Jan 2020',
-    tone: 'amber' as const,
-    bullets: [
-      'Led full-stack delivery with React, Python Flask APIs, MongoDB, and PostgreSQL across enterprise systems.',
-      'Delivered surveillance, ERP, LMS, and drone-management platforms with data-heavy operational workflows.',
-      'Established scalable architecture and consistent coding standards across projects.',
-    ],
-  },
-  {
-    role: 'Software Developer',
-    company: 'Burqstream Technologies',
-    companyHref: 'https://www.linkedin.com/company/burqstream-technologies/',
-    period: 'Apr 2017 – May 2018',
-    tone: 'sky' as const,
-    bullets: [
-      'Developed desktop and web applications including image-analysis tools for environmental monitoring.',
-      'Built reporting portals and dashboards using PHP and .NET technologies.',
-    ],
-  },
-  {
-    role: 'Software Developer & SQA Engineer',
-    company: 'Early Career Roles',
-    period: 'Aug 2015 – Apr 2017',
-    tone: 'rose' as const,
-    bullets: [
-      {
-        role: 'SAP / IT Executive',
-        company: 'Toyota Garden Motors',
-        companyHref: 'https://toyotagarden.com/',
-      },
-      {
-        role: 'Full-Stack Web Developer',
-        company: 'Pakistan Testing Service',
-        companyHref: 'https://www.pts.org.pk/',
-      },
-      {
-        role: 'SQA Engineer',
-        company: 'Altair Technologies (Jadoo TV)',
-        companyHref: 'https://www.linkedin.com/company/jadootv-inc/',
-      },
-    ],
-  },
-];
+import { ArchiveSection, type ArchiveItem } from './components/ArchiveSection';
+import { Banner } from './components/Banner';
+import { ConnectLinks } from './components/ConnectLinks';
+import { GitHubMark, LinkedInMark } from './components/BrandIcons';
+import { Dock } from './components/Dock';
+import { AfterHours } from './components/AfterHours';
+import { ProjectCard, type Project } from './components/ProjectCard';
+import { ProjectCarousel } from './components/ProjectCarousel';
+import { DotGridPreview, KnowvioPreview, TerminalPreview } from './components/ProjectPreviews';
+import { profile } from './profile';
 
 const projects: Project[] = [
   {
-    title: 'Knowvio — Premium Knowledge Workspace',
+    name: 'Knowvio',
+    kind: 'GenAI SaaS',
     description:
-      'Built and launched Knowvio: a GenAI workspace that helps users ask, cite, and recall knowledge with confidence.',
-    tone: 'violet',
-    highlights: [
-      'Role: Creator of Knowvio',
-      'Connects URLs, PDFs, images, videos, and text into a visual knowledge graph',
-      'Enables citation-backed chat, semantic recall, and reusable decision outputs',
-      'Combines product strategy, AI UX, and full-stack execution',
-    ],
-    stack: [
-      'GenAI product',
-      'Full-stack execution',
-      'AI knowledge workflows',
-      'Grounded answers',
-      'Context graph',
-    ],
+      'A visual canvas that turns URLs, PDFs, videos and notes into citation-backed answers you can trace and reuse.',
+    accent: '#6366f1',
+    icon: (
+      <Image src='/icons/knowvio.svg' alt='' width={44} height={44} className='h-11 w-11' />
+    ),
+    preview: <KnowvioPreview />,
+    links: [{ label: 'Website', href: 'https://knowvio.awaisali.net/' }],
+  },
+  {
+    name: 'Explain My Error',
+    kind: 'AI CLI',
+    description:
+      'Pipe any error into it and get a plain-English explanation with a ranked fix plan, right in your terminal.',
+    accent: '#f97316',
+    icon: <AppIcon className='bg-gradient-to-br from-rose-500 to-orange-400'><Terminal className='h-5 w-5' /></AppIcon>,
+    preview: (
+      <TerminalPreview
+        title='~/app — zsh'
+        lines={[
+          { kind: 'command', text: 'npm test 2>&1 | explain-my-error' },
+          { kind: 'output', text: "✖ TypeError: Cannot read properties of undefined (reading 'map')", tone: 'error' },
+          { kind: 'output', text: '' },
+          { kind: 'output', text: 'What happened', tone: 'heading' },
+          { kind: 'output', text: '  `users` is undefined on first render, so .map() fails.' },
+          { kind: 'output', text: 'Fix plan', tone: 'heading' },
+          { kind: 'output', text: '  1. const users = data?.users ?? []', tone: 'ok' },
+          { kind: 'output', text: '  2. Render a loading state until data resolves', tone: 'ok' },
+        ]}
+      />
+    ),
     links: [
-      {
-        label: 'Knowvio',
-        href: 'https://knowvio.awaisali.net/',
-        icon: 'knowvio',
-      },
+      { label: 'npm', href: 'https://www.npmjs.com/package/explain-my-error' },
+      { label: 'GitHub', href: 'https://github.com/awaisaly/explain-my-error' },
     ],
   },
   {
-    title: 'Restaurant Ordering & POS Systems',
+    name: 'Mini Coding Agent',
+    kind: 'AI agent',
     description:
-      'High-traffic full-stack ordering, payments, POS flows, and admin reporting for restaurant operations.',
-    tone: 'emerald',
-    highlights: [
-      'Complex menu + modifier architecture, vouchers, loyalty programs',
-      'Stripe/Adyen payments, split payments, kiosk workflows',
-      'API-driven operational tooling: shifts, reports, settings, order management',
-    ],
-    stack: [
-      'React',
-      'TypeScript',
-      'REST APIs',
-      'Stripe',
-      'Adyen',
-      'POS integrations',
-    ],
+      'A tiny coding agent that discovers Agent Skills, loads only the ones a prompt needs, and runs them on Claude.',
+    accent: '#8b5cf6',
+    icon: <AppIcon className='bg-gradient-to-br from-violet-500 to-indigo-500'><Bot className='h-5 w-5' /></AppIcon>,
+    preview: (
+      <TerminalPreview
+        title='mini-coding-agent'
+        lines={[
+          { kind: 'command', text: 'mini-coding-agent "add dark mode to the navbar"' },
+          { kind: 'output', text: '◇ discovered 14 skills' },
+          { kind: 'output', text: '◇ routing → frontend-ui, tailwind', tone: 'accent' },
+          { kind: 'output', text: '◇ loaded 2 skills into context' },
+          { kind: 'output', text: '● claude  editing src/components/Navbar.tsx', tone: 'heading' },
+          { kind: 'output', text: '● claude  editing src/styles/theme.css', tone: 'heading' },
+          { kind: 'output', text: '✓ done in 6 steps', tone: 'ok' },
+        ]}
+      />
+    ),
+    links: [{ label: 'GitHub', href: 'https://github.com/awaisaly/mini-coding-agent' }],
+  },
+  {
+    name: 'Lumidot',
+    kind: 'Open-source contribution',
+    description:
+      'Rebuilt the dot-grid loader around one generic pattern resolver, so it renders any rows × cols grid, not just 3 × 3.',
+    accent: '#06b6d4',
+    icon: <AppIcon className='bg-gradient-to-br from-cyan-500 to-emerald-400'><Grid3x3 className='h-5 w-5' /></AppIcon>,
+    preview: <DotGridPreview />,
     links: [
-      {
-        label: 'Next Order Website',
-        href: 'https://nextorder.com/',
-        icon: 'link',
-      },
-    ],
-  },
-  {
-    title: 'Polarr Photo Editor (20M+ users)',
-    description:
-      'UI components and performance improvements for a high-scale photo editing experience.',
-    tone: 'violet',
-    highlights: [
-      'Component-driven UI architecture with React + Redux',
-      'Performance-focused iteration on key interaction flows',
-      'Collaboration within a large production codebase',
-    ],
-    stack: ['React', 'Redux', 'WebGL (basics)'],
-    links: [
-      {
-        label: 'Polarr Website',
-        href: 'https://www.polarr.com/',
-        icon: 'link',
-      },
-    ],
-  },
-  {
-    title: 'ZTNA Security Application (Web + Electron)',
-    description:
-      'Zero Trust Network Access client built with React/TypeScript delivered across web and desktop.',
-    tone: 'amber',
-    highlights: [
-      'Shared UI foundations across Web and Electron Desktop',
-      'Security-focused UX for authentication and access workflows',
-      'Stable release cadence and production hardening',
-    ],
-    stack: ['React', 'TypeScript', 'Electron'],
-    links: [
-      {
-        label: 'ZTNA by Extreme Networks',
-        href: 'https://www.extremenetworks.com/resources/blogs/what-is-universal-ztna',
-        icon: 'link',
-      },
-    ],
-  },
-  {
-    title: 'COVID-19 Awareness Dashboard (Volunteer)',
-    description:
-      'A global COVID-19 dashboard focused on clear visualization, accessibility, and guidance.',
-    tone: 'sky',
-    highlights: [
-      'Readable, accessible visualizations for non-technical users',
-      'Public health guidelines and statistics presentation',
-      'Information architecture optimized for clarity',
-    ],
-    stack: ['React', 'Data visualization'],
-  },
-  {
-    title: 'Data Workbench for Aera Technologies',
-    description:
-      'An ETL + analytics tool that extracts, maps, and analyzes data from multiple sources (SAP, Oracle, MSSQL, MySQL) for business teams.',
-    tone: 'violet',
-    highlights: [
-      'Complex data-source configuration and mapping workflows',
-      'Reusable UI patterns with React + Redux for large forms and tables',
-      'Designed for enterprise-scale datasets and reporting needs',
-    ],
-    stack: ['React', 'Redux', 'ETL', 'Analytics', 'Enterprise UI'],
-    links: [
-      {
-        label: 'Aera Data Workbench',
-        href: 'https://www.aeratechnology.com/data-workbench/',
-        icon: 'link',
-      },
-    ],
-  },
-  {
-    title: 'I-Resource Management System',
-    description:
-      'Employee management platform with Leave Management plus HR and Finance modules for internal operations.',
-    tone: 'emerald',
-    highlights: [
-      'Role-based workflows for employees, HR, and finance stakeholders',
-      'Leave approvals, status tracking, and operational reporting',
-      'UI integrated with RESTful APIs for real-time data updates',
-    ],
-    stack: ['React', 'Redux', 'REST APIs (.NET)', 'PostgreSQL', 'HR/Finance'],
-  },
-  {
-    title: 'Surveillance System',
-    description:
-      'Security solution for attendance and monitoring using facial detection and recognition for indoor/outdoor environments.',
-    tone: 'sky',
-    highlights: [
-      'Operational dashboards for monitoring and event review',
-      'Responsive UI for live feeds and structured metadata',
-      'Integrated with Python Flask APIs and MongoDB (NoSQL)',
-    ],
-    stack: ['React', 'Redux', 'Python Flask', 'MongoDB', 'Security'],
-  },
-  {
-    title: 'Drone Configurator (Smart Self-Flying Drone)',
-    description:
-      'Web portal to configure and operate an autonomous drone: deliveries, rescue, surveillance, and remote-controlled movement.',
-    tone: 'amber',
-    highlights: [
-      'Mission/task configuration UI with validation and state flows',
-      'Real-time operational controls and telemetry-style views',
-      'Integrated with Python Flask APIs and MongoDB (NoSQL)',
-    ],
-    stack: ['React', 'Redux', 'Python Flask', 'MongoDB', 'Autonomy'],
-  },
-  {
-    title: 'ERP for Recruitment',
-    description:
-      'Recruitment lifecycle management system from registration through exams, trade allocation, and passing out.',
-    tone: 'rose',
-    highlights: [
-      'Multi-step candidate workflows with audit-friendly history',
-      'Admin tooling for allocations, schedules, and progress tracking',
-      'Integrated with Python Flask APIs and PostgreSQL',
-    ],
-    stack: ['React', 'Redux', 'Python Flask', 'PostgreSQL', 'ERP'],
-  },
-  {
-    title: 'IntelliSky Studio',
-    description:
-      'Desktop application to compute vegetation/health indices from sensor imagery (e.g., Parrot Sequoia, SlantRange) to assess greenery.',
-    tone: 'sky',
-    highlights: [
-      'Sensor image processing workflows with results visualization',
-      'Desktop UX focused on precision, speed, and repeatability',
-      'Built with C# (WPF) for rich desktop tooling',
-    ],
-    stack: ['C#', 'WPF', 'Desktop', 'Image indices', 'Sensors'],
-    links: [
-      {
-        label: 'IntelliSky Studio Demo Video (YouTube)',
-        href: 'https://www.youtube.com/watch?v=CZ2wxPG-uZI',
-      },
-    ],
-  },
-  {
-    title: 'VASI Web Portal',
-    description:
-      'Reporting portal for TV advertisement detection pipelines, enabling visualization and analysis of processed broadcast data.',
-    tone: 'emerald',
-    highlights: [
-      'Dashboard-style reporting with filters and exportable views',
-      'UI built on a Metronic-based design system',
-      'Integrated reporting on top of live-channel processing output',
-    ],
-    stack: ['PHP (CodeIgniter)', 'HTML', 'CSS', 'JavaScript', 'jQuery'],
-  },
-  {
-    title: 'Reports Tool (Internal)',
-    description:
-      'An internal utility to manage and view Crystal Reports across departments with role-based permissions.',
-    tone: 'amber',
-    highlights: [
-      'Admin panel for departments, reports, and user access control',
-      'Multiple permission levels (admin, manager, end-user)',
-      'Desktop-friendly UX for fast report retrieval',
-    ],
-    stack: ['C#', 'WPF', 'SQL', 'Crystal Reports', 'PowerPoint'],
-  },
-  {
-    title: 'Maintenance Reminder System (MRS)',
-    description:
-      'Customer follow-up system for maintenance reminders based on service history, integrated with SAP Business One.',
-    tone: 'violet',
-    highlights: [
-      'Reminder scheduling and customer history-driven workflows',
-      'Reporting views for service teams and management',
-      'Integrated with SAP DI API and internal databases',
-    ],
-    stack: ['C#', 'WPF', 'SQL', 'Crystal Reports', 'SAP DI API'],
-  },
-];
-
-const openSourceContributions: Project[] = [
-  {
-    title: 'Explain My Error — AI debugging CLI',
-    description:
-      'A CLI that turns confusing programming errors into clear fixes directly in the terminal, with practical remediation steps and explanations.',
-    tone: 'emerald',
-    highlights: [
-      'Provides plain-English explanations, likely causes, ranked fix plans, and ELI5 output',
-      'Supports interactive mode, inline explanations, JSON mode, and piped input',
-      'Quick install: npm i -g explain-my-error',
-      'Context-aware debugging via stack/code/framework/runtime flags and an Agent Skill integration',
-    ],
-    stack: [
-      'Node.js',
-      'TypeScript',
-      'CLI',
-      'AI tooling',
-      'Developer Experience',
-    ],
-    links: [
-      {
-        label: 'explain-my-error',
-        href: 'https://github.com/awaisaly/explain-my-error',
-        icon: 'github',
-      },
-      {
-        label: 'explain-my-error (npm package)',
-        href: 'https://www.npmjs.com/package/explain-my-error',
-        icon: 'npm',
-      },
-    ],
-  },
-  {
-    title: 'Mini Coding Agent',
-    description:
-      'A tiny Node.js CLI that implements the Agent Skills concept: discovers skills, routes prompts, and runs Claude via Anthropic’s API.',
-    tone: 'rose',
-    highlights: [
-      'Discovers local skills and loads only relevant ones into context for each prompt',
-      'Supports community skills and auto-synced external skills via sparse git checkouts',
-      'Includes interactive mode and practical CLI flags (model, max-steps, verbose)',
-    ],
-    stack: ['Node.js', 'JavaScript', 'CLI', 'Agent Skills', 'Anthropic API'],
-    links: [
-      {
-        label: 'mini-coding-agent',
-        href: 'https://github.com/awaisaly/mini-coding-agent',
-        icon: 'github',
-      },
-    ],
-  },
-  {
-    title: 'lumidot — Dot-grid loading animations for React',
-    description:
-      'Dot-grid loading animations for React. Tiny, flexible, beautiful. 36 patterns & 20 colors.',
-    tone: 'sky',
-    highlights: [
-      'The library originally focused on a fixed 3×3 grid; I shipped a feature to make it fully configurable as an x×y dot grid (rows/cols).',
-      'Introduced a single generic resolver: getPatternFrames(pattern, rows, cols, direction)',
-      'Updated the playground with rows/cols controls',
-    ],
-    stack: ['TypeScript', 'React', 'Animations', 'Open Source', 'npm package'],
-    links: [
-      {
-        label: 'lumidot',
-        href: 'https://github.com/awaisaly/lumidot',
-        icon: 'github',
-      },
-      {
-        label: 'lumidot (npm package)',
-        href: 'https://www.npmjs.com/package/lumidot',
-        icon: 'npm',
-      },
+      { label: 'npm', href: 'https://www.npmjs.com/package/lumidot' },
+      { label: 'GitHub', href: 'https://github.com/awaisaly/lumidot' },
     ],
   },
 ];
 
-function ExternalLink({
-  href,
-  children,
-}: {
+// Alternating wide/narrow columns on desktop: 7+5, then 5+7.
+const bentoSpans = ['lg:col-span-7', 'lg:col-span-5', 'lg:col-span-5', 'lg:col-span-7'];
+
+type Role = {
+  period: string;
+  role: string;
+  company: string;
   href: string;
-  children: React.ReactNode;
-}) {
+  summary: string;
+  logo?: string;
+};
+
+const experience: Role[] = [
+  {
+    period: '2026 — Now',
+    role: 'Software Engineer',
+    company: 'HATO',
+    href: 'https://www.hato.lighting/',
+    logo: '/logos/hato.svg',
+    summary:
+      'Building HLM Pro, an Electron app for intelligent lighting in poultry, dairy and fish farms, plus its real-time customer dashboard and GIS-powered sales tools.',
+  },
+  {
+    period: '2026 — Now',
+    role: 'Creator',
+    company: 'Knowvio',
+    href: 'https://knowvio.awaisali.net/',
+    logo: '/icons/knowvio.svg',
+    summary:
+      'Designed, built and shipped a full-stack GenAI product: RAG pipeline, LLM orchestration, Postgres and a visual canvas.',
+  },
+  {
+    period: '2022 — 2026',
+    role: 'Senior Software Engineer',
+    company: 'Next Order',
+    href: 'https://nextorder.com/',
+    logo: '/logos/nextorder.svg',
+    summary:
+      'Online ordering, POS and Stripe/Adyen payments for restaurants, plus a KYC onboarding portal and an AI-assisted installments portal.',
+  },
+  {
+    period: '2020 — 2022',
+    role: 'Senior Software Engineer',
+    company: 'Emumba',
+    href: 'https://emumba.com/',
+    logo: '/logos/emumba.jpg',
+    summary:
+      'Led the ZTNA security client on web and Electron, and worked on Polarr (20M+ users) and Aera’s data workbench.',
+  },
+  {
+    period: '2018 — 2020',
+    role: 'Development Team Lead',
+    company: 'Incline AI',
+    href: 'https://www.linkedin.com/company/incline-artificial-intelligence',
+    logo: '/logos/incline.jpg',
+    summary:
+      'Led delivery of surveillance, ERP, LMS and drone platforms on React with Flask and .NET APIs.',
+  },
+  {
+    period: '2017 — 2018',
+    role: 'Software Developer',
+    company: 'Burqstream',
+    href: 'https://www.linkedin.com/company/burqstream-technologies/',
+    logo: '/logos/burqstream.jpg',
+    summary: 'Desktop image-analysis tools in C# and WPF, and reporting portals in PHP.',
+  },
+];
+
+const earlyCareer: Role[] = [
+  {
+    period: '2015 — 2017',
+    role: 'SAP / IT Executive',
+    company: 'Toyota Garden Motors',
+    href: 'https://toyotagarden.com/',
+    logo: '/logos/toyota-garden.jpg',
+    summary:
+      'Ran SAP Business One for the dealership and built a C# service-reminder app on top of it.',
+  },
+  {
+    period: '2015 — 2017',
+    role: 'Full-Stack Web Developer',
+    company: 'Pakistan Testing Service',
+    href: 'https://www.pts.org.pk/',
+    logo: '/logos/pts.jpg',
+    summary: 'Built and maintained web applications for one of Pakistan’s national testing services.',
+  },
+  {
+    period: '2015 — 2017',
+    role: 'SQA Engineer',
+    company: 'Altair Technologies (Jadoo TV)',
+    href: 'https://www.linkedin.com/company/jadootv-inc/',
+    summary: 'Tested releases of the JadooTV streaming apps and set-top boxes.',
+  },
+];
+
+const archive: ArchiveItem[] = [
+  {
+    name: 'Restaurant Ordering & POS',
+    kind: 'Next Order',
+    description: 'Online ordering, kiosks, split payments and admin reporting for live restaurants.',
+    link: { label: 'Website', href: 'https://nextorder.com/' },
+    image: '/archive/nextorder.jpg',
+    hue: '#3b82f6',
+  },
+  {
+    name: 'Polarr',
+    kind: 'Photo editor',
+    description: 'UI components and performance work for an editor used by 20M+ people.',
+    link: { label: 'Website', href: 'https://www.polarr.com/' },
+    image: '/archive/polarr.jpg',
+    hue: '#a78bfa',
+  },
+  {
+    name: 'ZTNA Client',
+    kind: 'Security',
+    description: 'Zero Trust access client shipped on the web and as an Electron desktop app.',
+    link: {
+      label: 'Website',
+      href: 'https://www.extremenetworks.com/resources/blogs/what-is-universal-ztna',
+    },
+    image: '/archive/ztna.jpg',
+    hue: '#2563eb',
+  },
+  {
+    name: 'Aera Data Workbench',
+    kind: 'ETL platform',
+    description: 'Pulls data from SAP, Oracle, MSSQL and MySQL into one place for business analytics.',
+    link: { label: 'Website', href: 'https://www.aeratechnology.com/data-workbench/' },
+    image: '/archive/aera.jpg',
+    hue: '#0ea5e9',
+  },
+  {
+    name: 'Surveillance System',
+    kind: 'Computer vision',
+    description: 'Attendance and monitoring dashboards powered by facial detection and recognition.',
+    icon: <ScanFace aria-hidden='true' />,
+    hue: '#10b981',
+  },
+  {
+    name: 'Drone Configurator',
+    kind: 'Autonomy',
+    description: 'Plan missions and control a self-flying drone for delivery, rescue and surveillance.',
+    icon: <Drone aria-hidden='true' />,
+    hue: '#f59e0b',
+  },
+  {
+    name: 'IntelliSky Studio',
+    kind: 'Desktop app',
+    description: 'Computes vegetation health indices from multispectral drone sensor imagery.',
+    link: { label: 'Demo', href: 'https://www.youtube.com/watch?v=CZ2wxPG-uZI' },
+    image: '/archive/intellisky.jpg',
+    hue: '#f97316',
+  },
+  {
+    name: 'Recruitment ERP',
+    kind: 'Enterprise',
+    description: 'Runs the full recruit lifecycle, from registration and exams to trade allocation.',
+    icon: <ClipboardList aria-hidden='true' />,
+    hue: '#6366f1',
+  },
+  {
+    name: 'I-Resource',
+    kind: 'HR platform',
+    description: 'Leave management with HR and finance modules for internal operations.',
+    icon: <CalendarDays aria-hidden='true' />,
+    hue: '#ec4899',
+  },
+  {
+    name: 'VASI Portal',
+    kind: 'Reporting',
+    description: 'Reports on TV advertisements detected live across broadcast channels.',
+    icon: <Tv aria-hidden='true' />,
+    hue: '#8b5cf6',
+  },
+  {
+    name: 'COVID-19 Dashboard',
+    kind: 'Volunteer',
+    description: 'Global case trends and health guidance, designed for non-technical readers.',
+    icon: <Activity aria-hidden='true' />,
+    hue: '#ef4444',
+  },
+  {
+    name: 'Maintenance Reminders',
+    kind: 'SAP integration',
+    description: 'Service follow-ups driven by customer history, integrated with SAP Business One.',
+    icon: <Wrench aria-hidden='true' />,
+    hue: '#14b8a6',
+  },
+];
+
+const stack: { group: string; core: string[]; also?: string[] }[] = [
+  {
+    group: 'Frontend',
+    core: ['React', 'TypeScript', 'Next.js', 'Tailwind CSS', 'Redux'],
+    also: ['GIS maps', 'WebGL'],
+  },
+  {
+    group: 'Backend',
+    core: ['Node.js', 'PostgreSQL', 'MongoDB', 'REST APIs'],
+    also: ['Python Flask', 'ASP.NET', 'MySQL', 'SQL Server'],
+  },
+  { group: 'AI', core: ['Claude API', 'OpenAI API', 'RAG pipelines', 'Agent Skills'] },
+  { group: 'Desktop', core: ['Electron'], also: ['C# / WPF'] },
+  { group: 'Payments', core: ['Stripe', 'Adyen'] },
+  { group: 'Tooling', core: ['Git', 'Firebase', 'JWT auth'], also: ['Jira'] },
+];
+
+function delay(ms: number) {
+  return { '--delay': `${ms}ms` } as CSSProperties;
+}
+
+function AppIcon({ className, children }: { className: string; children: React.ReactNode }) {
   return (
-    <a
-      href={href}
-      target='_blank'
-      rel='noopener noreferrer'
-      className='font-medium text-foreground underline decoration-border underline-offset-4 hover:decoration-foreground'
+    <span
+      className={`grid h-11 w-11 place-items-center rounded-[12px] text-white shadow-inner ring-1 ring-white/10 ${className}`}
     >
       {children}
-    </a>
-  );
-}
-
-function LinkChip({
-  href,
-  label,
-  icon = 'link',
-}: {
-  href: string;
-  label: string;
-  icon?: LinkIconName;
-}) {
-  const Icon =
-    icon === 'github'
-      ? GitHubMark
-      : icon === 'npm'
-        ? NpmMark
-        : icon === 'knowvio'
-          ? KnowvioMark
-          : LinkIcon;
-  const iconSizeClass = icon === 'npm' ? 'h-3.5 w-3.5' : 'h-4 w-4';
-
-  return (
-    <a
-      href={href}
-      target='_blank'
-      rel='noopener noreferrer'
-      className='link-chip group inline-flex max-w-full items-center gap-2 rounded-full border border-border bg-card-solid px-3 py-1.5 text-sm font-medium text-foreground shadow-sm transition hover:-translate-y-0.5 hover:bg-card focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/60 motion-safe:duration-200 sm:backdrop-blur'
-    >
-      <Icon
-        className={`link-chip-icon ${iconSizeClass} flex-none text-muted`}
-        aria-hidden='true'
-      />
-      <span className='truncate'>{label}</span>
-      <ArrowUpRight
-        className='link-chip-arrow h-4 w-4 flex-none text-muted'
-        aria-hidden='true'
-      />
-    </a>
-  );
-}
-
-function LinkChipPlaceholder({ label }: { label: string }) {
-  return (
-    <span className='inline-flex max-w-full items-center gap-2 rounded-full border border-border bg-background px-3 py-1.5 text-sm text-muted'>
-      <Link2Off className='h-4 w-4 flex-none' aria-hidden='true' />
-      <span className='truncate'>{label}</span>
     </span>
   );
 }
 
-function ButtonLink({
-  href,
-  children,
-  variant = 'primary',
-  download,
-  newTab,
-}: {
-  href: string;
-  children: React.ReactNode;
-  variant?: 'primary' | 'ghost';
-  download?: boolean;
-  newTab?: boolean;
-}) {
-  const base =
-    'inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium transition focus-visible:outline-none';
-  const styles =
-    variant === 'primary'
-      ? 'bg-primary text-primary-foreground shadow-sm hover:opacity-95'
-      : 'border border-border bg-card text-foreground hover:bg-card-solid';
-
-  return (
-    <a
-      href={href}
-      download={download}
-      target={newTab ? '_blank' : undefined}
-      rel={newTab ? 'noopener noreferrer' : undefined}
-      className={[base, styles].join(' ')}
-    >
-      {children}
-    </a>
-  );
-}
-
-function Tone({
-  tone,
-}: {
-  tone: 'violet' | 'emerald' | 'sky' | 'amber' | 'rose';
-}) {
-  const cls =
-    tone === 'emerald'
-      ? 'bg-emerald-500/65'
-      : tone === 'sky'
-        ? 'bg-sky-500/65'
-        : tone === 'amber'
-          ? 'bg-amber-500/65'
-          : tone === 'rose'
-            ? 'bg-rose-500/65'
-            : 'bg-violet-500/65';
-
+function Logo({ name, src }: { name: string; src?: string }) {
+  if (src) {
+    return (
+      <Image
+        src={src}
+        alt=''
+        width={22}
+        height={22}
+        className='h-[22px] w-[22px] shrink-0 rounded-[6px] bg-white object-contain ring-1 ring-black/5 dark:ring-white/10'
+      />
+    );
+  }
   return (
     <span
       aria-hidden='true'
-      className={[
-        'pointer-events-none absolute inset-x-6 top-0 h-1 rounded-b-full',
-        cls,
-      ].join(' ')}
-    />
+      className='grid h-[22px] w-[22px] shrink-0 place-items-center rounded-[6px] border border-line bg-surface-2 text-[11px] font-semibold text-muted'>
+      {name[0]}
+    </span>
   );
 }
 
-function StatCard({
-  icon: Icon,
-  title,
-  value,
-  description,
-  tone = 'violet',
-}: {
-  icon: React.ComponentType<{ className?: string }>;
-  title: string;
-  value: string;
-  description: string;
-  tone?: 'violet' | 'emerald' | 'sky' | 'amber' | 'rose';
-}) {
-  const ring =
-    tone === 'emerald'
-      ? 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-300'
-      : tone === 'sky'
-        ? 'bg-sky-500/10 text-sky-600 dark:text-sky-300'
-        : tone === 'amber'
-          ? 'bg-amber-500/10 text-amber-700 dark:text-amber-300'
-          : tone === 'rose'
-            ? 'bg-rose-500/10 text-rose-600 dark:text-rose-300'
-            : 'bg-violet-500/10 text-violet-600 dark:text-violet-300';
-
+function SectionHeading({ title, subtitle }: { title: string; subtitle?: string }) {
   return (
-    <div className='group signature-surface relative overflow-hidden rounded-2xl border border-border bg-card p-4 shadow-sm transition hover:-translate-y-1 hover:shadow-md motion-safe:duration-200 sm:p-6 sm:backdrop-blur'>
-      <Tone tone={tone} />
-      <div className='relative'>
-        <div className='flex items-center justify-between gap-4'>
-          <div>
-            <p className='text-xs font-semibold uppercase tracking-wide text-muted'>
-              {title}
-            </p>
-            <p className='mt-2 text-3xl font-semibold tracking-tight'>
-              {value}
-            </p>
-          </div>
-          <div
-            className={[
-              'grid h-11 w-11 place-items-center rounded-2xl border border-border transition motion-safe:duration-200 group-hover:scale-110 group-hover:-rotate-3',
-              ring,
-            ].join(' ')}
+    <>
+      <h2 className='font-serif text-[26px] leading-none'>{title}</h2>
+      {subtitle ? <p className='mt-3 text-[15px] leading-7 text-muted'>{subtitle}</p> : null}
+    </>
+  );
+}
+
+function RoleDetails({ role }: { role: Role }) {
+  return (
+    <div>
+      <h3 className='flex items-center gap-3 text-[15px] leading-6'>
+        <Logo name={role.company} src={role.logo} />
+        <span>
+          {role.role} at{' '}
+          <a
+            href={role.href}
+            target='_blank'
+            rel='noopener noreferrer'
+            className='underline decoration-foreground/25 underline-offset-[5px] transition hover:decoration-foreground'
           >
-            <Icon className='h-5 w-5' aria-hidden='true' />
-          </div>
-        </div>
-        <p className='mt-3 text-sm leading-6 text-muted'>{description}</p>
-      </div>
+            {role.company}
+          </a>
+          <ArrowUpRight className='ml-0.5 inline h-3.5 w-3.5 text-subtle' aria-hidden='true' />
+        </span>
+      </h3>
+      <p className='mt-1.5 text-[14px] leading-6 text-muted sm:pl-[34px]'>
+        {role.summary}
+      </p>
     </div>
   );
 }
 
-function SkillCard({ skill }: { skill: Skill }) {
-  const Icon = skill.icon;
+function RoleRow({ role }: { role: Role }) {
   return (
-    <div className='group signature-surface relative overflow-hidden rounded-2xl border border-border bg-card p-4 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md motion-safe:duration-200 sm:p-5 sm:backdrop-blur'>
-      <div className='pointer-events-none absolute inset-0 rounded-2xl border border-primary/25 opacity-0 transition group-hover:opacity-100 motion-safe:duration-200' />
-      <div className='relative flex items-start gap-3'>
-        <div className='grid h-10 w-10 place-items-center rounded-2xl border border-border bg-card-solid'>
-          <Icon
-            className='h-5 w-5 text-muted transition group-hover:text-foreground motion-safe:duration-200'
-            aria-hidden='true'
-          />
-        </div>
-        <div className='min-w-0'>
-          <p className='text-sm font-semibold tracking-tight'>{skill.label}</p>
-          {skill.note ? (
-            <p className='mt-1 text-xs leading-5 text-muted'>{skill.note}</p>
-          ) : (
-            <p className='mt-1 text-xs leading-5 text-muted'>
-              Production experience
-            </p>
-          )}
-        </div>
-      </div>
-    </div>
+    <li className='grid gap-1.5 sm:grid-cols-[124px_1fr] sm:gap-6'>
+      <span className='text-[15px] tabular-nums text-muted'>{role.period}</span>
+      <RoleDetails role={role} />
+    </li>
   );
 }
 
-function Section({
-  id,
-  title,
-  subtitle,
-  children,
-}: {
-  id: string;
-  title: string;
-  subtitle?: string;
-  children: React.ReactNode;
-}) {
+function EarlyCareer({ roles }: { roles: Role[] }) {
   return (
-    <section id={id} className='scroll-mt-24'>
-      <div className='sticky top-16 z-30 -mx-3 mb-5 border-b border-border/60 bg-background/85 px-3 py-2 sm:-mx-6 sm:px-6 sm:backdrop-blur'>
-        <div className='flex items-center gap-3'>
-          <span aria-hidden='true' className='h-px flex-1 bg-border/70' />
-          <div className='pointer-events-auto inline-flex max-w-full items-center gap-2 rounded-full border border-border bg-card/90 px-4 py-2 shadow-sm sm:backdrop-blur'>
-            <span
-              aria-hidden='true'
-              className='section-dot h-2 w-2 flex-none rounded-full bg-primary/60'
-            />
-            <h2 className='truncate text-sm font-semibold tracking-tight sm:text-base'>
-              {title}
-            </h2>
-          </div>
-          <span aria-hidden='true' className='h-px flex-1 bg-border/70' />
-        </div>
+    <li className='grid gap-1.5 sm:grid-cols-[124px_1fr] sm:gap-6'>
+      <span className='text-[15px] tabular-nums text-muted'>2015 — 2017</span>
+      <div>
+        <p className='text-[15px] leading-6'>Early career roles</p>
+        <ul className='mt-4 space-y-5'>
+          {roles.map((role) => (
+            <li key={role.company}>
+              <RoleDetails role={role} />
+            </li>
+          ))}
+        </ul>
       </div>
-
-      {subtitle ? (
-        <p className='mb-6 max-w-2xl text-sm leading-6 text-muted'>
-          {subtitle}
-        </p>
-      ) : null}
-      {children}
-    </section>
+    </li>
   );
 }
 
 export default function Home() {
-  const siteUrl =
-    process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.awaisali.net';
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.awaisali.net';
 
   const personJsonLd = {
     '@context': 'https://schema.org',
@@ -801,13 +422,18 @@ export default function Home() {
     description:
       'Senior Software Engineer with 10+ years of experience building scalable web applications, API-driven platforms, payments/POS systems, and AI-powered developer and knowledge tools.',
     url: `${siteUrl}/`,
-    image: `${siteUrl}/Awais-Ali.png`,
+    image: `${siteUrl}/awais.png`,
     email: `mailto:${profile.email}`,
     telephone: profile.phone,
     address: {
       '@type': 'PostalAddress',
       addressLocality: 'Islamabad',
       addressCountry: 'PK',
+    },
+    worksFor: {
+      '@type': 'Organization',
+      name: 'HATO',
+      url: 'https://www.hato.lighting/',
     },
     alumniOf: {
       '@type': 'CollegeOrUniversity',
@@ -818,7 +444,7 @@ export default function Home() {
         addressCountry: 'PK',
       },
     },
-    knowsLanguage: ['English', 'Urdu'],
+    knowsLanguage: ['English', 'Urdu', 'Saraiki'],
     sameAs: [profile.linkedin, profile.github],
     knowsAbout: [
       'Remote work',
@@ -830,8 +456,10 @@ export default function Home() {
       'Node.js',
       'Backend development',
       'Full-stack development',
+      'Electron',
       'Generative AI',
       'LLM applications',
+      'RAG pipelines',
       'AI developer tools',
       'Semantic search',
       'Citation-backed AI',
@@ -864,10 +492,7 @@ export default function Home() {
     name: 'Awais Ali — Portfolio',
     url: `${siteUrl}/`,
     inLanguage: 'en',
-    author: {
-      '@type': 'Person',
-      '@id': `${siteUrl}/#person`,
-    },
+    author: { '@type': 'Person', '@id': `${siteUrl}/#person` },
   };
 
   const webPageJsonLd = {
@@ -879,10 +504,7 @@ export default function Home() {
     isPartOf: { '@id': `${siteUrl}/#website` },
     about: { '@id': `${siteUrl}/#person` },
     inLanguage: 'en',
-    primaryImageOfPage: {
-      '@type': 'ImageObject',
-      url: `${siteUrl}/Awais-Ali.png`,
-    },
+    primaryImageOfPage: { '@type': 'ImageObject', url: `${siteUrl}/awais.png` },
   };
 
   const openSourceJsonLd = [
@@ -936,10 +558,7 @@ export default function Home() {
   };
 
   return (
-    <div
-      id='intro'
-      className='relative min-h-screen bg-background text-foreground'
-    >
+    <>
       <script
         type='application/ld+json'
         dangerouslySetInnerHTML={{
@@ -952,661 +571,232 @@ export default function Home() {
           ]),
         }}
       />
-      <a
-        href='#content'
-        className='sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 rounded-full border border-border bg-card px-4 py-2 text-sm shadow-sm sm:backdrop-blur'
-      >
-        Skip to content
-      </a>
+      <main className='mx-auto w-full max-w-[640px] px-5 pb-40 pt-6 sm:pt-12'>
+        <Banner className='enter' />
 
-      <header className='fixed left-0 top-0 z-40 w-full border-b border-border bg-card/90 backdrop-blur-none md:sticky md:top-0 md:bg-card/70 md:backdrop-blur'>
-        <div className='mx-auto flex h-16 w-full max-w-6xl items-center justify-between gap-4 px-3 sm:px-6'>
-          <a
-            href='#intro'
-            className='group flex min-w-0 items-center gap-3 rounded-2xl px-1.5 py-1 transition hover:bg-card-solid'
-            aria-label='Go to intro section'
-          >
-            <span className='relative h-9 w-9 flex-none overflow-hidden rounded-2xl border border-border bg-card-solid shadow-sm'>
+        <header id='content' className='mt-10 scroll-mt-8'>
+          <div className='flex items-center justify-between gap-6'>
+            <div>
+              <h1 className='enter-blur font-serif text-[42px] leading-none sm:text-[48px]' style={delay(120)}>
+                {profile.name}
+              </h1>
+              <p className='enter-blur mt-3 text-[15px] text-muted' style={delay(240)}>
+                {profile.tagline}
+              </p>
+            </div>
+            <a
+              href={profile.linkedin}
+              target='_blank'
+              rel='noopener noreferrer'
+              aria-label='Awais Ali on LinkedIn'
+              className='enter group relative shrink-0'
+              style={delay(200)}
+            >
               <Image
-                src='/Awais-Ali.png'
-                alt='Awais Ali'
-                width={72}
-                height={72}
-                className='relative h-full w-full object-cover'
+                src='/awais.png'
+                alt='Portrait of Awais Ali'
+                width={176}
+                height={176}
+                priority
+                className='h-[76px] w-[76px] rounded-full object-cover transition duration-500 group-hover:scale-[1.04] sm:h-[88px] sm:w-[88px]'
               />
-            </span>
-
-            <span className='min-w-0'>
-              <span className='flex items-center gap-2'>
-                <span className='truncate text-sm font-semibold tracking-tight'>
-                  {profile.name}
-                </span>
+              <span className='absolute -bottom-0.5 -right-0.5 grid h-7 w-7 place-items-center rounded-full bg-dock text-dock-foreground ring-4 ring-background transition-transform duration-300 group-hover:rotate-45'>
+                <ArrowUpRight className='h-3.5 w-3.5' aria-hidden='true' />
               </span>
-              <span className='block truncate text-xs text-muted'>
-                {profile.role}
-              </span>
-            </span>
-          </a>
-
-          <nav className='hidden items-center gap-5 text-sm text-muted md:flex'>
-            {navItems.map((item) => (
-              <a
-                key={item.href}
-                className='relative transition-colors motion-safe:duration-200 hover:text-foreground after:absolute after:-bottom-1 after:left-0 after:h-px after:w-0 after:bg-foreground after:transition-all after:duration-200 hover:after:w-full'
-                href={item.href}
-              >
-                {item.label}
-              </a>
-            ))}
-          </nav>
-
-          <div className='flex items-center gap-3'>
-            <a
-              href='/CV-Awais-Ali.pdf'
-              className='hidden items-center justify-center gap-2 rounded-full border border-border bg-card px-2.5 py-2 text-sm font-medium text-foreground shadow-sm backdrop-blur transition hover:bg-card-solid sm:px-5 sm:py-2.5 md:inline-flex'
-              aria-label='View resume (PDF)'
-              target='_blank'
-              rel='noopener noreferrer'
-            >
-              <FileText className='h-4 w-4' aria-hidden='true' />
-              <span className='hidden sm:inline'>Resume</span>
-            </a>
-            <ThemeToggleClient />
-
-            {/* JS-free mobile nav (reduces shipped JS on mobile for better PageSpeed). */}
-            <a
-              href='#mobile-menu'
-              aria-label='Open menu'
-              className='inline-flex items-center justify-center rounded-full border border-border bg-card p-2 shadow-sm transition hover:bg-card-solid focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/60 md:hidden'
-            >
-              <Menu className='h-4 w-4' aria-hidden='true' />
-            </a>
-          </div>
-        </div>
-      </header>
-      <div className='h-16 md:hidden' aria-hidden='true' />
-
-      {/* :target-driven mobile menu overlay (no React state/effects needed). */}
-      <div
-        id='mobile-menu'
-        className='fixed inset-0 z-50 hidden md:hidden target:block'
-      >
-        <a
-          href='#'
-          aria-label='Close menu'
-          className='absolute inset-0 bg-black/40'
-        />
-        <div className='absolute left-1/2 top-3 w-[min(92vw,420px)] -translate-x-1/2 overflow-hidden rounded-3xl border border-border bg-card p-4 shadow-xl sm:backdrop-blur'>
-          <div className='flex items-center justify-between gap-3 px-1'>
-            <p className='text-sm font-semibold tracking-tight'>Menu</p>
-            <a
-              href='#'
-              aria-label='Close menu'
-              className='inline-flex items-center justify-center rounded-full border border-border bg-card-solid p-2 transition hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/60'
-            >
-              <X className='h-4 w-4' aria-hidden='true' />
             </a>
           </div>
 
-          <div className='mt-3 grid gap-1'>
-            {navItems.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                className='rounded-2xl border border-transparent px-3 py-3 text-sm font-medium text-foreground transition hover:border-border hover:bg-card-solid'
-              >
-                {item.label}
-              </a>
-            ))}
-          </div>
-
-          <div className='mt-3 border-t border-border pt-3'>
-            <a
-              href='/CV-Awais-Ali.pdf'
-              target='_blank'
-              rel='noopener noreferrer'
-              className='inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-primary px-4 py-3 text-sm font-medium text-primary-foreground shadow-sm transition hover:opacity-95'
-            >
-              <FileText className='h-4 w-4' aria-hidden='true' />
-              Resume (PDF)
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <main
-        id='content'
-        className='mx-auto w-full max-w-6xl px-3 py-10 sm:px-6 sm:py-16'
-      >
-        <div className='signature-surface relative overflow-hidden rounded-3xl border border-border bg-card p-6 shadow-sm sm:p-12 sm:backdrop-blur'>
-          <div className='pointer-events-none absolute inset-x-8 top-0 h-px bg-border/80' />
-
-          <div className='relative'>
-            <div className='flex flex-col gap-8 md:flex-row md:items-end md:justify-between'>
-              <div className='max-w-2xl'>
-                <div className='mt-1 flex items-center gap-4 animate-enter-2'>
-                  <div className='relative h-14 w-14 overflow-hidden rounded-2xl border border-border bg-card-solid shadow-sm'>
-                    <Image
-                      src='/Awais-Ali.png'
-                      alt='Awais Ali'
-                      width={112}
-                      height={112}
-                      fetchPriority='high'
-                      loading='eager'
-                      sizes='112px'
-                      className='relative h-full w-full object-cover'
-                      priority
-                    />
-                  </div>
-                  <h1 className='text-4xl font-semibold tracking-tight sm:text-5xl'>
-                    <span>{profile.name}</span>
-                  </h1>
-                </div>
-                <p className='mt-3 text-lg text-muted animate-enter-3'>
-                  {profile.role}
-                </p>
-                <div className='mt-3 animate-enter-4'>
-                  <span className='interactive-pill inline-flex items-center gap-2 rounded-full border border-border bg-card-solid px-3 py-1.5 text-sm text-muted'>
-                    <MapPin className='h-4 w-4' aria-hidden='true' />
-                    <span className='truncate font-medium text-foreground'>
-                      {profile.location}
-                    </span>
-                  </span>
-                </div>
-                <p className='mt-6 max-w-xl text-sm leading-7 text-muted animate-enter-5'>
-                  Senior Software Engineer with 10+ years of experience building
-                  scalable web apps, API-driven platforms, payment/POS systems,
-                  and AI-powered developer tools. I bring strong
-                  React/TypeScript depth, practical backend experience, and a
-                  product mindset for shipping useful AI workflows.
-                </p>
-                <div className='mt-7 flex flex-col gap-3 sm:flex-row animate-enter-5'>
-                  <ButtonLink href={`mailto:${profile.email}`}>
-                    <Mail className='h-4 w-4' aria-hidden='true' />
-                    Let’s talk
-                    <ArrowUpRight className='h-4 w-4' aria-hidden='true' />
-                  </ButtonLink>
-                  <ButtonLink href='/CV-Awais-Ali.pdf' variant='ghost' newTab>
-                    <FileText className='h-4 w-4' aria-hidden='true' />
-                    View Resume (PDF)
-                  </ButtonLink>
-                </div>
-              </div>
-
-              <div className='w-full max-w-md rounded-2xl border border-border bg-card-solid p-4 shadow-sm animate-enter-3 sm:p-5'>
-                <p className='text-xs font-semibold uppercase tracking-wide text-muted'>
-                  Contact
-                </p>
-                <div className='mt-4 grid gap-2 text-sm'>
-                  <a
-                    className='flex min-w-0 flex-col items-start gap-1 rounded-xl border border-border bg-background px-3 py-2.5 transition hover:bg-card-solid sm:flex-row sm:items-center sm:justify-between sm:gap-3 sm:px-4 sm:py-3'
-                    href={`mailto:${profile.email}`}
-                  >
-                    <span className='flex items-center gap-2 text-muted shrink-0'>
-                      <Mail className='h-4 w-4' aria-hidden='true' />
-                      Email
-                    </span>
-                    <span className='min-w-0 max-w-full truncate font-medium sm:text-right'>
-                      {profile.email}
-                    </span>
-                  </a>
-                  <a
-                    className='flex min-w-0 flex-col items-start gap-1 rounded-xl border border-border bg-background px-3 py-2.5 transition hover:bg-card-solid sm:flex-row sm:items-center sm:justify-between sm:gap-3 sm:px-4 sm:py-3'
-                    href={`tel:${profile.phone.replace(/\s+/g, '')}`}
-                  >
-                    <span className='flex items-center gap-2 text-muted shrink-0'>
-                      <Phone className='h-4 w-4' aria-hidden='true' />
-                      Phone
-                    </span>
-                    <span className='min-w-0 max-w-full truncate font-medium sm:text-right'>
-                      {profile.phone}
-                    </span>
-                  </a>
-                  <div className='grid grid-cols-1 gap-2 pt-2 sm:grid-cols-2'>
-                    <a
-                      className='inline-flex w-full items-center justify-center gap-2 rounded-xl border border-border bg-background px-3 py-2.5 text-sm font-medium transition hover:bg-card-solid sm:px-4 sm:py-3'
-                      href={profile.linkedin}
-                      target='_blank'
-                      rel='noopener noreferrer'
-                    >
-                      <LinkedInMark className='h-4 w-4' />
-                      LinkedIn
-                    </a>
-                    <a
-                      className='inline-flex w-full items-center justify-center gap-2 rounded-xl border border-border bg-background px-3 py-2.5 text-sm font-medium transition hover:bg-card-solid sm:px-4 sm:py-3'
-                      href={profile.github}
-                      target='_blank'
-                      rel='noopener noreferrer'
-                    >
-                      <GitHubMark className='h-4 w-4' />
-                      GitHub
-                    </a>
-                    <a
-                      className='col-span-1 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-3 py-2.5 text-sm font-medium text-primary-foreground shadow-sm transition hover:opacity-95 sm:col-span-2 sm:px-4 sm:py-3'
-                      href='/CV-Awais-Ali.pdf'
-                      target='_blank'
-                      rel='noopener noreferrer'
-                    >
-                      <FileText className='h-4 w-4' aria-hidden='true' />
-                      View Resume (PDF)
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className='mt-14 grid gap-14'>
-          <Section
-            id='about'
-            title='About'
-            subtitle='A quick snapshot of how I work and what I optimize for.'
-          >
-            <div className='grid gap-4 rounded-2xl border border-border bg-card p-4 sm:p-6'>
-              <p className='text-sm leading-7 text-muted'>
-                I build full-stack products that stay maintainable under real
-                product pressure: clear interfaces, predictable state, reliable
-                APIs, and performance that holds up as features grow. Recently,
-                my focus has expanded into GenAI products, grounded knowledge
-                workflows, and developer tools that turn AI into practical user
-                value.
-              </p>
-              <div className='flex flex-wrap gap-2'>
-                <span className='rounded-full border border-border bg-card-solid px-3 py-1 text-xs text-muted'>
-                  Full-stack product engineering
-                </span>
-                <span className='rounded-full border border-border bg-card-solid px-3 py-1 text-xs text-muted'>
-                  GenAI apps & agent tooling
-                </span>
-                <span className='rounded-full border border-border bg-card-solid px-3 py-1 text-xs text-muted'>
-                  React, Node.js, APIs & data
-                </span>
-              </div>
-            </div>
-          </Section>
-
-          <Section
-            id='why'
-            title='Why me'
-            subtitle='Proof points that show how I deliver across product, backend, frontend, data, and AI workflows.'
-          >
-            <div className='stats-grid grid gap-4 md:grid-cols-2'>
-              <StatCard
-                tone='violet'
-                icon={Users}
-                title='Experience'
-                value='10+ years'
-                description='Building scalable customer products, internal platforms, and data-heavy business workflows.'
-              />
-              <StatCard
-                tone='emerald'
-                icon={Building2}
-                title='Full-stack ownership'
-                value='End-to-end'
-                description='Comfortable owning features across UI, APIs, data flows, integrations, and production feedback.'
-              />
-              <StatCard
-                tone='sky'
-                icon={GraduationCap}
-                title='GenAI direction'
-                value='AI products'
-                description='Built AI knowledge and developer tools around grounded outputs, semantic recall, and useful workflows.'
-              />
-              <StatCard
-                tone='violet'
-                icon={Layers3}
-                title='Architecture'
-                value='Scalable systems'
-                description='Strong focus on clean boundaries, maintainable components, predictable state, and practical API contracts.'
-              />
-              <StatCard
-                tone='amber'
-                icon={ShieldCheck}
-                title='Security & stability'
-                value='Production ready'
-                description='ZTNA, auth flows, secure product UX, and real-world hardening for stable systems.'
-              />
-              <StatCard
-                tone='emerald'
-                icon={CreditCard}
-                title='Payments & POS'
-                value='Stripe + Adyen + POS'
-                description='Complex ordering flows, split payments, kiosks, and operational tooling for restaurant workflows.'
-              />
-              <StatCard
-                tone='rose'
-                icon={Gauge}
-                title='Performance mindset'
-                value='Fast UX'
-                description='Smooth interactions and reliable product behavior through profiling, architecture, and iterative refinement.'
-              />
-              <StatCard
-                tone='amber'
-                icon={MonitorSmartphone}
-                title='Multi-platform'
-                value='Web + Desktop'
-                description='Built web apps, admin systems, CLIs, desktop tooling, and API-backed operational platforms.'
-              />
-            </div>
-          </Section>
-
-          <Section
-            id='skills'
-            title='Core skills'
-            subtitle='Tools, frameworks, and practices I use in production.'
-          >
-            <div className='grid gap-3 sm:grid-cols-2 lg:grid-cols-3'>
-              {skills.map((s, idx) => (
-                <div
-                  key={s.label}
-                  className='animate-enter'
-                  style={{ animationDelay: `${Math.min(idx, 8) * 55}ms` }}
-                >
-                  <SkillCard skill={s} />
-                </div>
-              ))}
-            </div>
-          </Section>
-
-          <Section
-            id='experience'
-            title='Professional experience'
-            subtitle='Recent roles, responsibilities, and outcomes.'
-          >
-            <div className='experience-grid grid gap-4'>
-              {experience.map((job, idx) => (
-                <article
-                  key={[job.role, job.company, job.period]
-                    .filter(Boolean)
-                    .join(' | ')}
-                  className='animate-enter signature-surface relative overflow-hidden rounded-2xl border border-border bg-card p-4 shadow-sm transition hover:-translate-y-1 hover:shadow-md motion-safe:duration-200 sm:p-6 sm:backdrop-blur'
-                  style={{ animationDelay: `${Math.min(idx, 8) * 55}ms` }}
-                >
-                  <Tone tone={job.tone} />
-                  <div className='flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between'>
-                    <div className='flex min-w-0 items-start gap-3'>
-                      <span className='mt-0.5 inline-flex h-9 w-9 flex-none items-center justify-center rounded-xl border border-border bg-card-solid text-muted'>
-                        <Briefcase className='h-4 w-4' aria-hidden='true' />
-                      </span>
-                      <div className='min-w-0'>
-                        <h3 className='text-base font-semibold leading-snug tracking-tight wrap-break-word'>
-                          {job.role}
-                          {job.company ? (
-                            <span className='font-medium text-muted'>
-                              {' '}
-                              —{' '}
-                              {job.companyHref ? (
-                                <a
-                                  href={job.companyHref}
-                                  target='_blank'
-                                  rel='noopener noreferrer'
-                                  className='underline decoration-border underline-offset-4 transition hover:text-foreground hover:decoration-foreground'
-                                >
-                                  {job.company}
-                                </a>
-                              ) : (
-                                job.company
-                              )}
-                            </span>
-                          ) : null}
-                        </h3>
-
-                        <p className='mt-1 text-xs text-muted sm:hidden'>
-                          {job.period}
-                        </p>
-                      </div>
-                    </div>
-
-                    <p className='hidden text-sm text-muted sm:block sm:pt-1'>
-                      {job.period}
-                    </p>
-                  </div>
-                  <ul className='mt-4 grid gap-2 text-sm leading-6 text-muted'>
-                    {job.bullets.map((b) => {
-                      const key =
-                        typeof b === 'string' ? b : `${b.role}-${b.company}`;
-                      return (
-                        <li key={key} className='flex gap-2'>
-                          <span className='mt-2 h-1.5 w-1.5 flex-none rounded-full bg-foreground/70' />
-                          <span>
-                            {typeof b === 'string' ? (
-                              b
-                            ) : (
-                              <>
-                                {b.role} —{' '}
-                                <a
-                                  href={b.companyHref}
-                                  target='_blank'
-                                  rel='noopener noreferrer'
-                                  className='font-medium text-foreground underline decoration-border underline-offset-4 transition hover:decoration-foreground'
-                                >
-                                  {b.company}
-                                </a>
-                              </>
-                            )}
-                          </span>
-                        </li>
-                      );
-                    })}
-                  </ul>
-                </article>
-              ))}
-            </div>
-          </Section>
-
-          <Section
-            id='projects'
-            title='Projects'
-            subtitle='A curated selection across full-stack products, AI tooling, enterprise systems, and high-traffic platforms.'
-          >
-            <div className='project-grid grid gap-4 md:grid-cols-2'>
-              {projects.map((p, idx) => (
-                <article
-                  key={p.title}
-                  className='group animate-enter signature-surface relative flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card p-4 shadow-sm transition hover:bg-card-solid hover:-translate-y-1 hover:shadow-md motion-safe:duration-200 sm:p-6 sm:backdrop-blur'
-                  style={{ animationDelay: `${Math.min(idx, 10) * 55}ms` }}
-                >
-                  <Tone tone={p.tone ?? 'violet'} />
-
-                  <div>
-                    <h3 className='text-base font-semibold tracking-tight'>
-                      {p.title}
-                    </h3>
-                    <p className='mt-2 text-sm leading-6 text-muted'>
-                      {p.description}
-                    </p>
-
-                    <ul className='mt-4 grid gap-2 text-sm leading-6 text-muted'>
-                      {p.highlights.map((h) => (
-                        <li key={h} className='flex gap-2'>
-                          <span className='mt-2 h-1.5 w-1.5 flex-none rounded-full bg-foreground/70' />
-                          <span>{h}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <div className='mt-auto pt-6'>
-                    <div className='flex flex-wrap gap-2'>
-                      {p.stack.map((t) => (
-                        <span
-                          key={t}
-                          className='rounded-full border border-border bg-background px-3 py-1 text-xs text-muted'
-                        >
-                          {t}
-                        </span>
-                      ))}
-                    </div>
-
-                    <div className='mt-4 flex flex-wrap gap-2'>
-                      {p.links?.length ? (
-                        p.links.map((l) => (
-                          <LinkChip
-                            key={l.href}
-                            href={l.href}
-                            label={l.label}
-                            icon={l.icon}
-                          />
-                        ))
-                      ) : (
-                        <LinkChipPlaceholder label='No public link yet' />
-                      )}
-                    </div>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </Section>
-
-          <Section
-            id='open-source'
-            title='Open source contributions'
-            subtitle='Public contributions and improvements shipped to open source projects.'
-          >
-            <div className='open-source-grid grid gap-4 md:grid-cols-2'>
-              {openSourceContributions.map((p, idx) => (
-                <article
-                  key={p.title}
-                  className='group animate-enter signature-surface relative flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card p-4 shadow-sm transition hover:bg-card-solid hover:-translate-y-1 hover:shadow-md motion-safe:duration-200 sm:p-6 sm:backdrop-blur'
-                  style={{ animationDelay: `${Math.min(idx, 8) * 55}ms` }}
-                >
-                  <Tone tone={p.tone ?? 'violet'} />
-
-                  <div>
-                    <h3 className='text-base font-semibold tracking-tight'>
-                      {p.title}
-                    </h3>
-                    <p className='mt-2 text-sm leading-6 text-muted'>
-                      {p.description}
-                    </p>
-
-                    <ul className='mt-4 grid gap-2 text-sm leading-6 text-muted'>
-                      {p.highlights.map((h) => (
-                        <li key={h} className='flex gap-2'>
-                          <span className='mt-2 h-1.5 w-1.5 flex-none rounded-full bg-foreground/70' />
-                          <span>{h}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <div className='mt-auto pt-6'>
-                    <div className='flex flex-wrap gap-2'>
-                      {p.stack.map((t) => (
-                        <span
-                          key={t}
-                          className='rounded-full border border-border bg-background px-3 py-1 text-xs text-muted'
-                        >
-                          {t}
-                        </span>
-                      ))}
-                    </div>
-
-                    <div className='mt-4 flex flex-wrap gap-2'>
-                      {p.links?.length ? (
-                        p.links.map((l) => (
-                          <LinkChip
-                            key={l.href}
-                            href={l.href}
-                            label={l.label}
-                            icon={l.icon}
-                          />
-                        ))
-                      ) : (
-                        <LinkChipPlaceholder label='No public link yet' />
-                      )}
-                    </div>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </Section>
-
-          <Section id='education' title='Education'>
-            <div className='rounded-2xl border border-border bg-card p-4 shadow-sm sm:p-6 sm:backdrop-blur'>
-              <h3 className='flex items-center gap-2 text-base font-semibold tracking-tight'>
-                <GraduationCap
-                  className='h-4 w-4 text-muted'
-                  aria-hidden='true'
-                />
-                Bachelor of Software Engineering
-              </h3>
-              <p className='mt-1 text-sm text-muted'>
-                Bahria University, Islamabad • 2011 – 2015
-              </p>
-            </div>
-          </Section>
-
-          <section className='signature-surface relative overflow-hidden rounded-3xl border border-border bg-card p-6 shadow-sm sm:p-10 sm:backdrop-blur'>
-            <div className='pointer-events-none absolute inset-x-10 top-0 h-px bg-border/80' />
-            <div className='relative'>
-              <h2 className='text-2xl font-semibold tracking-tight'>
-                Let’s build something great.
-              </h2>
-              <p className='mt-3 max-w-2xl text-sm leading-7 text-muted'>
-                If you’re hiring for a full-stack developer who can own product
-                features end-to-end, build practical GenAI workflows, and ship
-                reliably in remote teams, I’d love to talk.
-              </p>
-              <div className='mt-6 flex flex-col gap-3 sm:flex-row'>
-                <ButtonLink href={`mailto:${profile.email}`}>
-                  <Mail className='h-4 w-4' aria-hidden='true' />
-                  Email me
-                  <ArrowUpRight className='h-4 w-4' aria-hidden='true' />
-                </ButtonLink>
-                <ButtonLink href={profile.linkedin} variant='ghost' newTab>
-                  <LinkedInMark className='h-4 w-4' />
-                  Connect on LinkedIn
-                  <ArrowUpRight className='h-4 w-4' aria-hidden='true' />
-                </ButtonLink>
-              </div>
-            </div>
-          </section>
-        </div>
-
-        <footer className='mt-14 border-t border-border pt-8 text-sm text-muted'>
-          <div className='flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between'>
-            <p className='text-sm'>
-              © {new Date().getFullYear()} {profile.name}. All rights reserved.
+          <div className='enter mt-10 space-y-4 text-[17px] leading-[1.7]' style={delay(360)}>
+            <p>
+              I build products end to end: the interface, the APIs behind it, and the AI that makes
+              it useful.
             </p>
-            <div className='flex flex-wrap items-center gap-3'>
-              <ExternalLink href={profile.linkedin}>
-                <span className='inline-flex items-center gap-1.5'>
-                  <LinkedInMark className='h-4 w-4' />
-                  LinkedIn
-                </span>
-              </ExternalLink>
-              <ExternalLink href={profile.github}>
-                <span className='inline-flex items-center gap-1.5'>
-                  <GitHubMark className='h-4 w-4' />
-                  GitHub
-                </span>
-              </ExternalLink>
+            <p className='text-muted'>
+              I&apos;m Awais, a software engineer from {profile.location} with 10+ years of shipping
+              web, desktop and AI products. Currently at{' '}
+              <InlineBrand href='https://www.hato.lighting/' label='HATO' logo='/logos/hato.svg' />{' '}
+              building intelligent
+              lighting systems, and growing{' '}
+              <InlineBrand
+                href='https://knowvio.awaisali.net/'
+                label='Knowvio'
+                logo='/icons/knowvio.svg'
+              />{' '}
+              on the side.
+            </p>
+            <p>
+              <Link
+                href='/about'
+                className='inline-flex items-center gap-0.5 underline decoration-foreground/25 underline-offset-[5px] transition hover:decoration-foreground'
+              >
+                More about me
+                <ArrowUpRight className='h-3.5 w-3.5 text-subtle' aria-hidden='true' />
+              </Link>
+            </p>
+          </div>
+
+          <div className='enter mt-8 flex items-center gap-5 text-muted' style={delay(480)}>
+            <SocialIcon href={profile.github} label='GitHub'>
+              <GitHubMark className='h-[18px] w-[18px]' />
+            </SocialIcon>
+            <SocialIcon href={profile.linkedin} label='LinkedIn'>
+              <LinkedInMark className='h-[18px] w-[18px]' />
+            </SocialIcon>
+            <SocialIcon href={`mailto:${profile.email}`} label='Email'>
+              <Mail className='h-[18px] w-[18px]' aria-hidden='true' />
+            </SocialIcon>
+            <SocialIcon href={profile.resume} label='Resume (PDF)'>
+              <FileText className='h-[18px] w-[18px]' aria-hidden='true' />
+            </SocialIcon>
+          </div>
+        </header>
+
+        <section id='work' aria-label="Things I've built" className='mt-24 scroll-mt-24'>
+          <div className='reveal md:hidden'>
+            <ProjectCarousel title="Things I've built">
+              {projects.map((p) => (
+                <ProjectCard
+                  key={p.name}
+                  project={p}
+                  className='w-[min(85vw,460px)] shrink-0 snap-start'
+                  previewClassName='aspect-[16/10]'
+                />
+              ))}
+            </ProjectCarousel>
+          </div>
+
+          {/* Breaks out of the reading column so the bento has room for real previews. */}
+          <div className='hidden md:mx-[calc(50%_-_min(530px,_50vw_-_32px))] md:block'>
+            <h2 className='reveal font-serif text-[26px] leading-none'>Things I&apos;ve built</h2>
+            <div className='mt-8 grid grid-cols-2 gap-4 lg:grid-cols-12'>
+              {projects.map((p, i) => (
+                <ProjectCard
+                  key={p.name}
+                  project={p}
+                  className={`reveal ${bentoSpans[i % bentoSpans.length]}`}
+                  previewClassName='h-[250px] lg:h-[290px]'
+                />
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id='experience' className='reveal mt-24 scroll-mt-24'>
+          <SectionHeading title='Experience' />
+          <ol className='mt-8 space-y-7'>
+            {experience.map((r) => (
+              <RoleRow key={r.company} role={r} />
+            ))}
+            <EarlyCareer roles={earlyCareer} />
+          </ol>
+        </section>
+
+        <section id='archive' className='reveal mt-24 scroll-mt-24'>
+          <ArchiveSection
+            title='Earlier work'
+            subtitle='A decade of client and product work. Most of it is private, all of it shipped.'
+            items={archive}
+          />
+        </section>
+
+        <section id='stack' className='reveal mt-24 scroll-mt-24'>
+          <SectionHeading
+            title='Stack'
+            subtitle='Brighter is what I reach for every day. Dimmer is what I’ve shipped with before.'
+          />
+          <dl className='mt-8 space-y-6'>
+            {stack.map((s) => (
+              <div key={s.group} className='grid gap-2 sm:grid-cols-[124px_1fr] sm:gap-6'>
+                <dt className='text-[15px] text-muted'>{s.group}</dt>
+                <dd className='flex flex-wrap gap-x-4 gap-y-1.5 text-[15px]'>
+                  {s.core.map((t) => (
+                    <span key={t}>{t}</span>
+                  ))}
+                  {s.also?.map((t) => (
+                    <span key={t} className='text-subtle'>
+                      {t}
+                    </span>
+                  ))}
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </section>
+
+        <AfterHours />
+
+        <footer className='reveal mt-28 border-t border-line pt-12'>
+          <h2 className='font-serif text-[32px] leading-tight'>Have something in mind?</h2>
+          <p className='mt-3 max-w-md text-[15px] leading-7 text-muted'>
+            I&apos;m open to full-stack and GenAI roles, remote or hybrid. Email is the fastest way to
+            reach me.
+          </p>
+          <ConnectLinks />
+          <div className='mt-14 flex flex-wrap items-center justify-between gap-3 text-[13px] text-subtle'>
+            <span>
+              © {new Date().getFullYear()} {profile.name} · {profile.location}
+            </span>
+            <span className='flex items-center gap-4'>
+              <Link href='/about' className='transition-colors hover:text-foreground'>
+                About
+              </Link>
+              <Link href='/uses' className='transition-colors hover:text-foreground'>
+                Uses
+              </Link>
               <a
-                className='font-medium text-foreground underline decoration-border underline-offset-4 hover:decoration-foreground'
-                href='/CV-Awais-Ali.pdf'
+                href={profile.resume}
                 target='_blank'
                 rel='noopener noreferrer'
+                className='transition-colors hover:text-foreground'
               >
-                <span className='inline-flex items-center gap-1.5'>
-                  <FileText className='h-4 w-4' aria-hidden='true' />
-                  Resume
-                </span>
+                Resume (PDF)
               </a>
-              <a
-                className='font-medium text-foreground underline decoration-border underline-offset-4 hover:decoration-foreground'
-                href={`mailto:${profile.email}`}
-              >
-                <span className='inline-flex items-center gap-1.5'>
-                  <Mail className='h-4 w-4' aria-hidden='true' />
-                  Email
-                </span>
-              </a>
-            </div>
+            </span>
           </div>
         </footer>
       </main>
-    </div>
+
+      <Dock name={profile.name} role='Software Engineer' email={profile.email} />
+    </>
+  );
+}
+
+function InlineBrand({ href, label, logo }: { href: string; label: string; logo?: string }) {
+  return (
+    <a
+      href={href}
+      target='_blank'
+      rel='noopener noreferrer'
+      className='inline-flex items-baseline gap-1.5 text-foreground underline decoration-foreground/25 underline-offset-[5px] transition hover:decoration-foreground'
+    >
+      <span className='translate-y-[3px] self-center'>
+        <Logo name={label} src={logo} />
+      </span>
+      {label}
+    </a>
+  );
+}
+
+function SocialIcon({
+  href,
+  label,
+  children,
+}: {
+  href: string;
+  label: string;
+  children: React.ReactNode;
+}) {
+  const external = href.startsWith('http') || href.endsWith('.pdf');
+  return (
+    <a
+      href={href}
+      aria-label={label}
+      title={label}
+      target={external ? '_blank' : undefined}
+      rel={external ? 'noopener noreferrer' : undefined}
+      className='transition-colors hover:text-foreground'
+    >
+      {children}
+    </a>
   );
 }

@@ -5,68 +5,48 @@
 
 :root {
   color-scheme: light;
-  /* Global motion control (1 = normal). Lower = snappier, higher = calmer. */
-  --motion-scale: 1;
+  interpolate-size: allow-keywords;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
 
-  /* Base */
-  --background: oklch(0.99 0 0);
-  --foreground: oklch(0.18 0.02 260);
-  --muted: oklch(0.50 0.02 260);
-  --border: color-mix(in oklab, black 10%, transparent);
-
-  /* Surfaces */
-  --card: color-mix(in oklab, white 85%, transparent);
-  --card-solid: oklch(0.985 0 0);
-
-  /* Brand */
-  --primary: oklch(0.62 0.22 265);
-  --primary-foreground: oklch(0.99 0 0);
-  --ring: color-mix(in oklab, var(--primary) 55%, transparent);
-
-  /* Accents */
-  --accent: oklch(0.72 0.18 155);
+  --background: #fafaf9;
+  --foreground: #161616;
+  --muted: #6b6b6b;
+  --subtle: #a8a8a8;
+  --line: rgb(0 0 0 / 0.08);
+  --surface: #ffffff;
+  --surface-2: #f1f1ef;
+  --dock: #161616;
+  --dock-foreground: #f4f4f2;
 }
 
-/* Optional presets: set on <html>, e.g. <html data-motion="subtle"> */
-:root[data-motion="subtle"] {
-  --motion-scale: 1.2;
-}
+.dark {
+  color-scheme: dark;
 
-:root[data-motion="expressive"] {
-  --motion-scale: 0.9;
+  --background: #111111;
+  --foreground: #ededed;
+  --muted: #8c8c8c;
+  --subtle: #555555;
+  --line: rgb(255 255 255 / 0.08);
+  --surface: #161616;
+  --surface-2: #1c1c1c;
+  --dock: #f4f4f2;
+  --dock-foreground: #111111;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-muted: var(--muted);
-  --color-border: var(--border);
-  --color-card: var(--card);
-  --color-card-solid: var(--card-solid);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-ring: var(--ring);
-  --color-accent: var(--accent);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-.dark {
-  color-scheme: dark;
-
-  --background: oklch(0.12 0.02 260);
-  --foreground: oklch(0.96 0.01 260);
-  --muted: oklch(0.74 0.01 260);
-  --border: color-mix(in oklab, white 14%, transparent);
-
-  --card: color-mix(in oklab, black 55%, transparent);
-  --card-solid: oklch(0.16 0.02 260);
-
-  --primary: oklch(0.72 0.18 265);
-  --primary-foreground: oklch(0.14 0.02 260);
-  --ring: color-mix(in oklab, var(--primary) 55%, transparent);
-
-  --accent: oklch(0.76 0.15 155);
+  --color-subtle: var(--subtle);
+  --color-line: var(--line);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-dock: var(--dock);
+  --color-dock-foreground: var(--dock-foreground);
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Roboto, sans-serif;
+  --font-serif: var(--font-instrument-serif), Georgia, serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
 }
 
 html {
@@ -76,356 +56,287 @@ html {
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system,
-    Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  font-family: var(--font-sans);
+  /* Carousels bleed to the viewport edge; never let that create page-level scroll. */
+  overflow-x: clip;
 }
 
 ::selection {
-  background: color-mix(in oklab, var(--foreground) 20%, transparent);
+  background: color-mix(in oklab, var(--foreground) 22%, transparent);
 }
 
-/* Subtle default focus style for keyboard users */
-:where(a, button, [role="button"], input, textarea, select):focus-visible {
-  outline: none;
-  box-shadow: 0 0 0 4px var(--ring);
-  border-radius: 9999px;
+:where(a, button, summary):focus-visible {
+  outline: 2px solid color-mix(in oklab, var(--foreground) 55%, transparent);
+  outline-offset: 3px;
+  border-radius: 6px;
 }
 
-/* --- Design extras (animations + subtle motion) --- */
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
 
-@keyframes enterUp {
+/* ---------- Entrance motion ---------- */
+
+@keyframes fade-up {
   from {
     opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+    transform: translateY(14px);
   }
 }
 
-@keyframes floatSoft {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-4px);
-  }
-}
-
-@keyframes pulseSoft {
-  0%,
-  100% {
-    opacity: 0.65;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.15);
-  }
-}
-
-@keyframes signatureIdle {
-  0%,
-  100% {
-    transform: scaleX(0.42);
-    opacity: 0.45;
-  }
-  50% {
-    transform: scaleX(0.62);
-    opacity: 0.75;
-  }
-}
-
-@keyframes themePop {
+@keyframes blur-in {
   from {
     opacity: 0;
-    transform: translateY(3px) scale(0.92) rotate(-8deg);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1) rotate(0deg);
+    filter: blur(10px);
+    transform: translateY(6px);
   }
 }
 
-.animate-theme-pop {
-  animation:
-    themePop calc(180ms * var(--motion-scale))
-      cubic-bezier(0.2, 0.9, 0.2, 1) both;
-}
-
-@keyframes themeGlow {
-  0% {
-    filter: drop-shadow(0 0 0 rgba(0, 0, 0, 0));
-    transform: scale(0.95);
-  }
-  60% {
-    filter: drop-shadow(0 0 14px rgba(251, 191, 36, 0.55));
-    transform: scale(1.06);
-  }
-  100% {
-    filter: drop-shadow(0 0 0 rgba(0, 0, 0, 0));
-    transform: scale(1);
-  }
-}
-
-@keyframes moonShine {
-  0% {
-    filter: drop-shadow(0 0 0 rgba(0, 0, 0, 0));
-    transform: scale(0.95);
-    opacity: 0.9;
-  }
-  60% {
-    filter: drop-shadow(0 0 14px rgba(255, 255, 255, 0.35));
-    transform: scale(1.06);
-    opacity: 1;
-  }
-  100% {
-    filter: drop-shadow(0 0 0 rgba(0, 0, 0, 0));
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
-.animate-theme-sun {
-  animation:
-    themeGlow calc(240ms * var(--motion-scale))
-      cubic-bezier(0.2, 0.9, 0.2, 1) both;
-}
-
-.animate-theme-moon {
-  animation:
-    moonShine calc(240ms * var(--motion-scale))
-      cubic-bezier(0.2, 0.9, 0.2, 1) both;
-}
-
-@keyframes iconSpin {
+@keyframes dock-in {
   from {
-    transform: rotate(-18deg) scale(0.96);
+    opacity: 0;
+    transform: translateY(28px) scale(0.96);
   }
+}
+
+.enter {
+  animation: fade-up 750ms var(--ease-out) both;
+  animation-delay: var(--delay, 0ms);
+}
+
+.enter-blur {
+  animation: blur-in 1100ms var(--ease-out) both;
+  animation-delay: var(--delay, 0ms);
+}
+
+.dock-enter {
+  animation: dock-in 800ms var(--ease-out) 500ms both;
+}
+
+/* Sections fade up as they scroll into view (scroll-driven, zero JS). */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal {
+      animation: fade-up linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 55%;
+    }
+  }
+}
+
+/* ---------- Marquee ---------- */
+
+@keyframes marquee {
   to {
-    transform: rotate(0deg) scale(1);
+    transform: translateX(-50%);
   }
 }
 
-@keyframes sunHalo {
-  0% {
+.marquee {
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 6%,
+    black 94%,
+    transparent
+  );
+}
+
+.marquee-track {
+  animation: marquee var(--marquee-duration, 80s) linear infinite;
+}
+
+.marquee-track[data-reverse] {
+  animation-direction: reverse;
+}
+
+.marquee:hover .marquee-track,
+.marquee:focus-within .marquee-track {
+  animation-play-state: paused;
+}
+
+/* ---------- Project previews ---------- */
+
+@keyframes caret {
+  50% {
     opacity: 0;
-    transform: scale(0.55);
   }
-  35% {
-    opacity: 0.55;
-    transform: scale(1);
+}
+
+@keyframes type {
+  from {
+    width: 0;
   }
+}
+
+@keyframes line-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+}
+
+@keyframes dot-wave {
+  0%,
   100% {
-    opacity: 0;
-    transform: scale(1.7);
-  }
-}
-
-@keyframes moonTwinkle {
-  0% {
-    opacity: 0;
-    transform: translate(-2px, 2px) scale(0.6) rotate(-8deg);
+    opacity: 0.16;
+    transform: scale(0.62);
   }
   45% {
     opacity: 1;
-    transform: translate(0, 0) scale(1) rotate(0deg);
+    transform: scale(1);
   }
-  100% {
+}
+
+.after-caret {
+  animation: caret 1.05s steps(1) infinite;
+}
+
+.term-type {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  vertical-align: bottom;
+  width: calc(var(--chars) * 1ch);
+  animation: type calc(var(--chars) * 45ms) steps(var(--chars)) var(--delay, 0ms)
+    both;
+}
+
+.term-line {
+  animation: line-in 450ms var(--ease-out) var(--delay, 0ms) both;
+}
+
+.term-caret {
+  animation: caret 1s steps(1) infinite;
+}
+
+.dot-wave {
+  animation: dot-wave 1.8s ease-in-out infinite;
+  animation-delay: var(--delay, 0ms);
+}
+
+/* ---------- Theme toggle ---------- */
+
+@keyframes icon-in {
+  from {
     opacity: 0;
-    transform: translate(2px, -2px) scale(0.8) rotate(8deg);
+    transform: rotate(-90deg) scale(0.6);
   }
 }
 
-.animate-icon-spin {
-  animation:
-    iconSpin calc(220ms * var(--motion-scale))
-      cubic-bezier(0.2, 0.9, 0.2, 1) both;
+.icon-in {
+  animation: icon-in 400ms var(--ease-out) both;
 }
 
-.theme-halo {
-  position: absolute;
-  inset: -6px;
-  border-radius: 9999px;
-  background-color: rgba(251, 191, 36, 0.2);
-  box-shadow: 0 0 0 6px rgba(251, 191, 36, 0.12);
-  animation: sunHalo calc(320ms * var(--motion-scale)) ease-out both;
-  pointer-events: none;
+/* The new theme is revealed as a circle growing from the toggle (see ThemeToggle). */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
 }
 
-.theme-twinkle {
-  position: absolute;
-  right: -2px;
-  top: -2px;
-  width: 10px;
-  height: 10px;
-  background-color: rgba(255, 255, 255, 0.92);
-  border-radius: 9999px;
-  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.35));
-  animation: moonTwinkle calc(360ms * var(--motion-scale)) ease-out both;
-  pointer-events: none;
+::view-transition-new(root) {
+  z-index: 1;
 }
 
-.animate-enter {
-  animation:
-    enterUp calc(480ms * var(--motion-scale))
-      cubic-bezier(0.22, 0.8, 0.2, 1) both;
+.theme-switching *,
+.theme-switching ::before,
+.theme-switching ::after {
+  transition: none !important;
 }
 
-.animate-enter-1 {
-  animation:
-    enterUp calc(480ms * var(--motion-scale))
-      cubic-bezier(0.22, 0.8, 0.2, 1) both;
-  animation-delay: calc(55ms * var(--motion-scale));
-}
-.animate-enter-2 {
-  animation:
-    enterUp calc(480ms * var(--motion-scale))
-      cubic-bezier(0.22, 0.8, 0.2, 1) both;
-  animation-delay: calc(110ms * var(--motion-scale));
-}
-.animate-enter-3 {
-  animation:
-    enterUp calc(480ms * var(--motion-scale))
-      cubic-bezier(0.22, 0.8, 0.2, 1) both;
-  animation-delay: calc(165ms * var(--motion-scale));
-}
-.animate-enter-4 {
-  animation:
-    enterUp calc(480ms * var(--motion-scale))
-      cubic-bezier(0.22, 0.8, 0.2, 1) both;
-  animation-delay: calc(220ms * var(--motion-scale));
-}
-.animate-enter-5 {
-  animation:
-    enterUp calc(480ms * var(--motion-scale))
-      cubic-bezier(0.22, 0.8, 0.2, 1) both;
-  animation-delay: calc(275ms * var(--motion-scale));
-}
+/* ---------- Dock ---------- */
 
-.section-dot {
-  animation: pulseSoft calc(2.4s * var(--motion-scale)) ease-in-out infinite;
-}
-
-.interactive-pill {
+.dock-indicator {
   transition:
-    transform calc(200ms * var(--motion-scale)) cubic-bezier(0.22, 0.8, 0.2, 1),
-    box-shadow calc(200ms * var(--motion-scale))
-      cubic-bezier(0.22, 0.8, 0.2, 1),
-    border-color calc(200ms * var(--motion-scale))
-      cubic-bezier(0.22, 0.8, 0.2, 1);
+    transform 300ms cubic-bezier(0.25, 1, 0.5, 1),
+    width 300ms cubic-bezier(0.25, 1, 0.5, 1),
+    opacity 180ms var(--ease-out);
 }
 
-.interactive-pill:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 12px 24px -20px color-mix(in oklab, var(--primary) 40%, transparent);
-  border-color: color-mix(in oklab, var(--primary) 34%, var(--border));
-}
+/* ---------- Project cards ---------- */
 
-.link-chip-icon,
-.link-chip-arrow {
-  transition:
-    transform calc(200ms * var(--motion-scale)) cubic-bezier(0.22, 0.8, 0.2, 1),
-    opacity calc(200ms * var(--motion-scale)) cubic-bezier(0.22, 0.8, 0.2, 1);
-}
-
-.link-chip:hover .link-chip-icon {
-  transform: translateY(-1px) scale(1.08);
-}
-
-.link-chip:hover .link-chip-arrow {
-  transform: translate(2px, -2px);
-}
-
-.signature-surface {
-  position: relative;
-  isolation: isolate;
-}
-
-.signature-surface::before {
-  content: "";
+/* Both layers follow the pointer via --mx/--my, set in ProjectCard. */
+.card-spotlight,
+.card-border-glow {
+  pointer-events: none;
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  pointer-events: none;
-  box-shadow: inset 0 0 0 1px transparent;
-  transition:
-    box-shadow calc(220ms * var(--motion-scale))
-      cubic-bezier(0.22, 0.8, 0.2, 1),
-    opacity calc(220ms * var(--motion-scale))
-      cubic-bezier(0.22, 0.8, 0.2, 1);
+  opacity: 0;
+  transition: opacity 500ms var(--ease-out);
 }
 
-.signature-surface::after {
-  content: "";
-  position: absolute;
-  left: 18px;
-  right: 18px;
-  top: 0;
-  height: 1px;
-  border-radius: 9999px;
-  background-color: color-mix(in oklab, var(--primary) 42%, transparent);
-  transform-origin: left;
-  transform: scaleX(0.42);
-  opacity: 0.45;
-  pointer-events: none;
-  animation:
-    signatureIdle calc(5.5s * var(--motion-scale)) ease-in-out infinite;
-  transition:
-    transform calc(220ms * var(--motion-scale))
-      cubic-bezier(0.22, 0.8, 0.2, 1),
-    opacity calc(220ms * var(--motion-scale)) cubic-bezier(0.22, 0.8, 0.2, 1),
-    background-color calc(220ms * var(--motion-scale))
-      cubic-bezier(0.22, 0.8, 0.2, 1);
+.card-spotlight {
+  background: radial-gradient(
+    420px circle at var(--mx, 50%) var(--my, 0%),
+    color-mix(in oklab, var(--accent) 14%, transparent),
+    transparent 60%
+  );
 }
 
-.signature-surface:hover::before {
-  box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--primary) 22%, var(--border));
+.card-border-glow {
+  inset: -1px;
+  padding: 1px;
+  background: radial-gradient(
+    260px circle at var(--mx, 50%) var(--my, 0%),
+    color-mix(in oklab, var(--accent) 85%, transparent),
+    transparent 70%
+  );
+  mask:
+    linear-gradient(#000 0 0) content-box exclude,
+    linear-gradient(#000 0 0);
 }
 
-.signature-surface:hover::after {
-  transform: scaleX(1);
-  opacity: 0.92;
-  background-color: color-mix(in oklab, var(--primary) 62%, transparent);
+.project-card:hover .card-spotlight,
+.project-card:hover .card-border-glow {
+  opacity: 1;
 }
 
-.stats-grid > article:nth-child(odd) {
-  animation: floatSoft calc(7.2s * var(--motion-scale)) ease-in-out infinite;
+@keyframes pop-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.96);
+  }
 }
 
-.stats-grid > article:nth-child(even) {
-  animation: floatSoft calc(8s * var(--motion-scale)) ease-in-out infinite;
-  animation-delay: calc(0.55s * var(--motion-scale));
+.pop-in {
+  animation: pop-in 600ms var(--ease-out) var(--delay, 0ms) both;
 }
+
+/* ---------- Reduced motion ---------- */
 
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
-  .animate-enter,
-  .animate-enter-1,
-  .animate-enter-2,
-  .animate-enter-3,
-  .animate-enter-4,
-  .animate-enter-5,
-  .animate-theme-pop,
-  .animate-theme-sun,
-  .animate-theme-moon,
-  .animate-icon-spin,
-  .section-dot,
-  .stats-grid > article:nth-child(odd),
-  .stats-grid > article:nth-child(even),
-  .signature-surface::after {
-    animation: none !important;
+
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    animation-delay: 0ms !important;
+    transition-duration: 0.01ms !important;
   }
 
-  .interactive-pill,
-  .link-chip-icon,
-  .link-chip-arrow,
-  .signature-surface::before,
-  .signature-surface::after {
-    transition: none !important;
+  .marquee {
+    overflow-x: auto;
+    mask-image: none;
+  }
+
+  .marquee-track {
+    animation: none;
+  }
+
+  .marquee-track > [aria-hidden="true"] {
+    display: none;
+  }
+
+  .dot-wave {
+    opacity: 0.7;
   }
 }

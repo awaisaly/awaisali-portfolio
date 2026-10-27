@@ -36,7 +36,7 @@ export default function OpenGraphImage() {
       />
       <div style={{ display: 'flex', gap: 16, alignItems: 'center' }}>
         <img
-          src={`${siteUrl}/Awais-Ali.png`}
+          src={`${siteUrl}/awais.png`}
           alt='Awais Ali'
           style={{
             width: 56,

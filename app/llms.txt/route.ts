@@ -10,6 +10,8 @@ export function GET() {
     '# Awais Ali — Senior Full Stack & GenAI Developer',
     '',
     `Website: ${siteUrl}/`,
+    `About: ${siteUrl}/about`,
+    `Uses: ${siteUrl}/uses`,
     'Location: Islamabad, Pakistan',
     'Email: awaisaly93@gmail.com',
     'LinkedIn: https://www.linkedin.com/in/awaisaly',

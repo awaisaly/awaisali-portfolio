@@ -16,7 +16,7 @@ export function GET() {
     'GitHub: https://github.com/awaisaly',
     '',
     '## Short bio',
-    'Senior Software Engineer with 10+ years of experience building scalable web applications, API-driven platforms, POS/payment systems, and AI-powered developer and knowledge tools.',
+    'Software Engineer & GenAI Developer with 10+ years of experience building scalable web applications, API-driven platforms, POS/payment systems, and AI-powered developer and knowledge tools.',
     'Remote-first; experienced with distributed teams, async collaboration, and end-to-end feature ownership across UI, APIs, integrations, and data flows.',
     '',
     '## Current role',

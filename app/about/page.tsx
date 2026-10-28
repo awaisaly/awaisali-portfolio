@@ -12,12 +12,12 @@ import { profile } from '../profile';
 export const metadata: Metadata = {
   title: 'About',
   description:
-    'Awais Ali is a senior full-stack and GenAI developer in Islamabad. Ten years of shipping web, desktop, and AI products, and the ways to get in touch.',
+    'Awais Ali is a Software Engineer & GenAI Developer in Islamabad. Ten years of shipping web, desktop, and AI products, and the ways to get in touch.',
   alternates: { canonical: '/about' },
   openGraph: {
     title: 'About Awais Ali',
     description:
-      'Senior full-stack and GenAI developer in Islamabad. What I work on, and how to reach me.',
+      'Software Engineer & GenAI Developer in Islamabad. What I work on, and how to reach me.',
     url: '/about',
   },
 };
@@ -74,7 +74,7 @@ export default function AboutPage() {
     url: `${siteUrl}/about`,
     name: 'About Awais Ali',
     description:
-      'Senior full-stack and GenAI developer in Islamabad, with ten years of shipping web, desktop, and AI products.',
+      'Software Engineer & GenAI Developer in Islamabad, with ten years of shipping web, desktop, and AI products.',
     mainEntity: { '@id': `${siteUrl}/#person` },
   };
 
@@ -103,15 +103,26 @@ export default function AboutPage() {
                 {profile.role}
               </p>
             </div>
-            <Image
-              src='/awais.png'
-              alt='Portrait of Awais Ali'
-              width={176}
-              height={176}
-              priority
-              className='enter h-[76px] w-[76px] shrink-0 rounded-full object-cover sm:h-[88px] sm:w-[88px]'
+            <a
+              href={profile.linkedin}
+              target='_blank'
+              rel='noopener noreferrer'
+              aria-label='Awais Ali on LinkedIn'
+              className='enter group relative shrink-0'
               style={delay(180)}
-            />
+            >
+              <Image
+                src='/awais.png'
+                alt='Portrait of Awais Ali'
+                width={176}
+                height={176}
+                priority
+                className='h-[76px] w-[76px] rounded-full object-cover transition duration-500 group-hover:scale-[1.04] sm:h-[88px] sm:w-[88px]'
+              />
+              <span className='absolute -bottom-0.5 -right-0.5 grid h-7 w-7 place-items-center rounded-full bg-dock text-dock-foreground ring-4 ring-background transition-transform duration-300 group-hover:rotate-45'>
+                <ArrowUpRight className='h-3.5 w-3.5' aria-hidden='true' />
+              </span>
+            </a>
           </div>
         </header>
 
@@ -159,7 +170,7 @@ export default function AboutPage() {
           <p className='mt-3 max-w-md text-[15px] leading-7 text-muted'>
             Email is the fastest way to reach me. Use whichever of these you prefer.
           </p>
-          <ul className='mt-6 divide-y divide-line border-y border-line'>
+          <ul className='mt-6 divide-y divide-line border-t border-line'>
             {connect.map((item) => (
               <li key={item.label}>
                 <a
@@ -189,7 +200,7 @@ export default function AboutPage() {
           </ul>
         </section>
 
-        <footer className='enter mt-20 border-t border-line pt-10' style={delay(500)}>
+        <footer className='enter mt-16' style={delay(500)}>
           <ConnectLinks />
           <div className='mt-10 flex flex-wrap items-center justify-between gap-3 text-[13px] text-subtle'>
             <span>
@@ -207,7 +218,7 @@ export default function AboutPage() {
         </footer>
       </main>
 
-      <Dock name={profile.name} role='Software Engineer' email={profile.email} />
+      <Dock name={profile.name} role={profile.role} email={profile.email} />
     </>
   );
 }

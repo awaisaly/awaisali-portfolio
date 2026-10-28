@@ -27,11 +27,11 @@ export const metadata: Metadata = {
     process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.awaisali.net'
   ),
   title: {
-    default: 'Awais Ali — Senior Full Stack & GenAI Developer',
+    default: 'Awais Ali — Software Engineer & GenAI Developer',
     template: '%s — Awais Ali',
   },
   description:
-    'Awais Ali is a Senior Software Engineer with 10+ years of experience building scalable web apps, API-driven platforms, POS/payment systems, and AI-powered developer and knowledge tools.',
+    'Awais Ali is a Software Engineer & GenAI Developer with 10+ years of experience building scalable web apps, API-driven platforms, POS/payment systems, and AI-powered developer and knowledge tools.',
   applicationName: 'Awais Ali Portfolio',
   authors: [{ name: 'Awais Ali' }],
   creator: 'Awais Ali',
@@ -97,24 +97,24 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     url: '/',
-    title: 'Awais Ali — Senior Full Stack & GenAI Developer',
+    title: 'Awais Ali — Software Engineer & GenAI Developer',
     description:
-      'Senior Software Engineer building scalable apps, API-driven platforms, payments/POS systems, and practical AI tools.',
+      'Software Engineer & GenAI Developer building scalable apps, API-driven platforms, payments/POS systems, and practical AI tools.',
     siteName: 'Awais Ali Portfolio',
     images: [
       {
         url: `/opengraph-image?v=${socialImageVersion}`,
         width: 1200,
         height: 630,
-        alt: 'Awais Ali — Senior Full Stack & GenAI Developer',
+        alt: 'Awais Ali — Software Engineer & GenAI Developer',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Awais Ali — Senior Full Stack & GenAI Developer',
+    title: 'Awais Ali — Software Engineer & GenAI Developer',
     description:
-      'Senior Software Engineer building scalable apps, API-driven platforms, payments/POS systems, and practical AI tools.',
+      'Software Engineer & GenAI Developer building scalable apps, API-driven platforms, payments/POS systems, and practical AI tools.',
     images: [`/twitter-image?v=${socialImageVersion}`],
   },
   robots: {

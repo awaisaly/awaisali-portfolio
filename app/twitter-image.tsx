@@ -43,7 +43,7 @@ export default function TwitterImage() {
           Awais Ali
         </div>
         <div style={{ fontSize: 32, opacity: 0.92 }}>
-          Senior Software Engineer • Remote-first
+          Software Engineer & GenAI Developer
         </div>
         <div style={{ fontSize: 20, opacity: 0.85 }}>
           React • Node.js • Next.js • GenAI • POS & Payments

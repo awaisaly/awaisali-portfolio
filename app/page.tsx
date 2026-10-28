@@ -420,7 +420,7 @@ export default function Home() {
     familyName: 'Ali',
     jobTitle: profile.role,
     description:
-      'Senior Software Engineer with 10+ years of experience building scalable web applications, API-driven platforms, payments/POS systems, and AI-powered developer and knowledge tools.',
+      'Software Engineer & GenAI Developer with 10+ years of experience building scalable web applications, API-driven platforms, payments/POS systems, and AI-powered developer and knowledge tools.',
     url: `${siteUrl}/`,
     image: `${siteUrl}/awais.png`,
     email: `mailto:${profile.email}`,
@@ -499,7 +499,7 @@ export default function Home() {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
     '@id': `${siteUrl}/#webpage`,
-    name: 'Awais Ali — Senior Full Stack & GenAI Developer',
+    name: `Awais Ali — ${profile.role}`,
     url: `${siteUrl}/`,
     isPartOf: { '@id': `${siteUrl}/#website` },
     about: { '@id': `${siteUrl}/#person` },
@@ -581,7 +581,7 @@ export default function Home() {
                 {profile.name}
               </h1>
               <p className='enter-blur mt-3 text-[15px] text-muted' style={delay(240)}>
-                {profile.tagline}
+                {profile.role}
               </p>
             </div>
             <a
@@ -624,30 +624,33 @@ export default function Home() {
               />{' '}
               on the side.
             </p>
-            <p>
-              <Link
-                href='/about'
-                className='inline-flex items-center gap-0.5 underline decoration-foreground/25 underline-offset-[5px] transition hover:decoration-foreground'
-              >
-                More about me
-                <ArrowUpRight className='h-3.5 w-3.5 text-subtle' aria-hidden='true' />
-              </Link>
-            </p>
           </div>
 
-          <div className='enter mt-8 flex items-center gap-5 text-muted' style={delay(480)}>
-            <SocialIcon href={profile.github} label='GitHub'>
-              <GitHubMark className='h-[18px] w-[18px]' />
-            </SocialIcon>
-            <SocialIcon href={profile.linkedin} label='LinkedIn'>
-              <LinkedInMark className='h-[18px] w-[18px]' />
-            </SocialIcon>
-            <SocialIcon href={`mailto:${profile.email}`} label='Email'>
-              <Mail className='h-[18px] w-[18px]' aria-hidden='true' />
-            </SocialIcon>
-            <SocialIcon href={profile.resume} label='Resume (PDF)'>
-              <FileText className='h-[18px] w-[18px]' aria-hidden='true' />
-            </SocialIcon>
+          <div className='enter mt-10' style={delay(480)}>
+            <Link href='/about' className='group inline-flex items-center gap-3'>
+              <span className='font-serif text-[28px] leading-none tracking-[-0.02em]'>
+                More about me
+              </span>
+              <ArrowUpRight
+                className='h-[18px] w-[18px] shrink-0 text-muted transition duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-foreground'
+                aria-hidden='true'
+              />
+            </Link>
+            <div className='mt-4 flex flex-wrap items-center gap-x-5 gap-y-2.5'>
+              <ReachLink href={profile.github} label='GitHub'>
+                <GitHubMark className='h-3.5 w-3.5' />
+              </ReachLink>
+              <ReachLink href={profile.linkedin} label='LinkedIn'>
+                <LinkedInMark className='h-3.5 w-3.5' />
+              </ReachLink>
+              <ReachLink href={`mailto:${profile.email}`} label='Email'>
+                <Mail className='h-3.5 w-3.5' aria-hidden='true' />
+              </ReachLink>
+              <ReachLink href={profile.resume} label='Resume' ariaLabel='Resume (PDF)'>
+                <FileText className='h-3.5 w-3.5' aria-hidden='true' />
+              </ReachLink>
+            </div>
+            <div className='mt-4 h-px bg-line' aria-hidden='true' />
           </div>
         </header>
 
@@ -725,7 +728,7 @@ export default function Home() {
 
         <AfterHours />
 
-        <footer className='reveal mt-28 border-t border-line pt-12'>
+        <footer className='reveal mt-28'>
           <h2 className='font-serif text-[32px] leading-tight'>Have something in mind?</h2>
           <p className='mt-3 max-w-md text-[15px] leading-7 text-muted'>
             I&apos;m open to full-stack and GenAI roles, remote or hybrid. Email is the fastest way to
@@ -756,7 +759,7 @@ export default function Home() {
         </footer>
       </main>
 
-      <Dock name={profile.name} role='Software Engineer' email={profile.email} />
+      <Dock name={profile.name} role={profile.role} email={profile.email} />
     </>
   );
 }
@@ -777,26 +780,30 @@ function InlineBrand({ href, label, logo }: { href: string; label: string; logo?
   );
 }
 
-function SocialIcon({
+function ReachLink({
   href,
   label,
+  ariaLabel,
   children,
 }: {
   href: string;
   label: string;
+  ariaLabel?: string;
   children: React.ReactNode;
 }) {
   const external = href.startsWith('http') || href.endsWith('.pdf');
   return (
     <a
       href={href}
-      aria-label={label}
-      title={label}
+      aria-label={ariaLabel ?? label}
       target={external ? '_blank' : undefined}
       rel={external ? 'noopener noreferrer' : undefined}
-      className='transition-colors hover:text-foreground'
+      className='group inline-flex items-center gap-1.5 text-[13.5px] text-muted transition-colors hover:text-foreground'
     >
-      {children}
+      <span className='text-subtle transition-colors group-hover:text-foreground'>{children}</span>
+      <span className='border-b border-transparent pb-px transition-colors group-hover:border-current'>
+        {label}
+      </span>
     </a>
   );
 }

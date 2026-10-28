@@ -154,7 +154,7 @@ export function AfterHours() {
             </div>
             <div className='px-3 py-2.5'>
               <p className='font-serif text-[15px] leading-none text-white'>Awais Ali</p>
-              <p className='mt-1 text-[11px] leading-4 text-white/50'>Software Engineer building with GenAI</p>
+              <p className='mt-1 text-[11px] leading-4 text-white/50'>Software Engineer & GenAI Developer</p>
             </div>
           </div>
           <p className='mt-2.5 text-[12.5px] leading-5 text-muted'>Saved. The rest can wait.</p>

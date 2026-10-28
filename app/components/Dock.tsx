@@ -98,7 +98,7 @@ export function Dock({
           />
           <span className='hidden leading-tight sm:block'>
             <span className='block text-[14px] font-medium'>{name}</span>
-            <span className='block whitespace-nowrap text-[12px] opacity-60'>{role}</span>
+            <span className='hidden whitespace-nowrap text-[12px] opacity-60 md:block'>{role}</span>
           </span>
         </Link>
 

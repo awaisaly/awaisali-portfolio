@@ -7,7 +7,7 @@ export function GET() {
     process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.awaisali.net';
 
   const text = [
-    '# Awais Ali — Senior Full Stack & GenAI Developer',
+    '# Awais Ali — Software Engineer & GenAI Developer',
     '',
     `Website: ${siteUrl}/`,
     `About: ${siteUrl}/about`,
@@ -19,7 +19,7 @@ export function GET() {
     `Resume (PDF): ${siteUrl}/CV-Awais-Ali.pdf`,
     '',
     '## Summary',
-    'Senior Software Engineer with 10+ years of experience building scalable web applications, API-driven platforms, POS/payment systems, and AI-powered developer and knowledge tools.',
+    'Software Engineer & GenAI Developer with 10+ years of experience building scalable web applications, API-driven platforms, POS/payment systems, and AI-powered developer and knowledge tools.',
     'Experienced collaborating with distributed teams across time zones and owning features end-to-end.',
     'Practical GenAI experience through Knowvio, Explain My Error, and Mini Coding Agent.',
     '',

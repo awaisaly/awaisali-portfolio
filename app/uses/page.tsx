@@ -124,7 +124,7 @@ export default function UsesPage() {
           </section>
         ))}
 
-        <footer className='enter mt-20 border-t border-line pt-10' style={delay(560)}>
+        <footer className='enter mt-16' style={delay(560)}>
           <ConnectLinks />
           <div className='mt-10 flex flex-wrap items-center justify-between gap-3 text-[13px] text-subtle'>
             <span>
@@ -142,7 +142,7 @@ export default function UsesPage() {
         </footer>
       </main>
 
-      <Dock name={profile.name} role='Software Engineer' email={profile.email} />
+      <Dock name={profile.name} role={profile.role} email={profile.email} />
     </>
   );
 }

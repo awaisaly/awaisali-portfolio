@@ -59,7 +59,7 @@ export default async function OpenGraphImage() {
           Awais Ali
         </div>
         <div style={{ fontSize: 34, opacity: 0.92 }}>
-          Senior Full Stack & GenAI Developer
+          Software Engineer & GenAI Developer
         </div>
         <div
           style={{

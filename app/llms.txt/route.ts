@@ -30,6 +30,7 @@ export function GET() {
     '## Core skills',
     '- React, TypeScript, Next.js, Redux, Node.js',
     '- Full-stack product engineering: APIs, data flows, admin tools, integrations',
+    '- Analytics: dashboards, charts, and reports',
     '- GenAI: grounded answers, semantic recall, AI developer tools, agent workflows',
     '- Architecture, performance, accessibility',
     '- Payments & POS: Stripe, Adyen',

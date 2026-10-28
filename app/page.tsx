@@ -302,6 +302,10 @@ const stack: { group: string; core: string[]; also?: string[] }[] = [
     also: ['GIS maps', 'WebGL'],
   },
   {
+    group: 'Analytics',
+    core: ['Dashboards', 'Charts', 'Reports'],
+  },
+  {
     group: 'Backend',
     core: ['Node.js', 'PostgreSQL', 'MongoDB', 'REST APIs'],
     also: ['Python Flask', 'ASP.NET', 'MySQL', 'SQL Server'],
@@ -465,6 +469,9 @@ export default function Home() {
       'Citation-backed AI',
       'POS systems',
       'Payment integrations',
+      'Dashboards',
+      'Charts',
+      'Reports',
     ],
     hasOccupation: [
       { '@type': 'Occupation', name: 'Creator' },

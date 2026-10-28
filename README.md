@@ -23,6 +23,7 @@ Software Engineer & GenAI Developer with strong expertise in React, TypeScript, 
 ## 🧰 Core skills
 
 - **Frontend**: React.js, TypeScript, Next.js, Redux, Hooks, Context API
+- **Analytics**: Dashboards, charts, and reports
 - **Backend (working knowledge)**: Node.js, Python Flask, ASP.NET
 - **Web**: HTML5, CSS3, JavaScript (ES6+), REST APIs
 - **Databases**: PostgreSQL, MongoDB, MySQL, SQL Server

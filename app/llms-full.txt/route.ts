@@ -34,6 +34,7 @@ export function GET() {
     '- Frontend: React, TypeScript, Next.js, Redux, Hooks, Context API',
     '- Backend/API: Node.js, REST APIs, Python Flask, ASP.NET working knowledge',
     '- Data: PostgreSQL, MongoDB, MySQL, SQL Server, API-backed reporting/admin workflows',
+    '- Analytics: dashboards, charts, and reports',
     '- GenAI: grounded knowledge products, citation-backed answers, semantic recall, AI developer tools, agent workflows',
     '- Architecture: maintainable component systems, API contracts, predictable state, clean patterns at scale',
     '- Performance & UX: smooth interactions, profiling, iterative refinement',

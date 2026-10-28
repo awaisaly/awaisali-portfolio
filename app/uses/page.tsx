@@ -4,6 +4,7 @@ import type { CSSProperties } from 'react';
 import { Banner } from '../components/Banner';
 import { ConnectLinks } from '../components/ConnectLinks';
 import { Dock } from '../components/Dock';
+import { HomeLink } from '../components/HomeLink';
 import { profile } from '../profile';
 
 export const metadata: Metadata = {
@@ -96,7 +97,10 @@ export default function UsesPage() {
         <Banner className='enter' />
 
         <header className='mt-10'>
-          <p className='enter-blur text-[13px] tracking-wide text-muted' style={delay(80)}>
+          <div className='enter' style={delay(40)}>
+            <HomeLink />
+          </div>
+          <p className='enter-blur mt-8 text-[13px] tracking-wide text-muted' style={delay(80)}>
             Uses
           </p>
           <h1

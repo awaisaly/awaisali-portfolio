@@ -7,6 +7,7 @@ import { Banner } from '../components/Banner';
 import { ConnectLinks } from '../components/ConnectLinks';
 import { GitHubMark, LinkedInMark } from '../components/BrandIcons';
 import { Dock } from '../components/Dock';
+import { HomeLink } from '../components/HomeLink';
 import { profile } from '../profile';
 
 export const metadata: Metadata = {
@@ -88,7 +89,10 @@ export default function AboutPage() {
         <Banner className='enter' />
 
         <header className='mt-10'>
-          <div className='flex items-center justify-between gap-6'>
+          <div className='enter' style={delay(40)}>
+            <HomeLink />
+          </div>
+          <div className='mt-8 flex items-center justify-between gap-6'>
             <div>
               <p className='enter-blur text-[13px] tracking-wide text-muted' style={delay(80)}>
                 About

@@ -191,10 +191,6 @@ body {
   }
 }
 
-.after-caret {
-  animation: caret 1.05s steps(1) infinite;
-}
-
 .term-type {
   display: inline-block;
   overflow: hidden;

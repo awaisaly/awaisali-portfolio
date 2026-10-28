@@ -21,7 +21,7 @@ import { Banner } from './components/Banner';
 import { ConnectLinks } from './components/ConnectLinks';
 import { GitHubMark, LinkedInMark } from './components/BrandIcons';
 import { Dock } from './components/Dock';
-import { AfterHours } from './components/AfterHours';
+import { ForFun } from './components/ForFun';
 import { ProjectCard, type Project } from './components/ProjectCard';
 import { ProjectCarousel } from './components/ProjectCarousel';
 import { DotGridPreview, KnowvioPreview, TerminalPreview } from './components/ProjectPreviews';
@@ -733,7 +733,7 @@ export default function Home() {
           </dl>
         </section>
 
-        <AfterHours />
+        <ForFun />
 
         <footer className='reveal mt-28'>
           <h2 className='font-serif text-[32px] leading-tight'>Have something in mind?</h2>
